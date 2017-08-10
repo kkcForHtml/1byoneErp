@@ -1,0 +1,8 @@
+received-date	fnsku	sku	product-name	quantity	fba-shipment-id	fulfillment-center-id
+2017-06-20T07:00:00+00:00	X001FC0F7V	O0000-0853-new	1byone Bluetooth 4.1 Wireless In-Ear Headphones, Sports Earphones with HD Stereo Sound & Modern, Sweat-Proof and Ergonomic Design, Black	1	FBA4SP77ZX	IND1
+2017-06-20T07:00:00+00:00	X000TKXBJT	OUS00-0660-FBA	1byone Adjustable Attic / Outdoor TV Antenna Mounting Pole Universal Wall Mounts / Brackets (1.65" Diameter Mount Pipe), 19" Arm Length, Easy to Install, Solid Structure, Weather Proof	1	FBA4PG1R5F	IND2
+2017-06-20T07:00:00+00:00	X000ZW5Y5Z	704US-0001-FBA	1byone Shiatsu Massage Pillow Massager with Heat Balls and Car Adapter, Neck Massager Shoulder Massager Back Massager for Home, Office and Car Use, Black	2346	FBA4NNJ4MX	ONT8
+2017-06-20T07:00:00+00:00	X000PGTQ7N	O00QH-0512-FBA	1byone DIY Receiver Driveway Alarm, Easy Installation with Upgrade Auto-learning Code, Blue LED Indicator	50	FBA4VGLYB0	ONT8
+2017-06-20T07:00:00+00:00	X0014H5SLP	471NA-0003-FBA	1byone Belt-Drive 3-Speed Stereo Turntable with Built in Speakers, Supports Vinyl to MP3 Recording, USB MP3 Playback, and RCA Output, Natural Wood	512	FBA4Q12VP5	YVR2
+2017-06-20T07:00:00+00:00	X001EU543T	719NA-0001	Beautural Portable Fabric Shaver and Lint Remover with 2-Speeds, Adjustable Shave Height, Dual Protection for Your Clothes, Quickly and Effectively Remove Fluff, Lint, and Bobbles	-1	FBA4SP7JVR	DFW7
+2017-06-20T07:00:00+00:00	X001C9VAR1	O0000-0684	1byone Amplified Digital Antenna with Stand, VHF Enhanced Omni-directional Table Antenna, 40-50 Miles High Range Indoor TV Antenna with Detachable High Gain Amplifier,10ft High Performance Cable-Black	340	FBA4TZSYCL	ONT8

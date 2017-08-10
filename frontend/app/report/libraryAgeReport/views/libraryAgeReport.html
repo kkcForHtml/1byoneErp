@@ -1,0 +1,79 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+        {{'库龄报告'|translate}}
+        <small></small>
+    </h1>
+	<ol class="breadcrumb">
+		<li>
+			<a href="#"><i class="fa fa-dashboard"></i> {{'首页'|translate}}</a>
+		</li>
+		<li class="active">{{'报表'|translate}}</li>
+	</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+	<div class="box box-danger">
+		<div class="box-header with-border">
+			<form class="form-inline">
+				<div class="row">
+					<div class="col-md-4  btn-mr-5 ">
+						<button type="button" btn-per="{id:38,name:'导出'}" class="btn btn-danger btn-xs" ng-click="export()"><i class="iconfont icon-daochu"></i>{{'导出'|translate}}</button>
+						<!--<button type="button" class="btn btn-danger btn-xs" ng-click="del()"><i class="iconfont icon-iconfontshanchu"></i>删除</button>-->
+					</div>
+					<div class="col-md-offset-2 col-md-8 text-right no-margin">
+						<div class="clearfix search_box">
+							<div ng-click="showMore(true)" style="display: inline-block; float: right; margin-top: 1px;">
+								<div class="btn btn-primary" style="padding: 3px 6px;" data-toggle="collapse" data-target="#moreDetail" aria-expanded="true" aria-controls="moreDetail">
+									{{'更多条件'|translate}}
+									<span class="carett"></span>
+								</div>
+							</div>
+							<div class="form-group" style="margin-right: 5px;float: right;width:50%;">
+						          <label for="" style="margin: 0 6px 0 0;">{{'截至日期'|translate}}：</label>
+						          <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'" ng-model="search.times" input-blur input-clear>
+								<button style="height: 30px; float: right; margin-left: 10px;" type="button" class="btn btn-danger btn-xs" ng-click="searching()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}</button>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</form>
+				 <div class="more-wrap collapse" id="moreDetail" style=" margin-top: 10px;">
+				 	<div class="row clearfix">
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+						<label for="">{{'组织'|translate}}</label>
+                		<input select2 ng-model="search.organization" select2-model="cS" config="organizationList" multiple placeholder="请选择" class="form-control" type="text"/>						
+				 	</div>
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+						<label for="">{{'平台'|translate}}</label>
+                		<input select2 ng-model="search.platForm" select2-model="cS1" config="platFormList" multiple placeholder="请选择" class="form-control" type="text"/>						
+				 	</div>
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+						<label for="">{{'小分类'|translate}}</label>
+                		<input select2 ng-model="search.minorClassification" select2-model="cS2" config="minorClassificationList" multiple placeholder="请选择" class="form-control" type="text"/>						
+				 	</div>
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+						<label for="">{{'SKU'|translate}}</label>
+                		<input select2 ng-model="search.sku" select2-model="cS3" config="skuList" multiple placeholder="请选择" class="form-control" type="text"/>						
+				 	</div>
+				 	
+				 	</div>
+                    <!--<div class="center-block" style="width: 180px; overflow: hidden; margin-top: 26px;">
+                        <div class="btn btn-success js-search" style="float: left;" ng-click="showMore(false)">{{'确认'|translate}}</div>
+                        <div class="btn btn-danger" style="float: right;" ng-click = "clearSearch()">{{'清除'|translate}}</div>
+                    </div>-->
+                    
+
+				 </div>
+			
+		</div>
+		<div class="box-body" auto-height="gridOptions">
+			<div ui-grid="gridOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-auto-resize></div>
+		</div>
+		<!-- /.box-body -->
+	</div>
+</section>
+<!-- /.content -->

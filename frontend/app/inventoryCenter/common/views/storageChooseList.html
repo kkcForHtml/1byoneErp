@@ -1,0 +1,38 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">选择入库单</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-12  btn-mr-5">
+
+                        <div class="input-group " style="float: right;">
+                            <input type="text" class="form-control input-sm" input-clear style="width: 200px" placeholder="入库单号/采购单号/产品" ng-model="searchCondtion">
+                            <span class="input-group-btn">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs" ng-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}</button>
+                              </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="row" auto-height="gridOptions" style="padding: 15px;">
+            <div ui-grid="gridOptions"   ui-grid-edit ui-grid-pagination ui-grid-selection ui-grid-exporter ui-grid-row-edit ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="confirm()">确定</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
+    </div>
+
+</div>

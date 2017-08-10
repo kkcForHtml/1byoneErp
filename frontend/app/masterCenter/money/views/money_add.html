@@ -1,0 +1,105 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" one-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'新增' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存' | translate}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <form role="form">
+            <div class="page-header orange">
+                <h4>{{'基本信息' | translate}}</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'ISO货币编码' | translate}}</label>
+                        <input type="text" maxlength="20" ui-grid-editor class="form-control input-sm" id="money_code"
+                               ng-model="model.MONEY_CODE">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'币种名称(中文)' | translate}}</label>
+                        <input type="text" maxlength="100" ui-grid-editor class="form-control" id="money_name_cn"
+                               ng-model="model.MONEY_NAME_CN">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'货币符号' | translate}}</label>
+                        <input type="text" maxlength="10" ui-grid-editor class="form-control" id="money_symbols"
+                               ng-model="model.MONEY_SYMBOLS">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'是否启用' | translate}}</label>
+                        <select class="form-control input-sm" id="money_state" ng-model="model.MONEY_STATE">
+                            <option value="1">Y</option>
+                            <option value="0">N</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">{{'备注' | translate}}</label>
+                        <input type="text" maxlength="250" ui-grid-editor class="form-control" id="money_remarks"
+                               ng-model="model.MONEY_REMARKS">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" one-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" one-click="save()">保存</button>-->
+    <!--</div>-->
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header orange">
+                    <h4>{{'汇率' | translate}}</h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-3  btn-mr-5 ">
+                        <button type="button" class="btn btn-success btn-xs" one-click="subEdit()"><i
+                                class="iconfont icon-jia1"></i>{{'新增' | translate}}
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" one-click="subDel()"><i
+                                class="iconfont icon-iconfontshanchu"></i>{{'删除' | translate}}
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" auto-height="gridOptions" auto-flag="gridOptions" auto-hide="gridOptions"
+                     style="padding:0px">
+                    <div ui-grid="gridOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav
+                         ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+
+    <style>
+        .checkbox-header-bold label {
+            font-weight: bold;
+        }
+    </style>

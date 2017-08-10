@@ -1,0 +1,43 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'退货确认/内部交易' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="body-header">
+
+        </div>
+        <tabset class="tab-container" style="margin-top:10px;">
+            <tab>
+                <tab-heading>
+                    <span>{{'退货确认' | translate}}</span>
+                </tab-heading>
+                <div class="row">
+                    <div class="box-body" auto-height="goodsRejectedOptions" auto-flag="goodsRejectedOptions">
+                        <div  style="margin-left: 5px" ui-grid="goodsRejectedOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize></div>
+                    </div>
+                </div>
+            </tab>
+            <tab>
+                <tab-heading>
+                    <span>{{'内部交易' | translate}}</span>
+                </tab-heading>
+                <div class="row">
+                    <div class="box-body" auto-height="insiderTradingOptions" auto-flag="insiderTradingOptions">
+                        <div  style="margin-left: 5px" ui-grid="insiderTradingOptions"  ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize></div>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-offset-6 col-md-5 btn-mr-5 text-right">
+                <button type="button" class="btn btn-default" btn-per="{id:50,name:'调拨计划单-审核'}" ng-click="confirm()">确定</button>
+                <button type="button" class="btn btn-default" ng-click="exit()">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

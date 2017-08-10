@@ -1,0 +1,109 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Yii console bootstrap file.
+ *
+ * @link http://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license http://www.yiiframework.com/license/
+ */
+defined('YII_DEBUG') or define('YII_DEBUG', true);
+defined('YII_ENV') or define('YII_ENV', 'dev');
+
+require(__DIR__ . '/vendor/autoload.php');
+require(__DIR__ . '/vendor/albert/yii2-swoole/Yii.php');
+require(__DIR__ . '/common/config/bootstrap.php');
+require(__DIR__ . '/console/config/bootstrap.php');
+require(__DIR__ . '/common/config/defined.php');
+
+$config = yii\helpers\ArrayHelper::merge(
+    require(__DIR__ . '/common/config/main.php'), require(__DIR__ . '/common/config/main-local.php'), require(__DIR__ . '/console/config/main.php'), require(__DIR__ . '/console/config/main-local.php')
+);
+
+$cppool = new Cppool($config);
+global $argv;
+array_shift($argv);
+call_user_func_array([$cppool, 'start'], $argv);
+exit(0);
+
+class Cppool
+{
+
+    public $config = [];
+
+    public function __construct($config)
+    {
+        $this->config = $config;
+    }
+
+    function start($app, $d = 0)
+    {
+        $config = $this->config['params']['swoole']['cppool'];
+        $usage = "Usage: swoole/cppool {start|status|stop|restart}" . PHP_EOL;
+        if (!isset($app)) {
+            exit($usage);
+        } else {
+            $pid = false;
+            $exit_code_general = 1;
+            $exit_code_invoke = 126;
+            if ($app !== "start") {
+                if (file_exists($config['pidFile']) === false) {
+                    echo sprintf("The pid file %s does NOT exist, Pls. check service is running" . PHP_EOL, $config['pidFile']);
+                    exit($exit_code_invoke);
+                } else {
+                    $pid = intval(file_get_contents($config['pidFile']));
+                    if ($pid <= 0) {
+                        echo "Malformed pid file" . PHP_EOL;
+                        exit($exit_code_invoke);
+                    }
+                }
+            }
+            $dbs = [];
+            foreach ($config['server']['db'] as $dbname => $cfg) {
+                $dbs["'" . $this->config['components'][$dbname]['dsn'] . "'"] = $cfg;
+            }
+            unset($config['server']['db']);
+            foreach ($config['server']['redis'] as $dbname => $cfg) {
+                $dbs["'" . $this->config['components'][$dbname]['hostname'] . ':' . $this->config['components'][$dbname]['port'] . ':' . $this->config['components'][$dbname]['database'] . "'"] = $cfg;
+            }
+            unset($config['server']['redis']);
+            $server = yii\swoole\helpers\ArrayHelper::merge($config['server'], $dbs);
+            $server['common']['daemonize'] = $d;
+            if (yii\swoole\helpers\IniHelper::write_ini_file($server, $config['path'], true)) {
+                if (($conf_arr = parse_ini_file($config['path'], true)) === false) {
+                    die("bad ini file\n");
+                }
+                switch ($app) {
+                    case "start":
+                        pool_server_create($config['path']);
+                        break;
+                    case "status":
+                        pool_server_status($pid);
+                        break;
+                    case "reload":
+                        pool_server_reload($pid);
+                        echo "Tips: The reload can only modify 'pool_min','pool_max','recycle_num' and 'idel_time'" . PHP_EOL;
+                        die;
+                        break;
+                    case "stop":
+                        pool_server_shutdown($pid);
+                        file_put_contents($config['pidFile'], "");
+                        break;
+                    case "restart":
+                        @pool_server_shutdown($pid);
+                        sleep(1);
+                        pool_server_create($config['path']);
+                        break;
+                    default:
+                        echo $usage;
+                        exit($exit_code_general);
+                }
+                unset($this->config);
+            } else {
+                echo 'can not write the ini file';
+            }
+        }
+    }
+}
+

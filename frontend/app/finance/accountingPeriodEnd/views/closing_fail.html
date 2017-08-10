@@ -1,0 +1,28 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'审核结果'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+    	<div class="row" style="padding: 20px;font-size: 16px;letter-spacing: 1px; ">
+			所选业务期间有以下<span style="color: red; font-weight: bold;">{{gridOptions.totalItems}}张单据未完成审核</span>请完成审核后再关账   		
+    	</div>
+    	
+    	<div class="clearfix search_box">
+    		<div class="form-group" style="margin-bottom: 5px;float: left;padding-left: 10px;">
+	          <button style="height: 30px; float: right; margin-right: 10px; margin-top: 4px;" type="button" class="btn btn-danger btn-xs" ng-click="export()"><i class="iconfont icon-daochu"></i>{{'导出'|translate}}</button>
+	      	</div>
+
+    	</div>
+    	
+        <div class="box-body"  auto-flag="gridOptions" auto-hide="gridOptions" auto-height="gridOptions">
+            <div ui-grid="gridOptions"     ui-grid-edit ui-grid-pagination  ui-grid-cellNav
+                 ui-grid-resize-columns ui-grid-auto-resize ></div>
+        </div>
+    </div>
+</div>
+
+<!-- /.content -->

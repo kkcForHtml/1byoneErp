@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="examples">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>example</title>
+
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="../dist/angular-popups.js"></script>
+
+    <style>
+        .example {
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .ui-contextmenu {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            list-style: none;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border: 1px solid #ccc;
+            font-family: Helvetica, arial, sans-serif;
+            background: #FFF;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            border: solid 1px #DCDCDC;
+        }
+        .ui-contextmenu a {
+            display: block;
+            margin: 0;
+            padding: 8px 10px;
+            white-space: nowrap;
+            cursor: pointer;
+            color: #333;
+            background: transparent;
+            outline: 0 none;
+            text-decoration: none;
+        }
+        .ui-contextmenu a:hover {
+            background: #3870F3;
+            color: #FFF;        }
+        .ui-contextmenu a:focus {
+            outline: 0 none;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/show-source-code.css">
+</head>
+<body>
+<div class="example" ng-contextmenu="popup={open: $event}">
+    点击右键
+</div>
+
+<popup ng-if="popup.open" close="popup.open=false" close-action="esc outerchick click">
+    <ul class="ui-contextmenu">
+        <li><a href="#1">我是右键菜单选项</a></li>
+        <li><a href="#2">Menu2</a></li>
+    </ul>
+</popup>
+
+<script>
+var app = angular.module('examples', ['angular-popups']);
+
+// 给 AngularJS 添加 ng-contextmenu 指令
+app.directive('ngContextmenu', ['$parse', function($parse) {
+    return {
+        restrict: 'A',
+        compile: function($element, attr) {
+            var fn = $parse(attr.ngContextmenu, null, true);
+            return function(scope, element) {
+                element.on('contextmenu', function(event) {
+                    var callback = function() {
+                        fn(scope, {
+                            $event: event
+                        });
+                    };
+                    scope.$apply(callback);
+                    event.preventDefault();
+                });
+            };
+        }
+    };
+}]);
+</script>
+
+<script id="show-source-code" src="./js/show-source-code.js"></script>
+</body>
+</html>

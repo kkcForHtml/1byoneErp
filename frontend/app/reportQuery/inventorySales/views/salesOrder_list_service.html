@@ -1,0 +1,36 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'销售订单追踪'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+    	<div class="clearfix search_box">
+    		<div class="form-group" style="margin-bottom: 5px;float: right;">
+	          <label for="" style="margin: 0 6px 0 0;">{{'销售时间'|translate}}：</label>
+	          <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'" ng-model="times" input-clear onkeydown="return false">
+	          <span style="margin: 0 4px; display: inline-block;">~</span>
+	          <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'" ng-model="yesterday" onkeydown="return false" input-clear>
+	          <button style="height: 30px; float: right; margin-right: 10px; margin-top: 4px;" type="button" class="btn btn-danger btn-xs" ng-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}</button>
+	      	</div>
+
+    	</div>
+    	
+        <div style="padding-left: 22px; padding-right: 26px;">
+        	<div class="row" style="font-weight: bold;">
+				<span style="margin-right: 10px">{{model.PSKU_CODE}}</span> <span>{{model.PSKU_NAME_CN}}</span>        		
+        	</div>
+        	<div class="row">
+        		<div class="text-right"><span style="font-weight: bold;">日均销量:</span>{{avg|number:2}}</div>
+        	</div>
+        </div>
+        <div class="box-body"  auto-flag="gridOptions" auto-hide="gridOptions" auto-height="gridOptions">
+            <div ui-grid="gridOptions"     ui-grid-edit ui-grid-pagination  ui-grid-cellNav
+                 ui-grid-resize-columns ui-grid-auto-resize ></div>
+        </div>
+    </div>
+</div>
+
+<!-- /.content -->

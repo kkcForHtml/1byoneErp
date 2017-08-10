@@ -1,0 +1,32 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'调拨单列表' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="page-header orange">
+            <h4>
+                调拨明细
+            </h4>
+        </div>
+        <div class="row">
+            <div class="col-md-5  btn-mr-5">
+                <button type="button" class="btn btn-success" one-click="ensure()" style="margin-bottom: 7px;">确定</button>
+            </div>
+
+        </div>
+
+        <div ui-grid="gridOptions"  ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+             ui-grid-resize-columns ui-grid-auto-resize></div>
+
+        <!--内容-->
+    </div>
+</div>
+
+
+
+
+

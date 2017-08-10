@@ -1,0 +1,182 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'编辑'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" ng-click="save()"><i class="iconfont icon-baocun-copy"></i>{{'保存'|translate}}</button>
+                        <button type="button" class="btn btn-danger btn-xs" ng-if="model.AUDIT_STATE!=1" ng-click="audit()"><i class="iconfont icon-shen"></i>{{'审核'|translate}}</button>
+                        <button type="button" class="btn  btn-xs" ng-if="model.AUDIT_STATE!=1" ng-click="antiAudit()"><i class="iconfont icon-fanshen"></i>{{'反审核'|translate}}</button>
+                        <button type="button" class="btn btn-danger btn-xs" ng-if="model.AUDIT_STATE!=1" ng-click="confirmPayment()"><i class="iconfont icon-shen"></i>{{'确认付款'|translate}}</button>
+                        <button type="button" class="btn  btn-xs" ng-if="model.AUDIT_STATE!=1" ng-click="modifyPayment()"><i class="iconfont icon-fanshen"></i>{{'修改付款信息'|translate}}</button>
+                    </div>
+                    <div class="col-md-offset-2  col-md-5 text-right">
+                        <div class="btn-group" role="group" >
+                            <button type="button" class="btn btn-default btn-sm" ng-click="firstPage()" ng-disabled="index==0">{{'首单'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="prePage()"   ng-disabled="index==0">{{'上一单'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="nextPage()" ng-disabled="index==(count-1)">{{'下一单'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="lastPage()" ng-disabled="index==(count-1)">{{'尾单'|translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <form role="form" name = "myForm"  novalidate>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="code"><i class="text-danger">*</i>{{'组织'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="code" name="code"
+                               ng-model="model.PORGANISATION_CODE" required >
+                        <span style="color:red" ng-if="myForm.code.$error.required&&myForm.code.$touched">
+                            {{'组织不能为空！'|translate}}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="PAYMENT_CD">{{'付款申请单号'|translate}}</label>
+                        <input type="text" class="form-control" id = "PAYMENT_CD" name="nameCN" id="organisation_name_cn"
+                               ng-model="model.PAYMENT_CD" required >
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="state">{{'审核状态'|translate}}</label>
+                        <input type="text" class="form-control" id="state" ng-model="model.AUDIT_STATE" >
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="autitor">{{'审核人'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name ="autitor" id="autitor" ng-model="model.AUTITOR">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="autitorOrg">{{'申请部门'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name ="autitorOrg" id="autitorOrg" ng-model="model.AUTITOR_ORGCODE">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="applicantCode">{{'申请人'|translate}}</label>
+                        <input type="email" id="applicantCode" name ="applicantCode" class="form-control input-sm" ng-model="model.APPLICANT_CODE" >
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="applicantAt">{{'申请日期'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="applicantAt" name="applicantAt" ng-model="model.CREATED_AT"  >
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="autitoAt">{{'审核日期'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="autitoAt" name="autitoAt" ng-model="model.AUTITO_AT" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="partner"><i class="text-danger">*</i>{{'供应商'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="partner" name="partner" ng-model="model.PARTNER_CODE" required>
+                        <span style="color:red" ng-if="myForm.partner.$error.required&&myForm.partner.$touched">
+                            {{'供应商不能为空！'|translate}}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="pmoneyCode"><i class="text-danger">*</i>{{'申付币种'|translate}}</label>
+                        <select class="form-control input-sm" name="pmoneyCode" id="pmoneyCode" ng-model="model.PMONEY_CODE"
+                                ng-options="value.AREA_CODE as value.AREA_NAME_CN for value in model.addressList2" required >
+                        </select>
+                        <span style="color:red" ng-if="myForm.pmoneyCode.$error.required && myForm.pmoneyCode.$touched">
+                            {{'币种不能为空！'|translate}}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="psum"><i class="text-danger">*</i>{{'申付金额'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="psum" name="psum" ng-model="model.PAYMENT_NUMBER" required>
+                        <span style="color:red" ng-if="myForm.psum.$error.required && myForm.psum.$touched">
+                            {{'申付金额不能为空！'|translate}}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'预计付款日期'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name="endDate" am-date ng-model="model.END_TIME" required>
+                        <span style="color:red" ng-if="myForm.endDate.$error.required&&myForm.endDate.$touched">
+                            {{'预计付款日期不能为空！'|translate}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="pstate"><i class="text-danger">*</i>{{'付款状态'|translate}}</label>
+                        <select class="form-control input-sm" name="pstate" id="pstate" ng-model="model.PAYMENT_STATE"
+                                ng-options="value.AREA_CODE as value.AREA_NAME_CN for value in model.addressList2"  >
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="pamoneyCode"><i class="text-danger">*</i>{{'实付币种'|translate}}</label>
+                        <select class="form-control input-sm" name="pamoneyCode" id="pamoneyCode" ng-model="model.PAMONEY_CODE"
+                                ng-options="value.AREA_CODE as value.AREA_NAME_CN for value in model.addressList2"  >
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="pasum">{{'实付金额'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="pasum" name="pasum" ng-model="model.PAID_MONEY" >
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="paDate">{{'实付日期'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="paDate" name="paDate" am-date ng-model="model.PAID_AT" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">{{'备注'|translate}}</label>
+                        <input class="form-control input-sm" ng-model="model.PAYMENT_REMARKS">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>
+
+
+
+
+

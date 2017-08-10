@@ -1,0 +1,42 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{name}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="box-header with-border">
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <div class="form-group">
+                            <label for=""></label>
+                            <input type="text" class="form-control input-sm" style="width: 200px" placeholder=""
+                                   ng-model="searchCondition">
+                        </div>
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="search()"><i
+                                class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="box-body">
+            <div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection
+                 ui-grid-exporter
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-offset-6 col-md-5 btn-mr-5 text-right">
+                <button type="button" class="btn btn-default" ng-click="confirm()">确定</button>
+                <button type="button" class="btn btn-default" ng-click="exit()">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.content -->

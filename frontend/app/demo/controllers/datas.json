@@ -1,0 +1,38 @@
+[
+  {
+    "name": "张国立",
+    "sex": "男1",
+    "age": 20,
+    "email": "zhangguoli@123.com"
+  },
+  {
+    "name": "张铁林",
+    "sex": "男2",
+    "age": 20,
+    "email": "zhangtieli@123.com"
+  },
+  {
+    "name": "邓婕",
+    "sex": "女3",
+    "age": 20,
+    "email": "zhenjie@123.com"
+  },
+  {
+    "name": "张国立",
+    "sex": "男4",
+    "age": 20,
+    "email": "zhangguoli@123.com"
+  },
+  {
+    "name": "张铁林",
+    "sex": "男5",
+    "age": 20,
+    "email": "zhangtieli@123.com"
+  },
+  {
+    "name": "邓婕",
+    "sex": "女6",
+    "age": 20,
+    "email": "zhenjie@123.com"
+  }
+]

@@ -1,0 +1,163 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">组织隶属关系</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" btn-per="{id:30,name:'组织隶属关系-编辑'}" class="btn  btn-danger btn-xs" one-click = "save()"><i class="iconfont icon-baocun-copy"></i>保存
+                        </button>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+
+        <form role="form" name="myForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>职能类型</label>
+                        <!--<input type="text" class="form-control input-sm" name="type"  ng-model="model.FUNCTION_NAME" required>-->
+                        <select class="form-control input-sm" id="type" name="type"
+                                ng-model="model.FUNCTION_ID" ng-change="typeSelect(model.ORGANISATION_CODE,model.FUNCTION_ID)"
+                                ng-options="value.D_VALUE as value.D_NAME_CN for value in model.busOrgList" required>
+                        </select>
+                        <!--<span style="color:red" ng-if="myForm.type.$error.required&&myForm.type.$touched">
+                            职能类型不能为空！
+                        </span>-->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="partner"><i class="text-danger">*</i>{{'顶层组织'|translate}}</label>
+                        <div class="input-group" style="width:100%">
+                            <input type="text" class="form-control input-sm" id="partner" style="width:80%" ng-model="model.ORGANISATION_NAME_CN" ng-readonly = "model.FUNCTION_ID==null && model.ORGANISATION_RELATION_ID!=null">
+                            <span class="input-group-btn" style="display: inline;width:15%">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs" ng-click="serachOrg()" ng-disabled = " model.ORGANISATION_RELATION_ID !=null"><i class="iconfont icon-sousuo_sousuo"></i>{{'选择'|translate}}</button>
+                              </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group hidden-clock">
+                        <label for=""><i class="text-danger">*</i>生效日期</label>
+                        <input class="form-control input-sm" input-blur kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='model.EFFECTIVE_TIME' >
+                        <!--<input type="text" class="form-control input-sm" name="startDate" am-date ng-model="model.EFFECTIVE_TIME" required>
+                        -->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group hidden-clock">
+                        <label for=""><i class="text-danger">*</i>截止日期</label>
+                        <input class="form-control input-sm" input-blur kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='model.END_TIME' >
+                        <!--<input type="text" class="form-control input-sm" name="endDate" am-date ng-model="model.END_TIME" required>
+                        -->
+                    </div>
+                </div>
+                <div class="col-md-2" style="margin-top: 30px">
+                    <div class="checkbox checkbox-info checkbox-inline">
+                        <input type="checkbox" class="styled"  ng-model="model.isChecked"
+                               id="bo" ng-click = setLongForm(model.ORGANISATION_FORM_ID)> <label for="bo">长期有效</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">是否启用</label>
+                        <select class="form-control input-sm" ng-model="model.ORGANISATION_STATE" ng-options = "value.D_VALUE as value.D_NAME_CN for value in model.stateList"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">描述</label>
+                        <textarea class="form-control" rows="5" ng-model = "model.RELATION_REMARKS"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="page-header orange" style="margin-top: 0">
+                    <h4>隶属关系</h4>
+                </div>
+                <!--<div style="padding: 0 10px">-->
+
+                 <div class="row">
+                        <div class="col-md-5" style="max-height:30vh;overflow-y: scroll">
+                            <table class="ctltable" style="width:100%">
+                                <tbody>
+                                    <tr class="center" style="height: 5vh;background-color: rgba(204, 203, 203, 0.18)">
+                                        <td class="col-sm-1" colspan="2" style="text-align: center;vertical-align:middle;">可选组织</td>
+                                    </tr>
+                                    <tr class="center" style="height: 3vh;background-color: rgba(204, 203, 203, 0.5)">
+                                        <td class="col-md-6 col-sm-1 ">组织编码</td>
+                                        <td class="col-md-6 col-sm-1" >组织</td>
+                                    </tr>
+                                    <tr class="center" ng-class="{'selected':selected==item}" ng-repeat="item in model.dataList" ng-click="selectedLeftItem(item)" ng-model="leftSelectedItems">
+                                        <td class="col-sm-1" >{{item.ORGANISATION_CODE}}</td>
+                                        <td class="col-sm-1" >{{item.ORGANISATION_NAME_CN}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="text-center" style="width: 10%;float: left">
+                                <div>
+                                    <button type="button" class="btn  btn-xs" ng-click="addItemsToRight()" ng-disabled="isSelectedOptionDisabled && isTreeNull">加入<i class="iconfont icon-youjiantou2"></i></button>
+                                </div>
+                                </br>
+                                <div>
+                                    <button type="button" class="btn  btn-danger btn-xs" ng-click="addItemsToLeft()"  ng-disabled="isSelectedOptionDisabled || isFirstNode"><i class="iconfont icon-jiantouzuo"></i>移除</button>
+                                </div>
+                                </br>
+                                <div>
+                                    <button type="button" class="btn  btn-xs" ng-click="addItemsToTop()" ng-disabled="isTopSelectedItem ">上移<i class="iconfont icon-arrow-top"></i></button>
+                                </div>
+                                </br>
+                                <div>
+                                    <button type="button" class="btn  btn-danger btn-xs" ng-click="addItemsToDown()" ng-disabled=" isDownSelectedItem || isFirstNode"><i class="iconfont icon-arrow-bottom"></i>下移</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5" style="max-height:30vh;overflow-y: scroll;margin-top:10px">
+                            <div
+                                    data-angular-treeview="true"
+                                    data-tree-id="options"
+                                    data-tree-model="treeModel"
+                                    data-node-id="id"
+                                    data-node-label="name"
+                                    data-node-children="children" >
+                            </div>
+                        </div>
+                    </div>
+                <!--</div>-->
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    .checkbox label {
+        font-weight: bold;
+    }
+
+</style>
+
+
+
+
+

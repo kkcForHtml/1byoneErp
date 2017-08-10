@@ -1,0 +1,13 @@
+{
+    "姓名": "name",
+    "性别": "sex",
+    "生日": "birthday",
+    "年龄": "age",
+    "错误": "error",
+    "成功": "success",
+    "确认": "confirm",
+    "是否确认删除": "delete",
+    "删除": "delete",
+    "消息确认": "Message Confirm",
+    "取消": "cancel"
+}

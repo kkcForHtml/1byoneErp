@@ -1,0 +1,44 @@
+<div class="modal-content" style="width: 100%;">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'采购订单确认'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="cancel()"><i
+                                class="iconfont icon-quxiao2"></i>{{'取消'|translate}}</button>
+                        <button type="button" class="btn btn-danger btn-xs" one-click="confirm()"><i
+                                class="iconfont icon-queren"></i>{{'确定'|translate}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="box-body" auto-height="gridOptions" auto-flag="gridOptions">
+            <div ui-grid="gridOptions"     ui-grid-edit  ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                 ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ></div>
+        </div>
+        <!--<div class="box-body" auto-height="gridOptions" auto-flag>
+            <div ui-grid="gridOptions"     ui-grid-edit  ui-grid-row-edit ui-grid-cellNav ui-grid-selection
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>-->
+       <!-- <form role="form" name = "myForm"  novalidate>
+            <div class="row">
+                <div ui-grid="gridOptions"  style="height:75vh" ui-grid-edit ui-grid-pagination  ui-grid-selection ui-grid-exporter ui-grid-row-edit
+                     ui-grid-resize-columns ui-grid-auto-resize></div>
+            </div>
+        </form>-->
+    </div>
+</div>
+<style>
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>

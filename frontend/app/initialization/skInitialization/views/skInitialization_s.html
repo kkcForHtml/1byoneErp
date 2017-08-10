@@ -1,0 +1,49 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'选择导出条件'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-10" style="margin: 0 auto; float: none;">
+                        <div class="form-group" style="width: 100%;">
+                            <label for=""><i class="text-danger">*</i>{{'组织' | translate}}</label>
+                            <div organisations-dirt1 select-model="ORGANISATION" options="orgoptions"  style="width: 80%;" model = "model"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-10" style="margin: 0 auto; float: none;">
+                        <div class="form-group" style="width: 100%;">
+                            <label for=""><i class="text-danger">*</i>{{'平台' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.CHANNEL"
+                                    ng-options="warehouse as warehouse.CHANNEL_NAME_CN for warehouse in model.channelList" style="width: 80%;">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-10" style="margin: 0 auto; float: none;">
+                        <div class="form-group" style="width: 100%;">
+                            <label for=""><i class="text-danger">*</i>{{'仓库'|translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.ATWAREHOUSE"
+                                    ng-options="warehouse as warehouse.WAREHOUSE_NAME_CN for warehouse in model.warehouseList" style="width: 80%;">
+                            </select>
+                        </div>
+                    </div>
+                	
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+    
+    <button type="button" class="btn btn-default" ng-click="confirm()">确定</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
+    </div>
+
+</div>

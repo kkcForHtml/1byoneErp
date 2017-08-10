@@ -1,0 +1,36 @@
+<body>
+	<header>
+		<div class="logo-box">
+			<h2>{{'深圳市万百万电商运营系统平台' | translate}}</h2>
+		</div>
+	</header>
+	<section class="login-section">
+		<div class="banner-box">
+			<div id="login">
+				<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+				<h3>{{'用户登录' | translate}}</h3>
+				<form name="loginForm" class="form-horizontal" role="form">
+					<div class="group-input">
+						<span class="ic"><i class="glyphicon glyphicon-user"></i></span>
+						<input type="text" id="us" class="form-in" ng-model="user.userName" placeholder="{{'用户名' | translate}}"/>
+					</div>
+					<div class="group-input">
+						<span class="ic"><i class="glyphicon glyphicon-lock"></i></span>
+						<input type="password" id="psw" class="form-in" ng-model="user.password" placeholder="{{'输入密码' | translate}}"/>
+					</div>			
+					<div class="group-check">
+						<input type="checkbox" name="rm-state" id="rm-state" ng-model="user.isRemember"/><label for="rm-state">{{'记住登录状态' | translate}}</label>
+					</div>			
+					<div class="group-button">
+						<button class="btn" one-click="login()">{{'登录' | translate}}</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="footer-box">
+			<p>Copyright (c) 2016 1byone All Rights Reserved.</p>
+		</div>
+	</footer>
+</body>

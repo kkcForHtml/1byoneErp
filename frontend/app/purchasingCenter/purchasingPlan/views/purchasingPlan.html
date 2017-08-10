@@ -1,0 +1,53 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        采购计划单
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> 采购中心</a></li>
+        <li class="active">采购计划单</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-danger">
+        <div class="box-header with-border" >
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-8  btn-mr-5">
+                        <button type="button" btn-per="{id:13,name:'采购计划-新增编辑'}" class="btn btn-success btn-xs" one-click="add()"><i class="iconfont icon-jia1"></i>{{'新增'|translate}}</button>
+                        <button type="button" btn-per="{id:13,name:'采购计划-新增编辑'}" class="btn btn-danger btn-xs" one-click="save()"><i class="iconfont icon-baocun-copy"></i>{{'保存'|translate}}</button>
+                        <button type="button" btn-per="{id:13,name:'采购计划-删除'}" class="btn btn-danger btn-xs" one-click="del()"><i class="iconfont icon-iconfontshanchu"></i>{{'删除'|translate}}</button>
+                        <button type="button" btn-per="{id:13,name:'采购计划-审核'}" class="btn btn-danger btn-xs" one-click="batchAudit()"><i class="iconfont icon-shen"></i>{{'审核'|translate}}</button>
+                        <button type="button" btn-per="{id:13,name:'采购计划-反审核'}" class="btn  btn-xs" one-click="batchAntiAudit()"><i class="iconfont icon-fanshen"></i>{{'反审核'|translate}}</button>
+                        <button type="button" btn-per="{id:13,name:'采购计划-下推采购订单'}" class="btn btn-danger btn-xs" one-click="setPO()"><i class="iconfont icon-shengcheng"></i>{{'生成采购订单'|translate}}</button>
+                        <a class="btn btn-danger btn-xs" style="margin-right: 7px"  href="excelTemplate/采购计划导入.xlsx"><i class="iconfont icon-xiazai"></i>{{'下载模板'|translate}}</a>
+                        <button type="button" class="btn btn-danger btn-xs" btn-per="{id:13,name:'采购计划-导入'}" one-click="importPuPlan()"><i class="iconfont icon-daoru"></i>{{'导入'|translate}}</button>
+                    </div>
+                    <div class="col-md-4 text-right">
+
+                        <div class="input-group ">
+                            <input type="text" class="form-control input-sm" input-clear style="width: 200px" placeholder="SKU/产品名称/平台" ng-model="searchCondtion">
+                            <span class="input-group-btn">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs" ng-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}</button>
+                              </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="box-body" auto-height="gridOptions" auto-flag="gridOptions" auto-hide="gridOptions">
+            <div ui-grid="gridOptions"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                 ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning></div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+
+
+
+
+</section>
+<!-- /.content -->

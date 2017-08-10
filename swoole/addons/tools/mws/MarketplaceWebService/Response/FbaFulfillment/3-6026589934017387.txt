@@ -1,0 +1,2 @@
+received-date	fnsku	sku	product-name	quantity	fba-shipment-id	fulfillment-center-id
+2017-07-20T07:00:00+00:00	X000PGTIAX	O00QH-0507-FBA	1byone Wireless Home Security Driveway Alarm, 1 Plug-in Receiver and 1 PIR Motion Sensor Detector Weatherproof Alert System Kit, 36 Melodies to choose	100	FBA4YBMGG1	YVR2

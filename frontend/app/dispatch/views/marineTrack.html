@@ -1,0 +1,300 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        {{'发运跟踪'|translate}}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{'首页'|translate}} </a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{'发运管理'|translate}} </a></li>
+        <li class="active"> {{'发运跟踪'|translate}}</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-danger">
+        <div class="box-header with-border" >
+            <form class="form-inline">
+                  <div class="row">
+                      <div class="col-md-2  btn-mr-5">
+
+                          <button type="button" btn-per="{id:20,name:'编辑'}" class="btn btn-danger btn-xs" ng-click="modify()"><i class="iconfont icon-baocun-copy"></i>{{'保存'|translate}}</button>
+                                                    
+                      </div>
+                      <div class="col-md-10 text-right">
+                          <div class="input-group">                          	
+                              <input type="text" class="form-control input-sm" input-clear style="width: 250px" placeholder="组织/跟踪号/提单号/采购订单号/SKU" ng-model="SEARCH_COMMON">
+                              <span class="input-group-btn">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs" ng-click="searching()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}</button>
+                              </span>
+                          </div>
+                          <!--<div class="btn btn-primary" style="padding: 3px 6px;" ng-click="showMore(true)" >
+                          	{{'更多条件'|translate}}
+                          	<span class="carett"></span>
+                          </div>-->
+                          <div ng-click="showMore(true)" style="display: inline-block;">
+                          <div class="btn btn-primary" style="padding: 3px 6px;" data-toggle="collapse" data-target="#moreDetail" aria-expanded="true" aria-controls="moreDetail">
+                          	{{'更多条件'|translate}}
+                          	<span class="carett"></span>
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+            </form>
+				 <div class="more-wrap collapse" id="moreDetail" style=" margin-top: 10px;" >
+				 	<div class="row clearfix" >
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label for="">{{'计划日期'|translate}}</label>
+	                    <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'" ng-model='search.endPLAN_AT' onkeydown="return false;" input-clear >
+	                    	<span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+	                    <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'" ng-model='search.startPLAN_AT' onkeydown="return false;" input-clear>
+                    </div>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label for="">{{'实际发运日期'|translate}}</label>
+	                      <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='search.endACTUAL_SHIPM_AT' onkeydown="return false;" input-clear >
+	                      	<span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+	                      <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='search.startACTUAL_SHIPM_AT' onkeydown="return false;" input-clear>
+	                      	
+                    </div>
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label for="">{{'预计送达日期'|translate}}</label>
+	                      <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='search.endEXPECTED_SERVICE_AT' onkeydown="return false;" input-clear>
+	                      	<span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+	                      <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='search.startEXPECTED_SERVICE_AT' onkeydown="return false;" input-clear>
+	                      	
+                    </div>
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label for="">{{'实际送达日期'|translate}}</label>
+	                      <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='search.endACTUAL_SERVICE_AT' onkeydown="return false;" input-clear>
+	                      	<span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+	                      <input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='search.startACTUAL_SERVICE_AT' onkeydown="return false;" input-clear>
+	                      	
+                    </div>
+
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+						<label for="">{{'单据状态'|translate}}</label>
+						<select class="form-control" ng-model="search.PLAN_STATE">
+							<option value="">{{'全部'|translate}}</option>
+							<option value="1">{{'已发运'|translate}}</option>
+							<option value="2">{{'已送达'|translate}}</option>                             	
+						</select>				 		
+				 	</div>
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label for="">{{'运输方式'|translate}}</label>
+                        <select class="form-control" ng-model="search.TRANSPORT_MODE">
+	                      	<option value="">{{'全部'|translate}}</option>
+	                      	<option value="1">{{'空运'|translate}}</option>
+	                      	<option value="2">{{'海运'|translate}}</option>
+	                      	<option value="3">{{'龙舟海运'|translate}}</option>
+	                      	<option value="4">{{'快递'|translate}}</option>
+	                      	<option value="5">{{'陆运'|translate}}</option>                              	
+                        </select>
+				 	</div>
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+						<label for="">{{'次数'|translate}}</label>
+						<input type="text" style="width: 76%;float: right;" class="form-control" ng-model="search.CNUMBER"  />
+				 	</div>
+				 	<div class="input-group col-lg-4 col-md-6 col-sm-12">
+						<label for="">{{'柜号'|translate}}</label>
+						<input type="text" style="width: 76%;float: right;" class="form-control" ng-model="search.CABINET_NO"  />
+				 	</div>
+				 	
+				 	</div>
+                    <!--<div class="center-block" style="width: 180px; overflow: hidden; margin-top: 26px;">
+                        <div class="btn btn-danger" style="float: right;" ng-click = "clearSearch()">{{'清除'|translate}}</div>
+                    </div>-->
+                    
+
+				 </div>
+
+			
+
+        </div>
+        <div class="box-body" id="autoHeight">
+			<div class="h-grid">
+			<table class="table table-bordered table-hover">
+			      <thead>
+			        <tr style="background: rgb(250,244,244);">
+			          <th width="40"><input type="checkbox" name="" id="" value="" select-all /></th>
+			          <th width="40"></th>
+			          <th width="118">{{'计划日期'|translate}}</th>
+			          <th width="118">{{'国家'|translate}}</th>
+			          <th width="118">{{'平台'|translate}}</th>
+			          <th width="118">{{'运输方式'|translate}}</th>
+			          <th width="130">{{'次数'|translate}}</th>
+			          <th width="130">{{'柜型'|translate}}</th>
+			          <th width="130">{{'装柜日期'|translate}}</th>
+			          <th width="130">{{'实际发运日期'|translate}}</th>
+			          <th width="130">{{'预计送达日期'|translate}}</th>
+			          <th width="130">{{'实际送达日期'|translate}}</th>
+			          <th width="130">{{'柜号'|translate}}</th>
+			          <th width="130">{{'提单号/追踪号'|translate}}</th>
+			          <th width="130">{{'总箱数'|translate}}</th>
+			          <th width="130">{{'总净重'|translate}}(kg)</th>
+			          <th width="130">{{'总毛重'|translate}}(kg)</th>
+			          <th width="130">{{'发运港本地费币种'|translate}}</th>
+			          <th width="130">{{'发运港本地费'|translate}}</th>
+			          <th width="130">{{'拖车费币种'|translate}}</th>
+			          <th width="130">{{'拖车费'|translate}}</th>
+			          <th width="130">{{'目的港本地费币种'|translate}}</th>
+			          <th width="130">{{'目的港本地费'|translate}}</th>
+			          <th width="130">{{'我司测重'|translate}}</th>
+			          <th width="130">{{'计费重'|translate}}</th>
+			          <th width="130">{{'运费币种'|translate}}</th>
+			          <th width="130">{{'单价'|translate}}</th>
+			          <th width="130">{{'运费'|translate}}</th>
+			          <th width="130">{{'关税增值税币种'|translate}}</th>
+			          <th width="130">{{'关税增值税'|translate}}</th>
+			          <th width="130">{{'关税账单参考编码'|translate}}</th>
+			          <th width="130">{{'付款差额'|translate}}</th>
+			          <th width="130">{{'Winit入库单号'|translate}}</th>
+			          <th width="130">{{'计划异常记录'|translate}}</th>
+			          <th width="130">{{'发运异常记录'|translate}}</th>
+			          <th width="130">{{'国外异常记录'|translate}}</th>
+			          <th width="130">{{'异常原因'|translate}}</th>
+			          <th width="130">{{'处理结果'|translate}}</th>
+			          <th width="130">{{'目的仓'|translate}}</th>
+			          <th width="130">{{'备注'|translate}}</th>
+			          <th width="130">{{'单据状态'|translate}}</th>
+			          
+			        </tr>
+			      </thead>
+			      <!--($index+1)+gridOptions.paginationCurrentPage*100-->
+			  		<tbody ng-repeat="obj in model track by $index">
+				        <tr>
+				          <td class="dis" scope="row" width="40"><input type="checkbox" name="" id="" value="" select-self /></td>
+				          <td class="dis" width="40" data-tg = "#test{{$index}}" click-shrink><i class="fa fa-fw fa-plus" data-toggle="collapse" data-target="#test{{$index}}" aria-expanded="true" aria-controls="test{{index}}"></i></td>
+				          <td class="dis"><span class="span">{{obj.PLAN_AT | date : 'yyyy-MM-dd'  | transNull}}</td>
+				          <td class="dis"><span class="span">{{obj.o_organisation.ORGANISATION_NAME_CN | transNull}}</span></td>
+				          <td class="dis"><span class="span">{{obj.b_channel.CHANNEL_NAME_CN | transNull}}</span></td>
+				          <td class="dis"><span class="span">{{obj.TRANSPORT_MODE | transTransport | transNull}}</span></td>
+				          <td class="dis"><span class="span text-right">{{obj.CNUMBER | transNull}}</span></td>
+				          <td edit-grid><span class="span">{{obj.DRYCONTAINER | transNull}}</span><input type="text" id="" ng-model="obj.DRYCONTAINER" /></td>
+				          <td edit-grid><span class="span">{{obj.LOADING_AT|date : 'yyyy-MM-dd' | transNull}}</span><input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model="obj.LOADING_AT" onkeydown="return false;"></td>
+				          <td edit-grid><span class="span">{{obj.ACTUAL_SHIPM_AT|date : 'yyyy-MM-dd' | transNull}}</span><input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model="obj.ACTUAL_SHIPM_AT" onkeydown="return false;" ></td>
+				          <td edit-grid><span class="span">{{obj.EXPECTED_SERVICE_AT|date : 'yyyy-MM-dd' | transNull}}</span><input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model="obj.EXPECTED_SERVICE_AT" onkeydown="return false;" ></td>
+				          <td edit-grid><span class="span">{{obj.ACTUAL_SERVICE_AT|date : 'yyyy-MM-dd'| transNull}}</span><input class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model="obj.ACTUAL_SERVICE_AT" onkeydown="return false;" ></td>
+				          <td edit-grid><span class="span">{{obj.CABINET_NO| transNull}}</span><input type="text" id="" ng-model="obj.CABINET_NO" /></td>
+				          <td edit-grid><span class="span">{{obj.TRACK_NO| transNull}}</span><input type="text" id="" ng-model="obj.TRACK_NO" /></td>
+				          <td edit-grid><span class="span text-right">{{obj.TOTAL_BOX| transNull}}</span><input type="text" formatting="false"  numeric decimals="0" max="9999999999"  min="0" id="" ng-model="obj.TOTAL_BOX" /></td>
+				          <td edit-grid><span class="span text-right">{{obj.TAILBOX_WEIGHT|number:2| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" ng-model="obj.TAILBOX_WEIGHT"  /></td>
+				          <td edit-grid><span class="span text-right">{{obj.TAILBOX_NETWEIGHT|number:2| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" id="" ng-model="obj.TAILBOX_NETWEIGHT" /></td>
+				          <td edit-grid><span class="span">{{changeMoney(obj.FREIGHT_LOMONEY_ID)|transNull}}</span>
+							<select class="form-control" value="obj.FREIGHT_LOMONEY_ID" ng-model="obj.FREIGHT_LOMONEY_ID" style="width: 130px; display: none; margin:0 auto;" change-event>
+				          		<option ng-repeat="o in moneyList" value={{o.MONEY_ID}}>{{o.MONEY_NAME_CN|translate}}</option>				   
+				          	</select>
+				          </td>
+				          <td edit-grid><span class="span text-right">{{obj.FREIGHT_LOMONEY|number:2| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" id="" ng-model="obj.FREIGHT_LOMONEY"  /></td>
+				          <td edit-grid><span class="span">{{changeMoney(obj.TRAILER_MONEY_ID)|transNull}}</span>
+				          	<select class="form-control" value="obj.TRAILER_MONEY_ID" ng-model="obj.TRAILER_MONEY_ID" style="width: 130px; display: none; margin:0 auto;" change-event>
+				          		<option ng-repeat="o in moneyList" value={{o.MONEY_ID}}>{{o.MONEY_NAME_CN|translate}}</option>				   
+				          	</select>				          
+				          </td>
+				          <td edit-grid><span class="span text-right">{{obj.TRAILER_MONEY|number:2| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" id="" ng-model="obj.TRAILER_MONEY"  /></td>
+				          <td edit-grid><span class="span">{{changeMoney(obj.OBJECTIVE_MONEY_ID)|transNull}}</span>
+				          	<select class="form-control" value="obj.OBJECTIVE_MONEY_ID" ng-model="obj.OBJECTIVE_MONEY_ID" style="width: 130px; display: none; margin:0 auto;" change-event>
+				          		<option ng-repeat="o in moneyList" value={{o.MONEY_ID}}>{{o.MONEY_NAME_CN|translate}}</option>				   
+				          	</select>				          
+				          </td>
+				          <td edit-grid><span class="span text-right">{{obj.OBJECTIVE_MONEY|number:2| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" id="" ng-model="obj.OBJECTIVE_MONEY"  /></td>
+				          <td edit-grid><span class="span text-right">{{obj.I_WEIGH| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" id="" ng-model="obj.I_WEIGH" /></td>
+				          <td edit-grid><span class="span text-right">{{obj.CHARGE_WEIGHT| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" id="" ng-model="obj.CHARGE_WEIGHT" /></td>
+				          <td edit-grid><span class="span">{{changeMoney(obj.FREIGHT_MONEY_ID)|transNull}}</span>
+				          	<select class="form-control" value="obj.FREIGHT_MONEY_ID" ng-model="obj.FREIGHT_MONEY_ID" style="width: 130px; display: none; margin:0 auto;" change-event>
+				          		<option ng-repeat="o in moneyList" value={{o.MONEY_ID}}>{{o.MONEY_NAME_CN|translate}}</option>				   
+				          	</select>				          
+				          </td>
+				          <td edit-grid><span class="span text-right">{{obj.UNIT_PRICE|number:2| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" id="" ng-model="obj.UNIT_PRICE"  /></td>
+				          <td edit-grid><span class="span text-right">{{obj.FREIGHT_MONEY|number:2| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" id="" ng-model="obj.FREIGHT_MONEY"  /></td>
+				          <td edit-grid><span class="span">{{changeMoney(obj.DUTIEST_MONEY_ID)|transNull}}</span>
+				          	<select class="form-control" value="obj.FREIGHT_MONEY_ID"  ng-model="obj.DUTIEST_MONEY_ID" style="width: 130px; display: none; margin:0 auto;" change-event>
+				          		<option ng-repeat="o in moneyList" value={{o.MONEY_ID}}>{{o.MONEY_NAME_CN|translate}}</option>				   
+				          	</select>				          
+				          </td>
+				          <td edit-grid><span class="span text-right">{{obj.DUTIEST_MONEY|number:2| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" id="" ng-model="obj.DUTIEST_MONEY"  /></td>
+				          <td edit-grid><span class="span">{{obj.TARIFF_BREFEREN_CODE| transNull}}</span><input type="text" id="" ng-model="obj.TARIFF_BREFEREN_CODE" /></td>
+				          <td edit-grid><span class="span text-right">{{obj.PAYMENT_BALANCE|number:2| transNull}}</span><input type="text" formatting="false"  numeric decimals="2" max="9999999999"  min="0" id="" ng-model="obj.PAYMENT_BALANCE"  /></td>
+				          <td edit-grid><span class="span">{{obj.WINIT_WAREHOUSE| transNull}}</span><input type="text" id="" ng-model="obj.WINIT_WAREHOUSE" /></td>
+				          <td edit-grid><span class="span">{{obj.PLAN_EXCEPTION| transNull}}</span><input type="text" id="" ng-model="obj.PLAN_EXCEPTION" /></td>
+				          <td edit-grid><span class="span">{{obj.ABNORMAL_SHIPMENT| transNull}}</span><input type="text" id="" ng-model="obj.ABNORMAL_SHIPMENT" /></td>
+				          <td edit-grid><span class="span">{{obj.FOREIGN_ANOMALY| transNull}}</span><input type="text" id="" ng-model="obj.FOREIGN_ANOMALY" /></td>
+				          <td edit-grid><span class="span">{{obj.ABNORMAL_CAUSE| transNull}}</span><input type="text" id="" ng-model="obj.ABNORMAL_CAUSE" /></td>
+				          <td edit-grid><span class="span">{{obj.TREATMENT_RESULT| transNull}}</span><input type="text" id="" ng-model="obj.TREATMENT_RESULT" /></td>
+				          <td class="dis"><span class="span" title={{obj.b_warehouse.WAREHOUSE_NAME_CN}}>{{obj.b_warehouse.WAREHOUSE_NAME_CN| transNull}}</span></td>
+				          <td edit-grid><span class="span">{{obj.NOTE_REMARKS| transNull}}</span><input type="text" id="" ng-model="obj.NOTE_REMARKS" /></td>
+				          <td edit-grid><span class="span">{{obj.PLAN_STATE|transStatus|transNull}}</span>
+				          	<select class="form-control" value="obj.PLAN_STATE" ng-model="obj.PLAN_STATE" style="width: 130px; display: none; margin:0 auto;" change-event>
+				          		<option value="1">{{'已发运'|translate}}</option>
+				          		<option value="2">{{'已送达'|translate}}</option>				   
+				          	</select>
+				          </td>
+						  
+				        </tr>
+				        <tr class="grid-box" ng-if='obj.sh_tracking_detail.length'>
+				        	<td style="visibility: hidden; padding: 0;"></td>
+				        	<td colspan="32" class="tb-box">
+				        		<div id="test{{$index}}" class="collapse">
+				        		<table class="able table-bordered table-hover">
+				        			<thead>
+				        				<tr style="background: rgb(250,244,244);">
+					        				<th width="60">{{'序号'|translate}}</th>
+					        				<th width="120">{{'采购单号'|translate}}</th>
+					        				<th width="120">SKU</th>
+					        				<th width="120">{{'货描'|translate}}</th>
+					        				<th width="120">{{'发运数量'|translate}}</th>
+					        				<th width="120">{{'已收货数量'|translate}}</th>
+					        				<th width="120">{{'调整数量'|translate}}</th>					        				
+					        				<th width="120">{{'实际送达时间'|translate}}</th>
+					        				<th width="120">{{'采购币种'|translate}}</th>
+					        				<th width="120">{{'采购单价'|translate}}</th>
+					        				<th width="120">{{'报关币种'|translate}}</th>
+					        				<th width="120">{{'报关价格'|translate}}</th>
+					        				<th width="120">{{'件数'|translate}}</th>
+					        				<th width="120">{{'净重'|translate}}</th>
+					        				<th width="120">{{'毛重'|translate}}</th>
+					        				<th width="120">{{'体积'|translate}}</th>
+					        				<th width="120">{{'跟踪号'|translate}}</th>
+					        				<th width="220">{{'备注'|translate}}</th>
+				        				</tr>
+									</thead>
+				        			<tbody>
+				        				<tr ng-repeat="detial in obj.sh_tracking_detail">
+				        					<td class="dis">{{$index+1}}</td>
+				        					<td class="dis"><span class="span">{{detial.PU_ORDER_CD| transNull}}</span></td>
+				        					<td class="dis"><span class="span">{{detial.PSKU_CODE| transNull}}</span></td>
+				        					<td class="dis"><span class="span">{{detial.GOODS_DESCRIBE| transNull}}</span></td>
+				        					<td class="dis"><span class="span text-right">{{detial.SHIPMENT_NUMBER| transNull}}</span></td>
+				        					<td class="dis"><span class="span text-right">{{detial.ARECIPIENT_NUM| transNull}}</span></td>
+				        					<td class="dis"><span class="span text-right">{{detial.ADJUSTMENT_NUMBER| transNull}}</span></td>
+				        					<td class="dis"><span class="span">{{detial.ACTUALS_ERVICE_AT|date:'yyyy-MM-dd'| transNull}}</span></td>
+				        					<td class="dis"><span class="span">{{changeMoney(detial.PU_MONEY_ID)| transNull}}</span></td>
+				        					<td class="dis"><span class="span text-right">{{detial.PU_MONEY|number:2| transNull}}</span></td>
+				        					<td class="dis"><span class="span">{{changeMoney(detial.CLEARANCE_MONEY_ID)| transNull}}</span></td>
+				        					<td class="dis"><span class="span text-right">{{detial.CLEARANCE_MONEY|number:2| transNull}}</span></td>
+				        					<td class="dis"><span class="span text-right">{{detial.GNUMBER| transNull}}</span></td>
+				        					<td class="dis"><span class="span text-right">{{detial.NET_WEIGHT| transNull}}</span></td>
+				        					<td class="dis"><span class="span text-right">{{detial.GROSS_WEIGHT| transNull}}</span></td>
+				        					<td class="dis"><span class="span text-right">{{detial.VOLUME| transNull}}</span></td>
+				        					<td edit-grid><span class="span">{{detial.TRACK_NO| transNull}}</span><input type="text" id="" ng-model="detial.TRACK_NO" /></td>
+				        					<td edit-grid><span class="span">{{detial.DETAIL_REMARKS| transNull}}</span><input type="text" id="" ng-model="detial.DETAIL_REMARKS" /></td>
+				        				</tr>
+				        			</tbody>
+				        		</table>
+				        		</div>
+				        	</td>
+				        </tr>	        
+			    	</tbody>
+			    </table>			    
+			</div>
+			<div class="ctrlGrid" style="height: 40px;">
+	            <div ui-grid="gridOptions"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+	                 ui-grid-resize-columns ui-grid-auto-resize style="height: 100%;"></div>
+				
+			</div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+</section>
+<!-- /.content -->

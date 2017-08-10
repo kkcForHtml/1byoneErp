@@ -1,0 +1,26 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">编辑用户</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="panel panel-default" style="margin-bottom: 0">
+            <div class="panel-body " style="margin-bottom: 0">
+
+
+                {{model.name}}
+
+            </div>
+        </div>
+        <select kendo-drop-down-list k-options='dicOptions' ng-model='dictionary'></select>
+        <select kendo-multi-select k-options="mdicOptions" ng-model="mdictionary"></select>
+        <input dropdownmutiselect options='mmdicOptions' model="mdictionary"/>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
+        <button type="button" class="btn btn-danger btn-color-green" ng-click="save()">保存</button>
+    </div>
+</div>

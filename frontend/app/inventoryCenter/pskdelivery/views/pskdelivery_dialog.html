@@ -1,0 +1,94 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'确认出库' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+
+        <div>
+
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'实际发货日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" kendo-date-picker  k-format="'yyyy-MM-dd'" ng-model="ACTUAL_AT" style="width: 100%;height: 29px;">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'跟踪单号' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="TRACK_NO">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'装卸费币种' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="LOAD_MONEY_ID"
+                                    ng-options="money.MONEY_ID as money.MONEY_NAME_CN for money in moneyslist">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'装卸费' | translate}}</label>
+                            <input type="text" class="form-control input-sm" style ="text-align: right"  name="psum" numeric decimals="2" min="0" max="9999999999" ng-model="LOAD_MONEY" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'运费币种' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="FREIGHT_MONEY_ID"
+                                        ng-options="money.MONEY_ID as money.MONEY_NAME_CN for money in moneyslist">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'运费' | translate}}</label>
+                            <input type="text" class="form-control input-sm" style ="text-align: right"  name="psum" numeric decimals="2" min="0" max="9999999999" ng-model="FREIGHT_MONEY"   />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'杂费币种' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="INCIDEN_MONEY_ID"
+                                    ng-options="money.MONEY_ID as money.MONEY_NAME_CN for money in moneyslist">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'杂费' | translate}}</label>
+                            <input  type="text" class="form-control input-sm" style ="text-align: right"  name="psum" numeric decimals="2" min="0" max="9999999999" ng-model="INCIDEN_MONEY" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+
+        <button type="button" class="btn btn-default" ng-click="savedelivery()">{{'确认出库' | translate}}</button>
+        <button type="button" class="btn btn-default" ng-click="cancel()">{{'取消' | translate}}</button>
+    </div>
+    
+</div>
+
+
+
+
+

@@ -1,0 +1,150 @@
+<?php
+
+namespace addons\sales\models;
+
+use addons\master\basics\models\BUnit;
+use addons\master\product\models\GProductSku;
+use yii\swoole\db\ActiveRecord;
+use Yii;
+use addons\sales\models\CrSalesOrder;
+use yii\behaviors\AttributeBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\swoole\behaviors\OperatorBehaviors;
+
+
+/**
+ *
+ * @SWG\Definition(
+ *   definition="CrSalesOrderDetail",
+ *   type="object",
+ *   allOf={
+ *       @SWG\Schema(
+ *           required={"tag"},
+ *           @SWG\Property(property="SALES_ORDER_DETAIL_ID", type="integer",description="销售订单明细ID"),
+ *           @SWG\Property(property="SALES_ORDER_ID", type="integer",description="销售订单ID"),
+ *           @SWG\Property(property="PSKU_ID", type="integer",description="产品SKU ID"),
+ *           @SWG\Property(property="PSKU_CODE", type="string",description="SKU编码"),
+ *           @SWG\Property(property="PSKU_NAME_CN", type="string",description="产品名称"),
+ *           @SWG\Property(property="PURCHASE",type="integer",format="int32",description="数量"),
+ *           @SWG\Property(property="TAX_RATE",  type="double",description="税率"),
+ *           @SWG\Property(property="TAX_UNITPRICE",  type="double",description="含税单价"),
+ *           @SWG\Property(property="TOTAL_TAX_AMOUNT",  type="double",description="价税合计"),
+ *           @SWG\Property(property="NOT_TAX_UNITPRICE", type="double",description="不含税单价"),
+ *           @SWG\Property(property="NOT_TAX_AMOUNT",  type="double",description="不含税金额"),
+ *           @SWG\Property(property="CREATED_AT",type="integer",format="int32",description="制单时间"),
+ *           @SWG\Property(property="UPDATED_AT",type="integer",format="int32",description="修改时间"),
+ *           @SWG\Property(property="UNIT_ID",  type="integer",description="计量单位"),
+ *           @SWG\Property(property="UUSER_ID",  type="integer",description="更新人ID"),
+ *           @SWG\Property(property="CUSER_ID",  type="integer",description="创建人ID")
+ *       )
+ *   }
+ * )
+ */
+class CrSalesOrderDetail extends ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'cr_sales_order_detail';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['PSKU_ID', 'SALES_ORDER_ID', 'PURCHASE', 'CREATED_AT', 'UPDATED_AT', 'UNIT_ID', 'UUSER_ID', 'CUSER_ID'], 'integer'],
+            [['TAX_RATE', 'TAX_UNITPRICE', 'TOTAL_TAX_AMOUNT', 'NOT_TAX_UNITPRICE', 'NOT_TAX_AMOUNT'], 'number'],
+            [['PSKU_CODE'], 'string', 'max' => 20],
+            [['PSKU_NAME_CN'], 'string', 'max' => 128],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'SALES_ORDER_DETAIL_ID' => Yii::t('sales', '销售订单明细ID'),
+            'SALES_ORDER_ID' => Yii::t('sales', '销售订单ID'),
+            'PSKU_ID' => Yii::t('sales', 'SKU ID'),
+            'PSKU_CODE' => Yii::t('sales', 'SKU'),
+            'PSKU_NAME_CN' => Yii::t('sales', '产品名称'),
+            'PURCHASE' => Yii::t('sales', '数量'),
+            'TAX_RATE' => Yii::t('sales', '税率'),
+            'TAX_UNITPRICE' => Yii::t('sales', '含税单价'),
+            'TOTAL_TAX_AMOUNT' => Yii::t('sales', '价税合计'),
+            'NOT_TAX_UNITPRICE' => Yii::t('sales', '不含税单价'),
+            'NOT_TAX_AMOUNT' => Yii::t('sales', '不含税金额'),
+            'CREATED_AT' => Yii::t('sales', '制单日期'),
+            'UPDATED_AT' => Yii::t('sales', '更新时间'),
+            'UNIT_ID' => Yii::t('inventory', '计量单位'),
+            'UUSER_ID' => Yii::t('inventory', '更新人ID'),
+            'CUSER_ID' => Yii::t('inventory', '创建人ID'),
+        ];
+    }
+
+    public $realation = ['cr_sales_order' => ['SALES_ORDER_ID' => 'SALES_ORDER_ID'],'b_unit'=>['UNIT_ID'=>'UNIT_ID'],'g_product_sku'=>['PSKU_ID'=>'PSKU_ID']];
+
+    //明细
+    public function getCr_sales_order()
+    {
+        return $this->hasOne(CrSalesOrder::className(), ['SALES_ORDER_ID' => 'SALES_ORDER_ID'])->joinWith(['pa_partner']);;
+    }
+
+    /**
+     * 获取单位信息
+     */
+    public function getB_unit()
+    {
+        return $this->hasOne(BUnit::className(), ['UNIT_ID' => 'UNIT_ID']);
+    }
+
+    /*
+     * 获取产品名称
+     */
+    public function getG_product_sku()
+    {
+        return $this->hasOne(GProductSku::className(), ['PSKU_ID' => 'PSKU_ID']);
+    }
+
+    public function after_ACreate($body, $class = null)
+    {
+        #发运单id存在则
+        if (isset($body['DISPATCH_NOTE_ID'])) {
+            $FIALLOCATION = CrSalesOrder::find()->select(['SALES_ORDER_CD'])->where(['SALES_ORDER_ID' => $this->SALES_ORDER_ID])->asArray()->one();
+            $set = array('INTERNAL_SALES_CD' => $FIALLOCATION['SALES_ORDER_CD'], 'INTERNAL_SALES_ID' => $this->SALES_ORDER_DETAIL_ID);
+            $where = array('DISPATCH_NOTE_ID' => $body['DISPATCH_NOTE_ID']);
+            Yii::$app->rpc->create('shipment')->sendAndrecv([['\addons\shipment\modellogic\dispatchLogic', 'addDispatchNote'], [$set, $where]]);
+        }
+        return parent::after_ACreate($body, $class); // TODO: Change the autogenerated stub
+    }
+
+
+    /**
+     * 新增修改前把指定字段值写入时间戳
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['CREATED_AT', 'UPDATED_AT'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['UPDATED_AT'],
+                ],
+            ],
+            [
+                'class' => OperatorBehaviors::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['CUSER_ID', 'UUSER_ID'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['UUSER_ID'],
+                ],
+            ]
+        ];
+    }
+}

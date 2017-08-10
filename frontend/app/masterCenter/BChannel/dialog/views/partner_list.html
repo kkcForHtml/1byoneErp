@@ -1,0 +1,42 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'伙伴列表'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="box-header with-border" >
+            <form class="form-inline">
+                <div class="row text-right">
+                    <div class="input-group" >
+                        <input type="text" class="form-control input-sm "  input-clear style="width: 200px" placeholder="伙伴公司名称/伙伴简称/编码" ng-model="searchCondition">
+                        <span class="input-group-btn">
+                            <button style="height: 30px;" type="button" class="btn btn-danger btn-xs" ng-click="searchPartner()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="box-body">
+            <div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection
+                 ui-grid-exporter
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-offset-7 col-md-5 btn-mr-5 text-right">
+                <button type="button" class="btn btn-danger btn-xs" ng-click="confirm()"><i
+                        class="iconfont icon-baocun-copy"></i>{{'确定'|translate}}
+                </button>
+                <button type="button" class="btn btn-danger btn-xs" ng-click="exit()"><i
+                        class="iconfont icon-baocun-copy"></i>{{'取消'|translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.content -->

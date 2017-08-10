@@ -1,0 +1,104 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        {{'品检排程'|translate}}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{'首页'|translate}}</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{'采购中心'|translate}}</a></li>
+        <li class="active">{{'品检排程'|translate}}</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-danger">
+        <div class="box-header with-border">
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-8  btn-mr-5">
+                        <button type="button" class="btn btn-danger btn-xs" btn-per="{id:17,name:'编辑'}"
+                                one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存'|translate}}
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" btn-per="{id:17,name:'审核'}"
+                                one-click="batchAudit()"><i
+                                class="iconfont icon-shen"></i>{{'审核'|translate}}
+                        </button>
+                        <button type="button" class="btn  btn-xs" btn-per="{id:17,name:'反审核'}"
+                                one-click="batchAntiAudit()"><i
+                                class="iconfont icon-fanshen"></i>{{'反审核'|translate}}
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" btn-per="{id:17,name:'导出'}"
+                                one-click="export()"><i
+                                class="iconfont icon-daochu"></i>{{'导出'|translate}}
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" btn-per="{id:17,name:'删除'}"
+                                one-click="del()"><i
+                                class="iconfont icon-iconfontshanchu"></i>{{'删除'|translate}}
+                        </button>
+                    </div>
+
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-md-12">
+                        <div class="form-group  mr5">
+                            <label for="">{{'交货日期' | translate}}</label>
+                            <!--<input type="date" class="form-control input-sm" ng-model="timeFrom" style="width:150px">
+                            -
+                            <input type="date" class="form-control input-sm" ng-model="timeTo" style="width:150px">-->
+                            <input class="form-control input-sm" input-blur input-clear kendo-date-time-picker
+                                   k-format="'yyyy-MM-dd'"
+                                   ng-model='timeFrom' style="width:150px">
+                            <span style="margin: 0 8px; display: inline-block;">~</span>
+                            <input class="form-control input-sm" input-blur input-clear kendo-date-time-picker
+                                   k-format="'yyyy-MM-dd'"
+                                   ng-model='timeTo' style="width:150px">
+                        </div>
+                        <div class="form-group  mr5 ">
+                            <label for="">{{'验货状态' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="searchInspection" style="width:150px">
+                                <option value="0">全部</option>
+                                <option value="1">通过</option>
+                                <option value="2">返工</option>
+                                <option value="3">未验货</option>
+                            </select>
+                        </div>
+                        <div class="form-group  mr5 ">
+                            <label for="">{{'审核状态' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="searchAudit" style="width:150px">
+                                <option value="0">全部</option>
+                                <option value="1">未审核</option>
+                                <option value="2">已审核</option>
+                            </select>
+                        </div>
+                        <div class="form-group  mr5 kd">
+                            <label for="">{{'供应商' | translate}}</label>
+                            <select class="form-control" kendo-drop-down-list ng-model='searchPartner'
+                                    k-options="partnerModel" style="width:150px"></select>
+                        </div>
+                        <div class="input-group " style="float: right">
+                            <span class="input-group-btn">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs"
+                                         one-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}
+                                 </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="box-body" auto-height="gridOptions" auto-flag="gridOptions" auto-hide="gridOptions">
+            <div ui-grid="gridOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav ui-grid-pinning
+                 ui-grid-selection
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+
+
+</section>
+<!-- /.content -->
+
+

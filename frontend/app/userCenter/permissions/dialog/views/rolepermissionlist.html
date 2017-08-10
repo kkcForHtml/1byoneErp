@@ -1,0 +1,40 @@
+<!-- Content Header (Page header) -->
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">查询角色权限</h4>
+    </div>
+
+
+<!-- Main content -->
+<div class="modal-body">
+    <form class="form-inline">
+                    <div class="row">
+                        <div class="col-md-12  btn-mr-5">
+                            <button type="button" class="btn btn-success btn-xs" ng-click="searchRole()"><i class="iconfont icon-jia1"></i>刷新</button>
+                           <!-- <input type="text" class="form-control input-sm" style="width: 200px" placeholder="角色名称" ng-model="roleName">
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="searchRole()"><i class="iconfont icon-sousuo_sousuo"></i>查询</button>-->
+
+                            <div class="input-group ">
+                                <input type="text" class="form-control input-sm" input-clear style="width: 200px" placeholder="角色名称" ng-model="roleName">
+                            <span class="input-group-btn">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs" ng-click="searchRole()"><i class="iconfont icon-sousuo_sousuo"></i>{{'查询'|translate}}</button>
+                              </span>
+                            </div>
+                        </div>
+
+                    </div>
+</form>
+
+    <div grid-options="gridOptions" grid-table></div>
+
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
+
+</div>
+</div>
+<!-- /.content -->

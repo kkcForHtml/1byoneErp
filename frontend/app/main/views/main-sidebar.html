@@ -1,0 +1,167 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar">
+
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img src="images/user.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p>{{userInfo.u_staffinfo2.STAFF_NAME_CN}}</p>
+            <!-- Status -->
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+    </div>
+
+    <!-- search form (Optional) -->
+    <form action="#" method="get" class="sidebar-form">
+
+    </form>
+    <!-- /.search form -->
+
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+        <!-- Optionally, you can add icons to the links -->
+        <!--<li class="treeview">
+            <a href="#"><i class="fa fa-link"></i> <span>demo</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+                <li><a href="#main/demo" ><i class="iconfont icon-yuanquan1"></i>demo1</a></li>
+                <li><a href="#main/login"><i class="iconfont icon-yuanquan1"></i>登录</a></li>
+            </ul>
+        </li>-->
+        <li class="treeview" ng-repeat="item in menus">
+            <a href="#"><i class="{{item.MENUS_ICON}}"></i> <span>{{item.MENUS_NAME_CN}}</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+                <li ng-repeat="child in item.SUB_MENUS"><a href="{{child.MENUS_URL}}" menu-click ><i class="{{child.MENUS_ICON}}"></i>{{child.MENUS_NAME_CN}}</a></li>
+            </ul>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="iconfont icon-jichuziliao"></i> <span>基础资料</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/account" menu-click><i class="iconfont icon-yuanquan1"></i>账号管理</a></li>-->
+                <!--<li><a href="#main/bchannel" menu-click><i class="iconfont icon-yuanquan1"></i>平台</a></li>-->
+                <!--<li><a href="#main/region" menu-click><i class="iconfont icon-yuanquan1"></i>地区基本信息</a></li>-->
+                <!--<li><a href="#main/countryInfo" menu-click><i class="iconfont icon-yuanquan1"></i>国家基本信息</a></li>-->
+                <!--<li><a href="#main/unit" menu-click><i class="iconfont icon-yuanquan1"></i>计量单位</a></li>-->
+                <!--<li><a href="#main/money" menu-click><i class="iconfont icon-yuanquan1"></i>货币列表</a></li>-->
+                <!--<li><a href="#main/exchangeRate" menu-click><i class="iconfont icon-yuanquan1"></i>汇率列表</a></li>-->
+                <!--<li><a href="#main/bwarehouse" menu-click><i class="iconfont icon-yuanquan1"></i>仓库列表</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="iconfont icon-chanpinguanli"></i> <span>产品管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/productType" menu-click><i class="iconfont icon-yuanquan1"></i>产品分类</a></li>-->
+                <!--<li><a  href="#main/commonSKU" menu-click><i class="iconfont icon-yuanquan1"></i>通用SKU</a></li>-->
+                <!--<li><a  href="#main/productSKU" menu-click><i class="iconfont icon-yuanquan1"></i>产品SKU</a></li>-->
+                <!--<li><a  href="#main/FSKU" menu-click><i class="iconfont icon-yuanquan1"></i>SKU映射表</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="iconfont icon-iconfontcolor19"></i> <span>用户中心</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/organisation" menu-click><i class="iconfont icon-yuanquan1"></i>组织架构管理</a></li>-->
+                <!--<li><a href="#main/user" menu-click><i class="iconfont icon-yuanquan1"></i>用户管理</a></li>-->
+                <!--<li><a href="#main/staff" menu-click><i class="iconfont icon-yuanquan1"></i>员工管理</a></li>-->
+                <!--<li><a href="#main/role" menu-click><i class="iconfont icon-yuanquan1"></i>角色管理</a></li>-->
+                <!--<li><a href="#main/permission" menu-click><i class="iconfont icon-yuanquan1"></i>权限管理</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="iconfont icon-xiaogongju"></i><span>小工具</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/fbafee" menu-click><i class="iconfont icon-yuanquan1"></i>FBA费测算</a></li>-->
+                <!--<li><a href="#main/fbafeeConfigure" menu-click><i class="iconfont icon-yuanquan1"></i>FBA费配置</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="iconfont icon-hezuohuoban"></i> <span>合作伙伴管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/partnerClass" menu-click><i class="iconfont icon-yuanquan1"></i>伙伴分类</a></li>-->
+                <!--<li><a  href="#main/buddyList" menu-click><i class="iconfont icon-yuanquan1"></i>伙伴列表</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="iconfont icon&#45;&#45;"></i> <span>仓库管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+				<!--<li><a href="#main/skstorage" menu-click><i class="iconfont icon-yuanquan1"></i>入库单</a></li>-->
+                <!--<li><a href="#main/skplacing" menu-click><i class="iconfont icon-yuanquan1"></i>出库单</a></li>-->
+                <!--<li><a href="#main/pskstorage" menu-click><i class="iconfont icon-yuanquan1"></i>待入库列表</a></li>-->
+                <!--<li><a href="#main/pskdelivery" menu-click><i class="iconfont icon-yuanquan1"></i>待出库列表</a></li>-->
+                <!--<li><a href="#main/adjustment" menu-click><i class="iconfont icon-yuanquan1"></i>库存调整单</a></li>-->
+                <!--<li><a href="#main/skfiallocation" menu-click><i class="iconfont icon-yuanquan1"></i>调拨单</a></li>-->
+                <!--<li><a href="#main/skallocation" menu-click><i class="iconfont icon-yuanquan1"></i>调拨计划单</a></li>-->
+                <!---->
+            <!--</ul>        -->
+		<!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="iconfont icon-caigouguanli"></i> <span>采购管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/purchasingPlan" menu-click><i class="iconfont icon-yuanquan1"></i>采购计划单</a></li>-->
+                <!--<li><a href="#main/purchase" menu-click><i class="iconfont icon-yuanquan1"></i>采购订单列表</a></li>-->
+                <!--<li><a href="#main/purchaseTracking" menu-click><i class="iconfont icon-yuanquan1"></i>采购跟踪列表</a></li>-->
+                <!--<li><a href="#main/inspectionSchedule" menu-click><i class="iconfont icon-yuanquan1"></i>品检信息</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="iconfont icon-ccgl-caigouguanli-5"></i> <span>发运管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/dispatchPlan" menu-click><i class="iconfont icon-yuanquan1"></i>发运计划</a></li>-->
+                <!--<li><a href="#main/dispatchOrder" menu-click><i class="iconfont icon-yuanquan1"></i>发运单</a></li>-->
+                <!--<li><a href="#main/marineTrack" menu-click><i class="iconfont icon-yuanquan1"></i>发运跟踪</a></li>-->
+
+                <!--<li><a href="#main/dispatchQuery" menu-click><i class="iconfont icon-yuanquan1"></i>发运查询</a></li>-->
+                <!---->
+                <!--<li><a href="#main/allocationTrack" menu-click><i class="iconfont icon-yuanquan1"></i>调拨跟踪</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="iconfont icon-caiwu1"></i> <span>财务</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/paymentRequest" menu-click><i class="iconfont icon-yuanquan1"></i>付款申请单</a></li>-->
+                <!--<li><a href="#main/accountingPeriod" menu-click><i class="iconfont icon-yuanquan1"></i>启用会计区间</a></li>-->
+                <!--<li><a href="#main/accountingPeriodEnd" menu-click><i class="iconfont icon-yuanquan1"></i>关闭会计区间</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="iconfont icon&#45;&#45;"></i> <span>报表</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/inventoryReport" menu-click><i class="iconfont icon-yuanquan1"></i>库存往来报告</a></li>-->
+                <!--<li><a href="#main/libraryAgeReport" menu-click><i class="iconfont icon-yuanquan1"></i>库龄报告</a></li>-->
+                <!--<li><a href="#main/historyAgeReport" menu-click><i class="iconfont icon-yuanquan1"></i>历史库龄报告</a></li>-->
+                <!--<li><a href="#main/receiveDifferenceReport" menu-click><i class="iconfont icon-yuanquan1"></i>收货差异表</a></li>-->
+                <!--<li><a href="#main/stockLedgerReport" menu-click><i class="iconfont icon-yuanquan1"></i>库存台账</a></li>-->
+                <!--<li><a href="#main/stockSalesReport" menu-click><i class="iconfont icon-yuanquan1"></i>库存销量分析表</a></li>-->
+
+            <!--</ul>        -->
+		<!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="fa fa-link"></i> <span>初始化</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/skInitialization" menu-click><i class="iconfont icon-yuanquan1"></i>库存初始化单</a></li>-->
+            <!--</ul>        -->
+		<!--</li>-->
+        <!--<li class="treeview">-->
+            <!--<a href="#"><i class="fa fa-link"></i> <span>菜单管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+            <!--<ul class="treeview-menu">-->
+                <!--<li><a href="#main/menuPermission" menu-click><i class="iconfont icon-yuanquan1"></i>设置菜单</a></li>-->
+                <!--<li><a href="#main/menu" menu-click><i class="iconfont icon-yuanquan1"></i>菜单列表</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        
+    </ul>
+    <!-- /.sidebar-menu -->
+</section>
+<!-- /.sidebar -->

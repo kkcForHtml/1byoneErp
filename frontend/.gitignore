@@ -1,0 +1,8 @@
+.idea/
+bin/
+target/
+.settings/
+doc/
+node_modules/
+app/common/Services/httpService.js
+.vscode/

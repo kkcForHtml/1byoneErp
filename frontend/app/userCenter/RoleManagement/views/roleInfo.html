@@ -1,0 +1,45 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        角色管理
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> 用户中心</a></li>
+        <li class="active">角色管理</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-danger">
+        <div class="box-header with-border" >
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-8  btn-mr-5 ">
+                        <button type="button" btn-per="{id:31,name:'角色-新增'}" class="btn btn-success btn-xs" ng-click="add()"><i class="iconfont icon-jia1"></i>新增</button>
+                        <button type="button" btn-per="{id:31,name:'角色-删除'}" class="btn btn-danger btn-xs" ng-click="del()"><i class="iconfont icon-iconfontshanchu"></i>删除</button>
+                        <button type="button" btn-per="{id:31,name:'角色-【设置权限】按钮'}" class="btn btn-success btn-xs" ng-click="setPermission()"><i class="iconfont icon-quanxianshezhi"></i>设置权限</button>
+                    </div>
+                    <div class="col-md-offset-2 col-md-4 text-right no-margin">
+
+                        <div class="input-group ">
+                            <input type="text" class="form-control input-sm" input-clear style="width: 200px" placeholder="角色名称/编码/创建人" ng-model="searchCondtion">
+                            <span class="input-group-btn">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs" ng-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}</button>
+                              </span>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="box-body" auto-height="gridOptions">
+            <div ui-grid="gridOptions"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</section>
+<!-- /.content -->

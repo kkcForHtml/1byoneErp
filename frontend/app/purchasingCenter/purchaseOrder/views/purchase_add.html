@@ -1,0 +1,265 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'新增'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5 ">
+                        <button type="button" class="btn  btn-danger btn-xs" one-click="save()"><i class="iconfont icon-baocun-copy"></i>{{'保存'|translate}} </button>
+                        <!--<button type="button" class="btn btn-danger btn-xs" ng-click="audit()" disabled><i class="iconfont icon-shen"></i>{{'审核'|translate}}</button>-->
+                        <!--<button type="button" class="btn  btn-xs" ng-click="notAudit()" disabled><i class="iconfont icon-fanshen"></i>{{'反审核'|translate}}</button>-->
+                        <!--<button type="button" class="btn btn-danger btn-xs" ng-click="print()" disabled><i class="iconfont icon-iconfontshanchu"></i>{{'打印'|translate}}</button>-->
+                    </div>
+                    <!--<div class="col-md-offset-2  col-md-5 text-right">-->
+                        <!--<div class="btn-group" role="group" >-->
+                            <!--<button type="button" class="btn btn-default btn-sm" disabled>{{'首单'|translate}}</button>-->
+                            <!--<button type="button" class="btn btn-default btn-sm" disabled>{{'上一单'|translate}}</button>-->
+                            <!--<button type="button" class="btn btn-default btn-sm" disabled>{{'下一单'|translate}}</button>-->
+                            <!--<button type="button" class="btn btn-default btn-sm" disabled>{{'尾单'|translate}}</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </form>
+        </div>
+
+        <form role="form">
+            <div class="row">
+
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label for=""><i class="text-danger">*</i>{{'需求组织'|translate}}</label>
+                      <div select-organisation options="options_xuqiu" select-model="'DORGANISATION_ID'" model="model"></div>
+                      <!--<select class="form-control input-sm" id="DORGANISATION_CODE" ng-model="model.DORGANISATION_CODE" ng-options="item.ORGANISATION_CODE as item.ORGANISATION_NAME_CN for item in organizations_xuqiu" ng-change="organizations_change()">-->
+                      <!--</select>-->
+                      <!--<div select-organisation select-model="model.DORGANISATION_CODE" types="[4]" change="organizations_change(code)"></div>-->
+
+                  </div>
+              </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'采购组织'|translate}}</label>
+                        <div select-organisation  select-model="'ORGANISATION_ID'" types="[2]" model="model" options="options_caigou"></div>
+                        <!--<select class="form-control input-sm" id="ORGANISATION_CODE" ng-model="model.ORGANISATION_CODE" ng-options="item.ORGANISATION_CODE as item.ORGANISATION_NAME_CN for item in organizations_caigou">-->
+                        <!--</select>-->
+                        <!--<div select-organisation select-model="model.ORGANISATION_CODE" types="[2]"></div>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'采购订单编号'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="PU_PURCHASE_CD" ng-model="model.PU_PURCHASE_CD" disabled>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'下单日期'|translate}}</label><br>
+                        <input input-blur class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='model.PRE_ORDER_AT'>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'供应商'|translate}}</label>
+                        <div class="input-group" style="width: 100%">
+                            <input type="text" class="form-control input-sm" style="width: 80%" ng-model="model.pa_partner.PARTNER_NAME_CN" readonly>
+                            <span class="input-group-btn" style="display: inline-block;width: 20%">
+                                 <button style="height: 30px;width:100%;" type="button" class="btn btn-danger btn-xs" ng-click="selectSupplier()"><i class="iconfont icon-sousuo_sousuo"></i>{{'选择'|translate}}</button>
+                              </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'采购跟进人'|translate}}</label><br>
+                        <div  ng-if="!refreshFlower">
+                        <div single-select options="followUserOptions" select-model="model.FUPUSER_ID"  change="followUserChange(returnEntity)" row="returnEntity"></div>
+                        </div>
+                        <!--<div class="input-group margin">-->
+                            <!---->
+                            <!--<input type="text" class="form-control input-sm" style="width: 200px" ng-model="model.followerName">-->
+                            <!--<span class="input-group-btn">-->
+                                 <!--<button style="height: 30px" type="button" class="btn btn-danger btn-xs" ng-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>{{'选择'|translate}}</button>-->
+                              <!--</span>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'币种'|translate}}</label>
+                        <select class="form-control input-sm" ng-model="model.MONEY_ID" ng-options="item.MONEY_ID as item.MONEY_NAME_CN for item in moneys">
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'结算方式'|translate}}</label>
+                        <select class="form-control input-sm" ng-model="model.SMETHOD" ng-options="item.D_VALUE as item.D_NAME_CN for item in payTypes">
+
+                        </select>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'订单类型'|translate}}</label>
+                        <select class="form-control input-sm" id="type1" ng-model="model.ORDER_TYPE"  ng-options="item.D_VALUE as item.D_NAME_CN  for  item in orderTypes">
+                            <!--<option ng-repeat="type in types" value="{{type.PRODUCT_TYPE_ID}}">{{type.SYSTEM_NAME_CN}}</option>-->
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i> {{'平台'|translate}}</label>
+                        <select class="form-control input-sm" id="type2" ng-model="model.CHANNEL_ID"  ng-options="item.CHANNEL_ID as item.CHANNEL_NAME_CN for item in channels" ng-change="channel_change()">
+                            <!--<option ng-repeat="type in currentBigType.g_product_types" value="{{type.PRODUCT_TYPE_ID}}">{{type.SYSTEM_NAME_CN}}</option>-->
+                            <!---->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""> {{'采购类型'|translate}}</label>
+                        <select class="form-control input-sm" id="type3" ng-model="model.PLAN_TYPE"  ng-options="item.D_VALUE as item.D_NAME_CN  for item in purchaseTypes">
+                            <!--<option ng-repeat="type in currentBigType.g_product_types" value="{{type.PRODUCT_TYPE_ID}}">{{type.SYSTEM_NAME_CN}}</option>-->
+                            <!---->
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="box-body">
+                        <tabset class="tab-container" style="margin-top:10px;">
+
+                            <tab>
+                            <tab-heading>
+                                <span>{{'订单明细'|translate}}</span>
+                            </tab-heading>
+                            <div class="row tabPadding" style="margin-top: 0">
+                                <div class="row">
+                                    <div class="col-md-3  btn-mr-5 " style="margin-left: 15px;">
+
+                                        <button ng-disabled="addBtnDisabled" type="button" class="btn btn-success btn-xs" ng-click="addDetail()"><i
+                                                class="iconfont icon-jia1"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="delDetail()"><i class="iconfont icon-iconfontshanchu"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12"  auto-height="gridOptions_detail"  auto-flag="gridOptions_detail" auto-hide="gridOptions_detail">
+
+                                    <div ui-grid="gridOptions_detail"   ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                                </div>
+
+                            </div>
+                        </tab>
+                            <!--<tab>-->
+                                <!--<tab-heading>-->
+                                    <!--<span>{{'付款记录'|translate}}</span>-->
+                                <!--</tab-heading>-->
+                                <!--<div class="row tabPadding">-->
+                                    <!--<div class="col-md-12">-->
+
+                                        <!--<div class="box-body" auto-height="gridOptions_payment">-->
+                                            <!--<div ui-grid="gridOptions_payment"   ui-grid-edit ui-grid-pagination ui-grid-selection ui-grid-exporter ui-grid-row-edit ui-grid-resize-columns ui-grid-auto-resize></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+
+                                <!--</div>-->
+                            <!--</tab>-->
+                        </tabset>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+            <div class="row" style=" margin-left: 13px;">
+
+
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for="">{{'备注'|translate}}</label>
+                        <input class="form-control input-sm" ng-model="model.ORDER_REMARKS">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'合计金额'|translate}}</label><br>
+                        <div class="noEdit-color" style="border: 1px solid #d2d6de;padding-top: 4px;text-align: right;padding-right:10px"><span style="font-weight: bolder">{{zongjine()|number:2}}</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="row" style=" margin-left: 13px;" >-->
+
+                <!--<div class="col-md-3">-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="">{{'制单人'|translate}}</label>-->
+                        <!--<input class="form-control input-sm" >-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-md-3">-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="">{{'审核人'|translate}}</label>-->
+                        <!--<input class="form-control input-sm" ng-model="model.AUTITO_CODE">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-md-3">-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="">{{'审核日期'|translate}}</label>-->
+                        <!--<input class="form-control input-sm" readonly value="{{model.CREATED_AT}}">-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </form>
+
+
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" ng-click="save()">保存</button>-->
+    <!--</div>-->
+
+</div>
+
+<style>
+    .tabPadding{
+        margin-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .k-widget.k-dropdown{
+        width: 100%;
+    }
+    .k-widget.k-datetimepicker{
+        width: 100%;
+    }
+    .ui-grid span.k-i-clock{
+        display: none;
+    }
+</style>

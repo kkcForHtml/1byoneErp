@@ -1,0 +1,144 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'新增' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="body-header">
+            <form>
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存' | translate}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div kendo-tab-strip>
+            <ul>
+                <li class="k-state-active">{{'基本信息' | translate}}</li>
+                <li>{{'金额信息' | translate}}</li>
+            </ul>
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'组织' | translate}}</label>
+                            <input type="text" class="form-control input-sm"
+                                   ng-model="model.ORGANISATION_NAME_CN" ng-readonly="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'入库单号' | translate}}</label>
+                            <input type="text" class="form-control input-sm"
+                                   ng-model="model.PLACING_CD" ng-readonly="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'入库日期' | translate}}</label>
+                            <input type="text" style="width: 240px" class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd HH:mm:ss'" ng-model="STORAGE_AT">
+                        </div>
+                    </div>
+                    <!--<div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'制单日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd HH:mm:ss'" ng-model="model.CREATED_AT" ng-readonly="true">
+                        </div>
+                    </div>-->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'制单日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="CREATED_AT" ng-readonly="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'单据类型' | translate}}</label>
+                            <select class="form-control input-sm" id="money_state" ng-model="model.ORDER_TYPE" ng-readonly="true">
+                                <option value="1">采购入库</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'供应商名称' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="model.PARTNER_NAME_CN" ng-readonly="true" ng-click="searchPartner()">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'入库仓库' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.WAREHOUSE_CODE"
+                                    ng-options="warehouse.WAREHOUSE_CODE as warehouse.WAREHOUSE_NAME_CN for warehouse in warehouseList">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'制单人' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="model.USERNAME" ng-readonly="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'单据状态' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.ORDER_STATE" ng-readonly="true">
+                                <option value="1">未审核</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">{{'备注' | translate}}</label>
+                            <textarea class="form-control input-sm" ng-model="model.PLACING_REMARKS"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'币种' | translate}}</label>
+                            <input type="text" class="form-control input-sm"
+                                   ng-model="model.MONEY_NAME_CN" ng-disabled="true" readonly="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""></i>{{'金额' | translate}}</label>
+                            <input type="text" class="form-control input-sm"  ng-model="model.STORAGE_MONEY" ng-readonly="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-header orange">
+            <h4>
+                {{'入库明细' | translate}}
+            </h4>
+        </div>
+        <div class="box-body" auto-height="gridOptions" auto-flag>
+            <div ui-grid="gridOptions" ui-grid-edit ui-grid-row-edit ui-grid-cellNav
+                 ui-grid-selection
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,745 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'编辑' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="body-header">
+            <form>
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存' | translate}}
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>          	
+        
+        <div kendo-tab-strip>
+            <ul>
+                <li class="k-state-active">{{'基本信息' | translate}}</li>
+                <li>{{'平台信息' | translate}}</li>
+                <li>{{'包装信息' | translate}}</li>
+                <li>{{'A+信息' | translate}}</li>
+                <li>{{'其他信息' | translate}}</li>
+            </ul>
+            <!--基本信息  -->
+            <div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'平台' | translate}}</label>
+                            <input select2 ng-model="model.CHANNEL_ID" select2-model="csChannel" config="model.channelTotalList" placeholder="请选择" class="form-control"
+                                type="text" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" style="margin-top:3px;">
+                            <label for=""><i class="text-danger">*</i>{{'SKU' | translate}}</label>
+                            <input select2 ng-model="model.PSKU_ID" select2-model="csSku" config="model.skuTotalList" placeholder="请选择" class="form-control"
+                                type="text" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'平台描述' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="model.CHANNEL_REMARKS">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" style="margin-top:3px;">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'ASIN' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="model.ASIN">
+                        </div>
+                    </div>                	
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'小分类' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="model.PRODUCT_TYPE">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'平台SKU' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="model.PLATFORM_SKU">
+                        </div>
+                    </div>                    
+                    <div class="col-md-3" style="margin-top:24px;">
+                        <div class="form-group">
+                            <label for="fortest">{{'季节性产品' | translate}}</label>
+                            <input type="checkbox" id="fortest" ng-model="model.test">
+                        </div>
+                    </div>
+                </div>
+                <div class="page-header orange">
+                    <h4>
+                        {{'图片信息'|translate}}
+                    </h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-7 form-horizontal">
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label"><i class="text-danger">*</i>main_image_url</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="请输入图片网络链接" ng-model="model.MAIN_IMAGE_URL" input-clear>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn" ng-click="changeImgUrl(model.MAIN_IMAGE_URL)">{{'预览'|translate}}</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">other_image_url1</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="请输入图片网络链接" ng-model="model.OTHER_IMAGE_URL1" input-clear>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn" ng-click="changeImgUrl(model.OTHER_IMAGE_URL1)">{{'预览'|translate}}</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">other_image_url2</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="请输入图片网络链接" ng-model="model.OTHER_IMAGE_URL2" input-clear>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn" ng-click="changeImgUrl(model.OTHER_IMAGE_URL2)">{{'预览'|translate}}</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">other_image_url3</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="请输入图片网络链接" ng-model="model.OTHER_IMAGE_URL3" input-clear>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn" ng-click="changeImgUrl(model.OTHER_IMAGE_URL3)">{{'预览'|translate}}</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">other_image_url4</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="请输入图片网络链接" ng-model="model.OTHER_IMAGE_URL4" input-clear>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn" ng-click="changeImgUrl(model.OTHER_IMAGE_URL4)">{{'预览'|translate}}</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">other_image_url5</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="请输入图片网络链接" ng-model="model.OTHER_IMAGE_URL5" input-clear>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn" ng-click="changeImgUrl(model.OTHER_IMAGE_URL5)">{{'预览'|translate}}</button>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">other_image_url6</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="请输入图片网络链接" ng-model="other_image_url6">
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">other_image_url7</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="请输入图片网络链接" ng-model="other_image_url7">
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">other_image_url8</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="请输入图片网络链接" ng-model="other_image_url8">
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+                        </div>
+ -->
+                    </div>
+                    <div class="col-md-5">
+                        <img alt="" class="img-thumbnail" src={{imgSrc}} ng-if="imgSrc!==''">
+                    </div>
+                </div>
+            </div>
+            <!--平台信息  -->
+            <div>
+                <div class="row" style="margin-top:10px">
+                    <div class="col-md-10 form-horizontal">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">web_name:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="" ng-model="model.WEB_NAME">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">item_name:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="" ng-model="model.ITEM_NAME">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">bullet_point1:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.BULLET_POINT1"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">bullet_point2:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.BULLET_POINT2"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">bullet_point3:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.BULLET_POINT3"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">bullet_point4:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.BULLET_POINT4"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">bullet_point5:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.BULLET_POINT5"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">generic_keywords1:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.GENERIC_KEYWORDS1"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">generic_keywords2:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.GENERIC_KEYWORDS2"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">generic_keywords3:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.GENERIC_KEYWORDS3"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">generic_keywords4:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.GENERIC_KEYWORDS4"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">generic_keywords5:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.GENERIC_KEYWORDS5"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">target_audience_keywords:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.TARGET_AUDIENCE_KEYWORDS"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">product_description:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.PRODUCT_DESCRIPTION"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">more_details:</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" style="height:100px" ng-model="model.MORE_DETAILS"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn-default btn">{{'预览'|translate}}</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--包装信息  -->
+            <div>
+                <div class="row pack-information" style="margin-top:10px">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <label for="">Item_weight_unit</label>
+                                <select name="" id="" value="2" class="form-control" style="height:30px" ng-model="model.ITEM_WEIGHT_UNIT">
+                                    <option value="2">KG</option>
+                                    <option value="1">GR</option>
+                                    <option value="4">OZ</option>
+                                    <option value="3">LB</option>                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="">Item_weight</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.ITEM_WEIGHT">
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group col-md-2">
+                                <label for="">Item_length_unit</label>
+                                <select name="" id="" value="1" class="form-control" style="height:30px" ng-model="model.ITEM_LENGTH_UNIT">
+                                    <option value="1">CM</option>
+                                    <option value="2">FT</option>
+                                    <option value="3">IN</option>
+                                    <option value="4">M</option>
+                                    <option value="5">MM</option>                                                                                                            
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <span>×</span>
+                                <label for=""><i class="text-danger">*</i>item_length</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.ITEM_LENGTH"
+                                    ng-change="cv.changeItemVolume()">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <span>×</span>
+                                <label for=""><i class="text-danger">*</i>item_width</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.ITEM_WIDTH"
+                                    ng-change="cv.changeItemVolume()">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <span>=</span>
+                                <label for=""><i class="text-danger">*</i>item_height</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.ITEM_HEIGHT"
+                                    ng-change="cv.changeItemVolume()">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="">item_volumes</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.ITEM_VOLUMES"
+                                    readonly="readonly">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <label for="">package_weight_unit</label>
+                                <select name="" id="" value="2" class="form-control" style="height:30px" ng-model="model.PACKAGE_WEIGHT_UNIT">
+                                    <option value="2">KG</option>
+                                    <option value="1">GR</option>
+                                    <option value="4">OZ</option>
+                                    <option value="3">LB</option>                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="">package_weight</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.PACKAGE_WEIGHT">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <label for="">package_length_unit</label>
+                                <select name="" id="" value="1" class="form-control" style="height:30px" ng-model="model.PACKAGE_LENGTH_UNIT">
+                                    <option value="1">CM</option>
+                                    <option value="2">FT</option>
+                                    <option value="3">IN</option>
+                                    <option value="4">M</option>
+                                    <option value="5">MM</option>                                                                                                            
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <span>×</span>
+                                <label for="">package_length</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.PACKAGE_LENGTH"
+                                    ng-change="cv.changePackageVolume()">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <span>×</span>
+                                <label for="">package_width</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.PACKAGE_WIDTH"
+                                    ng-change="cv.changePackageVolume()">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <span>=</span>
+                                <label for="">package_height</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.PACKAGE_HEIGHT"
+                                    ng-change="cv.changePackageVolume()">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="">package_volumes</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.PACKAGE_VOLUMES"
+                                    readonly="readonly">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <label for="">out_package_weight_unit</label>
+                                <select name="" id="" value="2" class="form-control" style="height:30px" ng-model="model.OUT_PACKAGE_WEIGHT_UNIT">
+                                    <option value="2">KG</option>
+                                    <option value="1">GR</option>
+                                    <option value="4">OZ</option>
+                                    <option value="3">LB</option>                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for=""><i class="text-danger">*</i>out_package_weight</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.OUT_PACKAGE_WEIGHT">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <label for="">out_package_length_unit</label>
+                                <select name="" id="" value="1" class="form-control" style="height:30px" ng-model="model.OUT_PACKAGE_LENGTH_UNIT">
+                                    <option value="1">CM</option>
+                                    <option value="2">FT</option>
+                                    <option value="3">IN</option>
+                                    <option value="4">M</option>
+                                    <option value="5">MM</option>                                                                                                            
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <span>×</span>
+                                <label for=""><i class="text-danger">*</i>out_package_length</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.OUT_PACKAGE_LENGTH"
+                                    ng-change="cv.changeOutPackageVolume()">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <span>×</span>
+                                <label for=""><i class="text-danger">*</i>out_package_width</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.OUT_PACKAGE_WIDTH"
+                                    ng-change="cv.changeOutPackageVolume()">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <span>=</span>
+                                <label for=""><i class="text-danger">*</i>out_package_height</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.OUT_PACKAGE_HEIGHT"
+                                    ng-change="cv.changeOutPackageVolume()">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="">out_package_volumes</label>
+                                <input class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" ng-model="model.OUT_PACKAGE_VOLUMES"
+                                    readonly="readonly">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <label for=""><i class="text-danger">*</i>quantity_of_package</label>
+                                <input class="form-control input-sm" formatting="false" numeric decimals="0" max="9999999999" min="0" ng-model="model.QUANTITY_OF_PACKAGE">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="">max_order_qantity</label>
+                                <input class="form-control input-sm" formatting="false" numeric decimals="0" max="9999999999" min="0" ng-model="model.MAX_ORDER_QANTITY">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--A+信息  -->
+            <div>
+                <div class="row ap" style="margin-top:10px;">
+					<textarea ng-model="model.APLUS_INFO" one-kind-editor id="apuls_info" style="width: 96%; height: 300px;"></textarea>               	
+                </div>
+            </div>
+
+            <!--其他信息  -->
+            <div>
+                <div class="row" style="margin-top:10px">
+                    <div class="col-md-8 form-horizontal">
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label"><i class="text-danger">*</i>sale_price:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" id="" ng-model="model.SALE_PRICE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label"><i class="text-danger">*</i>fba_fee:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" formatting="true" numeric decimals="2" max="9999999999" min="0" id="" ng-model="model.FBA_FEE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">template_id:</label>
+                            <div class="col-sm-6">
+                                <select name="" id="" value="1" class="form-control" style="height:30px" ng-model="model.TEMPLATE_ID">
+                                    <option value="2">JP_ALL</option>
+                                    <option value="1">DE_ALL</option>
+                                    <option value="3">UK_ALL</option>
+                                    <option value="4">US_ALL</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">template:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.TEMPLATE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">item_status:</label>
+                            <div class="col-sm-6">
+                                <select name="" id="" value="1" class="form-control" style="height:30px" ng-model="model.ITEM_STATUS">
+                                    <option value="1">OFF</option>
+                                    <option value="2">ON</option>
+                                    <option value="3">WAIT</option>                                
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">country:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.COUNTRY">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">item_type:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.ITEM_TYPE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">fee_product_type:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.FEE_PRODUCT_TYPE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">model:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.MODEL">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">external_product:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.EXTERNAL_PRODUCT">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">external_product_id_type:</label>
+                            <div class="col-sm-6">
+                                <select name="" id="" value="1" class="form-control" style="height:30px" ng-model="model.EXTERNAL_PRODUCT_ID_TYPE">
+                                    <option value="1">EAN</option>
+                                    <option value="2">GCID</option>
+                                    <option value="3">GTIN</option>
+                                    <option value="4">UPC</option>                                
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">manufacturer:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.MANUFACTURER">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">brand_name:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.BRAND_NAME">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">product_tax_code:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.PRODUCT_TAX_CODE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">fulfillment_center_id:</label>
+                            <div class="col-sm-6">
+                                <select name="" id="" value="1" class="form-control" style="height:30px" ng-model="model.FULFILLMENT_CENTER_ID">
+                                    <option value="1">AMAZON_EU</option>
+                                    <option value="2">AMAZON_US</option>
+                                    <option value="3">AMAZON_NA</option>
+                                </select>                            
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">condition_type:</label>
+                            <div class="col-sm-6">
+                                <select name="" id="" value="1" class="form-control" style="height:30px" ng-model="model.CONDITION_TYPE">
+                                    <option value="1">NEW</option>
+                                    <option value="2">OLD</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">update_delete:</label>
+                            <div class="col-sm-6">
+                                <select name="" id="" value="1" class="form-control" style="height:30px" ng-model="model.UPDATE_DELETE">
+                                    <option value="1">DELETE</option>
+                                    <option value="2">UPDATE</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">list_price:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.LIST_PRICE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">standard_price:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.STANDARD_PRICE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">currency:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.CURRENCY">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">sale_from_date:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.SALE_FROM_DATE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">sale_end_date:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.SALE_END_DATE">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">parent_child:</label>
+                            <div class="col-sm-6">
+                                <select name="" id="" value="1" class="form-control" style="height:30px" ng-model="model.PARENT_CHILD">
+                                    <option value="1">CHILD</option>
+                                    <option value="2">PARENT</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">parent_sku:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.PARENT_SKU">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">variation_theme:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.VARIATION_THEME">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">size_name:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.SIZE_NAME">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">size_map:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.SIZE_MAP">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">color_name:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.COLOR_NAME">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">color_map:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.COLOR_MAP">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">style_name:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.STYLE_NAME">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">pattern_name:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.PATTERN_NAME">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">website_variation:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.WEBSITE_VARIATION">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">main_sku:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control input-sm" id="" ng-model="model.MAIN_SKU">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

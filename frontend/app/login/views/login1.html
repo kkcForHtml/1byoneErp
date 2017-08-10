@@ -1,0 +1,85 @@
+<body>
+    <div id="login">
+        <div class="page-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="imgs/logo.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="contaienr">
+                <div class="row">
+                    <div class="col-md-6 text-right">
+                        <img src="imgs/login-left.png" class="login-left-img hidden-xs animated fadeInLeft" alt="">
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div id="loginbox" style="margin-top:25px;" class="animated fadeInRight mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div class="panel-title">登录</div>
+                                </div>
+                                <div style="padding-top:30px" class="panel-body">
+                                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                                    <form  name="loginForm" class="form-horizontal" role="form">
+                                        <div style="margin-bottom: 25px" class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input id="login-username" type="text" class="form-control" ng-model="user.userName"   placeholder="用户名">
+                                        </div>
+                                        <div style="margin-bottom: 25px" class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                            <input id="login-password" type="password" class="form-control" ng-model="user.password" placeholder="密码">
+                                        </div>
+<!--                                        <div class="checkbox">
+                                            <label>
+                                                <input name="remember" type="checkbox" value="Remember Me" style="margin-top:5px;"> 记住登录状态
+                                            </label>
+                                            <a href="#" class="pull-right">忘记密码</a>
+                                        </div>-->
+                                        <div style="margin-top:10px" class="form-group">
+                                            <!-- Button -->
+                                            <div class="col-sm-12 controls">
+                                                <button id="btn-login"  class="btn btn-success" one-click="login()" >登录</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--<div class="page-bottom">-->
+            <!--<div class="container">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-md-12">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-2 col-xs-12"><img src="imgs/login-phone.png" alt=""></div>-->
+                            <!--<div class="col-md-10 col-xs-12">-->
+                                <!--<ul>-->
+                                    <!--<li><a href="#"><i class="iconfont icon-zaixian"></i>在线销售支持</a></li>-->
+                                    <!--<li><a href="#"><i class="iconfont icon-jingzhun"></i>精准配置推荐</a></li>-->
+                                    <!--<li><a href="#"><i class="iconfont icon-quanfangweiyewutuoguan"></i>全方位的方案支持</a></li>-->
+                                    <!--<li><a href="#"><i class="iconfont icon-sousuoliebiao"></i>灵活的价格方案</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <p>Copyright (c) 2016 1byone All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

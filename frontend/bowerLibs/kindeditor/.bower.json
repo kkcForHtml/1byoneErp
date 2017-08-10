@@ -1,0 +1,32 @@
+{
+  "name": "kindeditor",
+  "main": "kindeditor.js",
+  "homepage": "https://github.com/twocabbages/kindeditor",
+  "authors": [
+    "cabbage <251949141@qq.com>"
+  ],
+  "description": "web editor",
+  "keywords": [
+    "web",
+    "javascript",
+    "editor"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "302c80fa0f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "302c80fa0fb6576b75cea22d8b543b59ae242d31"
+  },
+  "_source": "https://github.com/twocabbages/kindeditor.git",
+  "_target": "*",
+  "_originalSource": "kindeditor",
+  "_direct": true
+}

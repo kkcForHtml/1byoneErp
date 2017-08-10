@@ -1,0 +1,234 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'编辑'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" btn-per="{id:45,name:'用户-编辑'}" class="btn  btn-danger btn-xs" one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存'|translate}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <form role="form" name="myForm">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="code"><i class="text-danger">*</i>{{'用户编码'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="code" name="USER_INFO_CODE"
+                               ng-model="model.USER_INFO_CODE" ng-disabled="true">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="USERNAME"><i class="text-danger">*</i>{{'登录账号'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="USERNAME" name="USERNAME" ng-model="model.USERNAME">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label >{{'用户类型'|translate}}</label>
+                        <select class="form-control input-sm" ng-model="model.USER_INFO_TYPE"
+                                ng-options="value.D_VALUE as value.D_NAME_CN for value in model.userType" ng-change="changeType()">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'用户实名'|translate}}</label>
+                        <div class="input-group" style="width:100%">
+                            <input type="text" class="form-control input-sm" style="width:80%" ng-model="model.STAFF_NAME_CN" ng-disabled="true">
+                            <span class="input-group-btn" style="display: inline;width:15%">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs" ng-click="selectStaff()" ng-disabled="model.USER_INFO_TYPE==2"><i class="iconfont icon-sousuo_sousuo"></i>{{'选择'|translate}}</button>
+                              </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="PASSWORD"><i class="text-danger">*</i>{{'密码'|translate}}</label>
+                        <input type="password" class="form-control input-sm" id="PASSWORD" ng-model="model.PASSWORD_N">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'行政组织'|translate}}</label>
+                        <select class="form-control input-sm" name="organizeCode" ng-model="model.ORGANISATION_ID"
+                                ng-change="changeSelect(model.ORGANISATION_BUSINESS)"
+                                ng-options="value.ORGANISATION_ID as value.ORGANISATION_NAME_CN for value in model.businessOrgList" ng-disabled="true"
+                        ></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'所属分组'|translate}}</label>
+                        <select class="form-control input-sm" ng-model="model.GROUPING_ID"
+                                ng-options="value.GROUPING_ID as value.GROUPING_NAME_CN for value in model.o_grouping">
+                        </select>
+                    </div>
+                </div>
+
+
+                <!--<div class="col-md-3">
+                    <div class="form-group">
+                        <label for="STAFF_CODE">{{'用户实名'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="STAFF_CODE" ng-model="model.STAFF_CODE">
+                    </div>
+                </div>-->
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="tel">{{'移动电话'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="tel"
+                               ng-model="model.USER_PHONE">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'是否启用'|translate}}</label>
+                        <select class="form-control input-sm no-margin no-padding" ng-model="model.STAFF_STATE"
+                                ng-options="value.D_VALUE as value.D_NAME_CN for value in model.stateList"></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="CUSER_CODE">{{'创建人'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="CUSER_CODE" ng-model="model.CUSER_NAME"
+                               ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label  for="remarks">{{'备注'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="remarks" ng-model="model.USER_REMARKS">
+                    </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <div class="form-group">
+                        <div class="checkbox checkbox-info checkbox-inline" style = "margin-top:5%">
+                            <input type="checkbox" class="styled" ng-model="model.isChecked">
+                            <label >{{'设置为仓管员'|translate}}</label>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="page-header orange">
+                    <h4 ng-model="model.org">{{'分配组织'|translate}}</h4>
+                </div>
+                <div>
+                    <button class="btn border-text-green btn-xs"  ng-click="addGroup(model.org)"><i
+                            class="iconfont icon-jia1 "></i></button>
+                    <button class="btn border-text-orange btn-xs"  ng-click="moveGroup(model.org)"><i
+                            class="iconfont icon-jian "></i></button>
+                </div>
+                <div class="box-body" auto-height="orgGridOption" style="margin-left: -10px">
+                    <div ui-grid="orgGridOption"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+
+                </div>
+                <!--<div>
+                    <div ui-grid="orgGridOption" style="height:20vh" ui-grid-edit ui-grid-pagination ui-grid-selection ui-grid-exporter
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>-->
+            </div>
+            <div class="col-md-6">
+                <div class="page-header orange">
+                    <h4 ng-model="model.role">{{'分配角色'|translate}}</h4>
+                </div>
+                <div>
+                    <button class="btn border-text-green btn-xs" ng-click="addGroup(model.role)"><i
+                            class="iconfont icon-jia1 "></i></button>
+                    <button class="btn border-text-orange btn-xs" ng-click="moveGroup(model.role)"><i
+                            class="iconfont icon-jian "></i></button>
+                    <button class="btn border-text-orange btn-xs" btn-per="{id:31,name:'角色-新增'}" ng-click="setRole(model.category)">{{'设置角色'|translate}}</button>
+                </div>
+                <div class="box-body" auto-height="roleGridOption" style="margin-left: -10px">
+                    <div ui-grid="roleGridOption"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+                <!--<div>
+                    <div ui-grid="roleGridOption" style="height:20vh" ui-grid-edit ui-grid-pagination ui-grid-selection ui-grid-exporter
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="page-header orange">
+                    <h4 ng-model="model.category">{{'分配品类'|translate}}</h4>
+                </div>
+                <div>
+                    <button class="btn border-text-green btn-xs"  ng-click="addGroup(model.category)"><i
+                            class="iconfont icon-jia1 "></i></button>
+                    <button class="btn border-text-orange btn-xs" ng-click="moveGroup(model.category)"><i
+                            class="iconfont icon-jian "></i></button>
+                </div>
+                <div class="box-body" auto-height="categoryGridOption" style="margin-left: -10px">
+                    <div ui-grid="categoryGridOption"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+
+                </div>
+                <!--<div>
+                    <div ui-grid="categoryGridOption" style="height:20vh" ui-grid-edit ui-grid-pagination ui-grid-selection ui-grid-exporter
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>-->
+            </div>
+            <div class="col-md-6">
+                <div class="page-header orange">
+                    <h4 ng-model="model.warehouse">{{'分配仓库'|translate}}</h4>
+                    <div class="checkbox checkbox-info checkbox-inline">
+                        <input type="checkbox" class="styled" ng-model="model.isChecked" ng-change="changeWare(model.isChecked)">
+                        <label style="font-size:14px">{{'设置为仓管员(仓管员需配置仓库，配置结果应用于待入库/待出库列表)'|translate}}</label>
+                    </div>
+                </div>
+                <div ng-if="model.isChecked==true">
+                    <button class="btn border-text-green btn-xs" ng-click="addGroup(model.warehouse)"><i
+                            class="iconfont icon-jia1 "></i></button>
+                    <button class="btn border-text-orange btn-xs" ng-click="moveGroup(model.warehouse)"><i
+                            class="iconfont icon-jian "></i></button>
+                </div>
+                <div class="box-body" auto-height="warehouseGridOption" style="margin-left: -10px" ng-if="model.isChecked==true">
+                    <div ui-grid="warehouseGridOption" ui-grid-pagination ui-grid-edit ui-grid-row-edit ui-grid-cellNav
+                         ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+
+                </div>
+                <!--<div>
+                    <div ui-grid="categoryGridOption" style="height:20vh"  ui-grid-pagination ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" ng-click="save()">保存</button>-->
+    <!--</div>-->
+</div>
+
+<style>
+
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>

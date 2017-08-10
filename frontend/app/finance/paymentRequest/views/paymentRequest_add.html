@@ -1,0 +1,193 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'新增'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" one-click="save()"><i class="iconfont icon-baocun-copy"></i>{{'保存'|translate}}</button>
+                        <button type="button" class="btn btn-danger btn-xs" ng-if="model.AUDIT_STATE==1 && model.issave" ng-click="audit()"><i class="iconfont icon-shen"></i>{{'审核'|translate}}</button>
+                        <button type="button" class="btn  btn-xs" ng-if="model.AUDIT_STATE!=1 && model.confirm ==1" ng-click="antiAudit()"><i class="iconfont icon-fanshen"></i>{{'反审核'|translate}}</button>
+                        <button type="button" class="btn btn-danger btn-xs" ng-if="model.AUDIT_STATE!=1 && model.PAYMENT_STATE!=1" ng-click="confirmPayment()"><i class="iconfont icon-shen"></i>{{'确认付款'|translate}}</button>
+                        <button type="button" class="btn  btn-xs" ng-if="model.PAYMENT_STATE==1" ng-click="modifyPayment()"><i class="iconfont icon-fanshen"></i>{{'修改付款信息'|translate}}</button>
+                    </div>
+                    <!--<div class="col-md-offset-2  col-md-5 text-right">
+                        <div class="btn-group" role="group" >
+                            <button type="button" class="btn btn-default btn-sm" ng-click="firstPage()" ng-disabled="index==0">{{'首单'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="prePage()"   ng-disabled="index==0">{{'上一单'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="nextPage()" ng-disabled="index==(count-1)">{{'下一单'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="lastPage()" ng-disabled="index==(count-1)">{{'尾单'|translate}}</button>
+                        </div>
+                    </div>-->
+                </div>
+            </form>
+        </div>
+        <form role="form" name = "myForm"  novalidate>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label ><i class="text-danger">*</i>{{'组织'|translate}}</label>
+                        <select class="form-control input-sm" name="code" ng-model="model.PORGANISATION_ID"
+                                ng-options = "value.ORGANISATION_ID as value.ORGANISATION_NAME_CN for value in model.poOrgList"></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="PAYMENT_CD">{{'付款申请单号'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id = "PAYMENT_CD" name="nameCN" id="organisation_name_cn"
+                               ng-model="model.PAYMENT_CD"  ng-readonly="true">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="state">{{'审核状态'|translate}}</label>
+                        <!--<input type="text" class="form-control" id="state" ng-model="model.AUDIT_STATE_NAME" >-->
+                        <select class="form-control input-sm" name="state" id="state" ng-model="model.AUDIT_STATE"
+                                ng-options="value.D_VALUE as value.D_NAME_CN for value in docStateList"  ng-disabled="true">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="autitor">{{'审核人'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name ="autitor" id="autitor" ng-model="model.AUTITOR_NAME_CN" ng-readonly="true">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="autitorOrg">{{'申请部门'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name ="autitorOrg" id="autitorOrg" ng-model="model.AUTITOR_ORG_NAME_CN" ng-readonly="true">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="applicantCode">{{'申请人'|translate}}</label>
+                        <input type="email" id="applicantCode" name ="applicantCode" class="form-control input-sm" ng-model="model.APPLICANT_CODE_NAME" ng-readonly="true">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group hidden-clock">
+                        <label for=""><i class="text-danger">*</i>{{'申请日期'|translate}}</label><br>
+                        <input class="form-control input-sm" input-blur kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='model.CREATED_AT' disabled>
+                    </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <div class="form-group">
+                        <label for="applicantAt">{{'申请日期'|translate}}</label>
+                        <input type="text" class="form-control input-sm" am-date id="applicantAt" name="applicantAt" ng-model="model.CREATED_AT" ng-readonly="true">
+                    </div>
+                </div>-->
+                <div class="col-md-3">
+                    <div class="form-group hidden-clock">
+                        <label for=""><i class="text-danger">*</i>{{'审核日期'|translate}}</label><br>
+                        <input class="form-control input-sm" input-blur kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='model.AUTITO_AT' disabled>
+                    </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <div class="form-group">
+                        <label for="autitoAt">{{'审核日期'|translate}}</label>
+                        <input type="text" class="form-control input-sm" am-date id="autitoAt" name="autitoAt" ng-model="model.AUTITO_AT" ng-readonly="true">
+                    </div>
+                </div>-->
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label><i class="text-danger">*</i>{{'供应商'|translate}}</label>
+                        <div class="input-group" style="width: 100%">
+                            <input type="text" class="form-control input-sm" style="width: 80%" ng-model="model.pa_partner.PARTNER_NAME_CN" ng-readonly = "model.AUDIT_STATE==2||model.PAYMENT_STATE==1">
+                            <span class="input-group-btn" style="display: inline-block;width: 20%">
+                                 <button style="height: 30px;width:100%;" type="button" class="btn btn-danger btn-xs" ng-click="selectSupplier()" ng-disabled = "model.AUDIT_STATE==2||model.PAYMENT_STATE==1"><i class="iconfont icon-sousuo_sousuo"></i>{{'选择'|translate}}</button>
+                              </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="pmoneyCode"><i class="text-danger">*</i>{{'申付币种'|translate}}</label>
+                        <select class="form-control input-sm" name="pmoneyCode" id="pmoneyCode" ng-model="model.PMONEY_ID"
+                                ng-options="value.MONEY_ID as value.MONEY_NAME_CN for value in model.moneyList"  ng-disabled = "model.AUDIT_STATE==2||model.PAYMENT_STATE==1">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="psum"><i class="text-danger">*</i>{{'申付金额'|translate}}</label>
+                        <input type="text" class="form-control input-sm" style="text-align: right" id="psum" name="psum" numeric decimals="2" min="0" max="9999999999" ng-model="model.PAYMENT_NUMBER">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'预计付款日期'|translate}}</label><br>
+                        <input class="form-control input-sm" input-blur kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='model.PAYMENT_AT'>
+                    </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'预计付款日期'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name="endDate" am-date am-date ng-model="model.PAYMENT_AT" >
+                    </div>
+                </div>-->
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="pstate"><i class="text-danger">*</i>{{'付款状态'|translate}}</label>
+                        <select class="form-control input-sm" name="pstate" id="pstate" ng-model="model.PAYMENT_STATE"
+                                ng-options="value.D_VALUE as value.D_NAME_CN for value in paymentStateList"  ng-disabled="true">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="pamoneyCode"><i class="text-danger">*</i>{{'实付币种'|translate}}</label>
+                        <select class="form-control input-sm" name="pamoneyCode" id="pamoneyCode" ng-model="model.PAMONEY_ID"
+                                ng-options="value.MONEY_ID as value.MONEY_NAME_CN for value in model.moneyList"  ng-disabled="true">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="pasum">{{'实付金额'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="pasum" name="pasum" style="text-align: right" numeric decimals="2" min="0" max="9999999999" ng-model="model.PAID_MONEY" ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="paDate">{{'实付日期'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="paDate" name="paDate" am-date ng-model="model.PAID_AT" ng-disabled="true">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">{{'备注'|translate}}</label>
+                        <input class="form-control input-sm" ng-model="model.PAYMENT_REMARKS">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>
+
+
+
+
+

@@ -1,0 +1,179 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'发运查询'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="box-header with-border" >
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn btn-danger btn-xs" one-click="export()"><i
+                                class="iconfont icon-daochu"></i>{{'导出'|translate}}
+                        </button>
+                    </div>
+                    <div class="col-md-7 text-right">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder=""
+                                   ng-model="searchCondtion">
+                              <span class="input-group-btn">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs"
+                                         ng-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}
+                                 </button>
+                              </span>
+                        </div>
+                        <!--<div class="btn btn-primary" style="padding: 3px 6px;" ng-click="showMore(true)">
+                            {{'更多条件'|translate}}
+                            <span class="carett"></span>
+                        </div>-->
+                        <div ng-click="showMore(true)" style="display: inline-block;">
+                            <div class="btn btn-primary" style="padding: 3px 6px;" data-toggle="collapse" data-target="#moreDetail" aria-expanded="true" aria-controls="moreDetail">
+                                {{'更多条件'|translate}}
+                                <span class="carett"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="more-wrap collapse" id="moreDetail" style=" margin-top: 10px;">
+                <div class="row clearfix">
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label>{{'计划发运日期' | translate}}</label>
+                        <input class="form-control input-sm" kendo-date-time-picker input-clear k-format="'yyyy-MM-dd'" ng-model='planTo' onkeydown="return false">
+                        <span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+                        <input class="form-control input-sm" kendo-date-time-picker input-clear k-format="'yyyy-MM-dd'" ng-model='planFrom' onkeydown="return false">
+                    </div>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label>{{'预计送达日期' | translate}}</label>
+                        <input class="form-control input-sm" kendo-date-time-picker k-format="'yyyy-MM-dd'" ng-model='searchExpectedServiceTo' onkeydown="return false">
+                        <span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+                        <input class="form-control input-sm" kendo-date-time-picker k-format="'yyyy-MM-dd'" ng-model='searchExpectedServiceFrom' onkeydown="return false">
+                    </div>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label>{{'实际发运日期' | translate}}</label>
+                        <input class="form-control input-sm" kendo-date-time-picker k-format="'yyyy-MM-dd'" ng-model='searchActualShipTo' onkeydown="return false">
+                        <span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+                        <input class="form-control input-sm" kendo-date-time-picker input-clear k-format="'yyyy-MM-dd'" ng-model='searchActualShipFrom' onkeydown="return false">
+                    </div>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label>{{'实际送达日期' | translate}}</label>
+                        <input class="form-control input-sm" kendo-date-time-picker k-format="'yyyy-MM-dd'" ng-model='searchAutualServiceTo' onkeydown="return false">
+                        <span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+                        <input class="form-control input-sm" kendo-date-time-picker k-format="'yyyy-MM-dd'" ng-model='searchAutualServiceFrom' onkeydown="return false">
+                    </div>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label for="ORGANISATION_ID">{{'组织'|translate}}</label>
+                        <select class="form-control input-sm" id="ORGANISATION_ID" style="width:76%" ng-model="searchOrganization" ng-options="item.ORGANISATION_ID as item.o_organisation.ORGANISATION_NAME_CN for item in orgList">
+                        </select>
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="airnumber">{{'运输方式'|translate}}</label>
+                        <select class="form-control input-sm" id="airnumber" style="width:76%" ng-model="searchShipType" ng-options="item.D_VALUE as item.D_NAME_CN for item in transportStyleList">
+                        </select>
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="catagry">{{'小分类'|translate}}</label>
+                        <select class="form-control input-sm" id="catagry" style="width:76%" ng-model="searchSmallType" ng-options="item.PRODUCT_TYPE_ID as item.SYSTEM_NAME_CN for item in productTypeList" ng-change="changeType()">
+                        </select>
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="CNUMBER">{{'次数'|translate}}</label>
+                        <input class="form-control input-sm" style="width:76%" id="CNUMBER" ng-model="searchCNumber" />
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="poNumber">{{'采购订单'|translate}}</label>
+                        <input class="form-control input-sm" style="width:76%" id="poNumber" ng-model="searchPurchaseCD" />
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="TRACK_NO">{{'提单号'|translate}}</label>
+                        <input class="form-control input-sm" style="width:76%" id="TRACK_NO" ng-model="searchTrackNo" />
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label>{{'SKU'|translate}}</label>
+                        <select class="form-control input-sm"  style="width:76%" ng-model="searchSKU" ng-options="item.PSKU_ID as item.PSKU_CODE for item in productCodeList">
+                        </select>
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="CABINET_NO">{{'柜号'|translate}}</label>
+                        <input class="form-control input-sm" style="width:76%;float: right" id="CABINET_NO" ng-model="searchCabinetNo" />
+                    </div>
+
+                </div>
+            </div>
+            <!--<div class="more-wrap collapse" id="moreDetail" style=" margin-top: 10px;">
+                <div class="row clearfix">
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label>{{'计划发运日期' | translate}}</label>
+                        <input class="form-control input-sm" kendo-date-time-picker input-clear k-format="'yyyy-MM-dd'" ng-model='planTo' onkeydown="return false">
+                        <span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+                        <input class="form-control input-sm" kendo-date-time-picker input-clear k-format="'yyyy-MM-dd'" ng-model='planFrom' onkeydown="return false">
+                    </div>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label>{{'预计送达日期' | translate}}</label>
+                        <input class="form-control input-sm" kendo-date-time-picker k-format="'yyyy-MM-dd'" ng-model='searchExpectedServiceTo' onkeydown="return false">
+                        <span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+                        <input class="form-control input-sm" kendo-date-time-picker k-format="'yyyy-MM-dd'" ng-model='searchExpectedServiceFrom' onkeydown="return false">
+                    </div>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label>{{'实际发运日期' | translate}}</label>
+                        <input class="form-control input-sm" kendo-date-time-picker k-format="'yyyy-MM-dd'" ng-model='searchActualShipTo' onkeydown="return false">
+                        <span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+                        <input class="form-control input-sm" kendo-date-time-picker input-clear k-format="'yyyy-MM-dd'" ng-model='searchActualShipFrom' onkeydown="return false">
+                    </div>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label>{{'实际送达日期' | translate}}</label>
+                        <input class="form-control input-sm" kendo-date-time-picker k-format="'yyyy-MM-dd'" ng-model='searchAutualServiceTo' onkeydown="return false">
+                        <span style="margin: 0 8px; display: inline-block; float: right;">~</span>
+                        <input class="form-control input-sm" kendo-date-time-picker k-format="'yyyy-MM-dd'" ng-model='searchAutualServiceFrom' onkeydown="return false">
+                    </div>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-12">
+                        <label for="ORGANISATION_ID">{{'国家'|translate}}</label>
+                        <select class="form-control input-sm" id="ORGANISATION_ID" style="width:76%" ng-model="searchOrganization" ng-options="item.ORGANISATION_ID as item.o_organisation.ba_areas.AREA_NAME_CN for item in countryList">
+                        </select>
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="airnumber">{{'运输方式'|translate}}</label>
+                        <select class="form-control input-sm" id="airnumber" style="width:76%" ng-model="searchShipType" ng-options="item.D_VALUE as item.D_NAME_CN for item in transportStyleList">
+                        </select>
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="catagry">{{'小分类'|translate}}</label>
+                        <select class="form-control input-sm" id="catagry" style="width:76%" ng-model="searchSmallType" ng-options="item.PRODUCT_TYPE_ID as item.SYSTEM_NAME_CN for item in productTypeList">
+                        </select>
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="CNUMBER">{{'次数'|translate}}</label>
+                        <input class="form-control input-sm" style="width:76%" id="CNUMBER" ng-model="searchCNumber" />
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="poNumber">{{'采购订单'|translate}}</label>
+                        <input class="form-control input-sm" style="width:76%" id="poNumber" ng-model="searchPurchaseCD" />
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="TRACK_NO">{{'提单号'|translate}}</label>
+                        <input class="form-control input-sm" style="width:76%" id="TRACK_NO" ng-model="searchTrackNo" />
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="sku">{{'SKU'|translate}}</label>
+                        <input class="form-control input-sm" style="width:76%" id="sku" ng-model="searchSKU" />
+                    </div>
+                    <div class="input-group-small col-lg-4 col-md-6 col-sm-12">
+                        <label for="CABINET_NO">{{'柜号'|translate}}</label>
+                        <input class="form-control input-sm" style="width:76%;float: right" id="CABINET_NO" ng-model="searchCabinetNo" />
+                    </div>
+
+                </div>
+            </div>-->
+        </div>
+        <div class="box-body" auto-height="gridOptions">
+            <div ui-grid="gridOptions" ui-grid-pagination ui-grid-cellNav
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- /.content -->

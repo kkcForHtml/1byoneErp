@@ -1,0 +1,31 @@
+			<div class="box box-danger waitth" ng-if="todolister!=={}">
+				<div class="box-header with-border">
+					<h3 class="box-title">{{'待办事项'|translate}}</h3>
+					<!-- /.box-tools -->
+					<div class="box-tools pull-right">
+						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+			                </button>
+					</div>
+				</div>
+				<div class="box-body" style="display: block;">
+					<div class="row">
+						<div class="col-md-6 col-sm-12" ng-repeat="(key,value) in todolister" ng-if="value>0?1:0">
+							<div class="box box-danger box-solid">
+								<div class="box-header with-border">
+									<h3 class="box-title" style="font-size: 16px;">{{key|translate}}</h3>
+									<!-- /.box-tools -->
+								</div>
+								<!-- /.box-header -->
+								<div class="box-body" style="display: block;">
+									有
+									<a style="margin: 0 3px; color: red; text-decoration: underline; cursor: pointer;" trigger-click>{{value}}</a>个【{{key}}】等待您的处理！
+								</div>
+								<!-- /.box-body -->
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>

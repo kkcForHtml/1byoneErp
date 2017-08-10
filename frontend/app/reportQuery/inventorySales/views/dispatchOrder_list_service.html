@@ -1,0 +1,39 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'发运调拨跟踪'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row" style="margin-left:15px ">
+            <div class="col-md-5 no-margin no-padding">
+                <label >{{model.PSKU_CODE}}&nbsp;&nbsp;&nbsp;&nbsp;{{model.PSKU_NAME_CN}}</label>
+            </div>
+        </div>
+        <div class="row" style="margin-left:15px ">
+            <div class="col-md-3 no-margin no-padding">
+                <lable>{{'实际发运数量合计'|translate}}:&nbsp;&nbsp;</lable><lable>{{totalAcShipNum}}</lable>
+            </div>
+            <div class="col-md-3 no-margin no-padding">
+                <lable>{{'已收货数量合计'|translate}}:&nbsp;&nbsp;</lable><lable >{{totalRgoodsNum}}</lable>
+            </div>
+            <div class="col-md-3 no-margin no-padding">
+                <lable>{{'调整数量合计'|translate}}:&nbsp;&nbsp;</lable><lable >{{totalAdjustNum}}</lable>
+            </div>
+        </div>
+        <!--<div style="padding-left: 10px">
+            <span style="margin-right: 10px">{{model.PSKU_CODE}}</span><span>{{model.PSKU_NAME_CN}}</span>
+            <span style="margin-right: 20px">实际发运数量合计:</span><span>{{totalAcShipNum}}</span>
+            <span style="margin-right: 20px">已收货数量合计:</span><span>{{totalRgoodsNum}}</span>
+            <span style="margin-right: 20px">调拨数量合计:</span><span>{{totalAdjustNum}}</span>
+        </div>-->
+        <div class="box-body" auto-flag="gridOptions" auto-hide="gridOptions" auto-height="gridOptions">
+            <div ui-grid="gridOptions" ui-grid-edit ui-grid-pagination ui-grid-cellNav
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+    </div>
+</div>
+
+<!-- /.content -->

@@ -1,0 +1,243 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" one-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'新增' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="body-header">
+            <form>
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <!--<button type="button" class="btn btn-success btn-xs" one-click="cancel()"><i-->
+                        <!--class="iconfont icon-tijiao"></i> 返回-->
+                        <!--</button>-->
+                        <button type="button" class="btn  btn-danger btn-xs" btn-per="{id:7,name:'新增'}"
+                                one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存' | translate}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div kendo-tab-strip>
+            <ul>
+                <li class="k-state-active">{{'基本信息' | translate}}</li>
+                <li>{{'信用卡绑定' | translate}}</li>
+                <li>{{'公司资料' | translate}}</li>
+                <li>{{'地址信息' | translate}}</li>
+                <li>{{'IP信息' | translate}}</li>
+                <li>{{'接口信息' | translate}}</li>
+            </ul>
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'账号' | translate}}</label>
+                            <input type="text" maxlength="30" ui-grid-editor class="form-control input-sm"
+                                   ng-model="model.ACCOUNT">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'Merchant ID' | translate}}</label>
+                            <input type="text" maxlength="30" ui-grid-editor class="form-control input-sm"
+                                   ng-model="model.MERCHANTID">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'所属组织' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.ORGANISATION_ID"
+                                    ng-change="changeOrgSelect(model.ORGANISATION_ID)"
+                                    ng-options="orgnize.ORGANISATION_ID as orgnize.ORGANISATION_NAME_CN for orgnize in model.orgnizeList">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'所属平台' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.CHANNEL_ID"
+                                    ng-options="channel.CHANNEL_ID as channel.CHANNEL_NAME_CN for channel in model.channelList">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'地区' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.AREA_ID"
+                                    ng-change="changeRegionSelect(model.AREA_ID)"
+                                    ng-options="area.AREA_ID as area.AREA_NAME_CN for area in model.areaList">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'国家' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.COUNTRY_ID"
+                                    ng-options="area.AREA_ID as area.AREA_NAME_CN for area in model.countryList">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">{{'销售品牌类型' | translate}}</label>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="checkbox checkbox-info checkbox-inline">
+                                        <input type="checkbox" class="styled" ID="BRAND_1BYONE"
+                                               name="model.SALES_BRAND_TYPE" ng-model="model.brand_list.byone"
+                                               ng-true-value="1" ng-false-value="0"> <label
+                                            for="BRAND_1BYONE">1Byone</label>
+                                    </div>
+                                    <div class="checkbox checkbox-info checkbox-inline">
+                                        <input type="checkbox" class="styled" ID="BRAND_SIMPLE"
+                                               name="model.SALES_BRAND_TYPE" ng-model="model.brand_list.simpletaste"
+                                               ng-true-value="2" ng-false-value="0"> <label for="BRAND_SIMPLE">Simpletaste</label>
+                                    </div>
+                                    <div class="checkbox checkbox-info checkbox-inline">
+                                        <input type="checkbox" class="styled" ID="BRAND_BEAUTRAL"
+                                               name="model.SALES_BRAND_TYPE" ng-model="model.brand_list.beautrual"
+                                               ng-true-value="3" ng-false-value="0"> <label for="BRAND_BEAUTRAL">Beautral</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">{{'销售产品类型' | translate}}</label>
+                            <!--<input type="text" class="form-control input-sm" id="address" ng-model="model.ADDRESS">-->
+                            <select kendo-multi-select k-options="mdicOptions" k-ng-model="mdictionary"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'是否启用' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.ACCOUNT_STATE"
+                                    ng-options="state.value as state.name for state in model.stateList">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">{{'备注' | translate}}</label>
+                            <textarea class="form-control input-sm" type="text" maxlength="250" ui-grid-editor
+                                      ng-model="model.ACCOUNT_REMARKS"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="btn btn-success btn-xs" one-click="creditAdd()"><i
+                            class="iconfont icon-jia1"></i>{{'新增' | translate}}
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" one-click="creditDel()"><i
+                            class="iconfont icon-iconfontshanchu"></i>{{'删除' | translate}}
+                    </button>
+                </div>
+                <div class="box-body" auto-height="creditOptions" auto-flag="creditOptions" auto-hide="creditOptions">
+                    <div ui-grid="creditOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav
+                         ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+            </div>
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="btn btn-success btn-xs" one-click="companyInfoAdd()"><i
+                            class="iconfont icon-jia1"></i>{{'新增' | translate}}
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" one-click="companyInfoDel()"><i
+                            class="iconfont icon-iconfontshanchu"></i>{{'删除' | translate}}
+                    </button>
+                </div>
+                <div class="box-body" auto-height="companyInfoOptions" auto-flag="companyInfoOptions"
+                     auto-hide="companyInfoOptions">
+                    <div ui-grid="companyInfoOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav
+                         ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+            </div>
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="btn btn-success btn-xs" one-click="addressAdd()"><i
+                            class="iconfont icon-jia1"></i>{{'新增' | translate}}
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" one-click="addressDel()"><i
+                            class="iconfont icon-iconfontshanchu"></i>{{'删除' | translate}}
+                    </button>
+                </div>
+                <div class="box-body" auto-height="addressOptions" auto-flag="addressOptions"
+                     auto-hide="addressOptions">
+                    <div ui-grid="addressOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav
+                         ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+            </div>
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="btn btn-success btn-xs" one-click="ipAdd()"><i
+                            class="iconfont icon-jia1"></i>{{'新增' | translate}}
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" one-click="ipDel()"><i
+                            class="iconfont icon-iconfontshanchu"></i>{{'删除' | translate}}
+                    </button>
+                </div>
+                <div class="box-body" auto-height="ipOptions" auto-flag="ipOptions" auto-hide="ipOptions">
+                    <div ui-grid="ipOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav
+                         ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>MwsMarketPlaceId</label>
+                            <input type="text" class="form-control input-sm" id="MwsMP" ng-model="model.MwsMP">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>MwsAccessKey</label>
+                            <input type="text" class="form-control input-sm" id="MwsAKey" ng-model="model.MwsAKey">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>MwsSecretKey</label>
+                            <input type="text" class="form-control input-sm" id="MwsSKey" ng-model="model.MwsSKey">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>URL</label>
+                            <input type="text" class="form-control input-sm" id="MURL" ng-model="model.MURL">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--内容-->
+    </div>
+</div>
+
+
+
+
+

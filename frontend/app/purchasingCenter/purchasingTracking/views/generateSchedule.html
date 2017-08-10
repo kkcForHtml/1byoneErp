@@ -1,0 +1,37 @@
+<div class="modal-content" style="width: 100%;">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'生成验货排程'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <!--<form role="form" name = "myForm"  novalidate style="margin-left: 10px;margin-right: 10px;">
+            <div class="row" auto-height="gridOptions" auto-flag>
+                <div ui-grid="gridOptions" ui-grid-edit  ui-grid-selection ui-grid-row-edit
+                     ui-grid-resize-columns ui-grid-auto-resize></div>
+            </div>
+        </form>-->
+        <div class="box-body" auto-height="gridOptions" auto-flag>
+            <div ui-grid="gridOptions" ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-pinning
+                 ui-grid-selection
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-offset-8 col-md-2  btn-mr-2">
+                <button type="button" class="btn btn-danger col-md-offset-6 btn-xs" one-click="save()">
+                    <i class="iconfont icon-baocun-copy"></i>{{'加入排程'|translate}}
+                </button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<style>
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>

@@ -1,0 +1,220 @@
+
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{isAdd?'新增':'编辑'}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="body-header">
+
+            <form>
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" ng-click="save()"><i class="iconfont icon-baocun-copy" ></i> {{isAdd?'保存':'保存'}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <tabset class="tab-container"  style="margin-top:10px;">
+             <!-- 基本信息  start -->
+            <tab>
+                <tab-heading ng-click="switchTab('sbase')">
+                    <span>基本信息</span>
+                </tab-heading>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>伙伴编码</label>
+                            <input type="text" class="form-control input-sm" id="organisation_code"  ng-model="model.PARTNER_CODE">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>伙伴名称</label>
+                            <input type="text" class="form-control input-sm" id="organisation_codes"  ng-model="model.PARTNER_NAME_CN">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>简称</label>
+                            <input type="text" class="form-control input-sm"  ng-model="model.PARTNER_ANAME_CN">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>伙伴分类:</label>
+                            <select class="form-control input-sm wi" ng-model="model.CLASSIFY_ID" ng-options = "lists.CLASSIFY_ID as lists.CLASSIFY_NAME_CN for lists in areaList">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>默认币种:</label>
+                            <select class="form-control input-sm wi" ng-model="model.MONEY_ID" ng-options = "lists.MONEY_ID as lists.MONEY_NAME_CN for lists in moneyList">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">货物所属:</label>
+                            <select class="form-control input-sm wi" ng-model="model.BELONG_TO_ID" ng-options = "lists.D_VALUE as lists.D_NAME_CN for lists in GoodsList">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">USD厂家是否报关:</label>
+                            <select class="form-control input-sm wi" ng-model="model.PARTNER_DECLARE" ng-options = "listse.D_VALUE as listse.D_NAME_CN for listse in usdlist">
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">是否启用:</label>
+                            <select class="form-control input-sm wi" ng-model="model.PARTNER_STATE" ng-options = "listse.D_VALUE as listse.D_NAME_CN for listse in enableList">
+                            </select>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="row">
+                         <div class="col-md-3">
+                       <div class="form-group">
+                           <label for="">国家</label>
+                           <select     class="form-control input-sm" ng-model="model.AREA_ID" ng-options = "lists.AREA_ID as lists.AREA_NAME_CN for lists in countryList">
+                           </select>
+                       </div>
+
+                   </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">&nbsp;</label>
+                                <input   placeholder="详细街道地址"  type="text" class="form-control input-sm" id="organisati"  ng-model="model.PARTNER_ADDRESS">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="">结算方式:</label>
+                                <select class="form-control input-sm wi" ng-model="model.SMETHOD" ng-options = "listse.D_VALUE as listse.D_NAME_CN for listse in settlementList">
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+            </tab>
+            <!-- 基本信息  end  -->
+            <tab>
+                <tab-heading ng-click="switchTab('scard')">
+                    <span>注册信息</span>
+                </tab-heading>
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">法人代表:</label>
+                            <input type="text" class="form-control input-sm" id="organ1"  ng-model="model.PARTNER_LEGAL">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">营业执照注册号:</label>
+                            <input type="text" class="form-control input-sm" id="organisa2" maxlength="128"  ng-model="model.BUSINESS_LICENCE">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">税务登记号:</label>
+                            <input type="text" class="form-control input-sm" id="organisa4" maxlength="128"    ng-model="model.TAXPAYER_REGIST_CERTIFICATE">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">税率(%):</label>
+                            <input type="text" class="form-control input-sm" id="organisa5" maxlength="20"  ng-model="model.TAX_RATE" onkeyup="value=value.replace(/[^\d.]/g,'')" >
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">户名:</label>
+                            <input type="text" class="form-control input-sm" id="organ9"  ng-model="model.ACCOUNT_NAME" >
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">开户行:</label>
+                            <input type="text" class="form-control input-sm" id="organ10"  maxlength="128" ng-model="model.OPEN_ACCOUNT_BANK">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">银行账号:</label>
+                            <input type="text" class="form-control input-sm" id="organ11"  ng-model="model.BANK_ACCOUNT" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="30" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" >
+                        </div>
+                    </div>
+                    </div>
+
+            </tab>
+
+             <tab   >
+                 <tab-heading ng-click="switchTab('contact')">
+                     <span>联系方式</span>
+                 </tab-heading>
+
+                 <div class="box-body">
+                     <form class="form-inline">
+                         <div class="row">
+                             <div class="col-md-5  btn-mr-5">
+                                 <button type="button" class="btn btn-success btn-xs" ng-click="edit()"><i class="iconfont icon-jia1"></i>新增</button>
+                                 <button type="button" class="btn btn-danger btn-xs" ng-click="del()"><i class="iconfont icon-iconfontshanchu"></i>删除</button>
+                             </div>
+                         </div>
+                     </form>
+
+                     <div class="row"   style="margin-top: 10px;" auto-height="gridOptions">
+                         <div ui-grid="gridOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav
+                              ui-grid-selection
+                              ui-grid-resize-columns ui-grid-auto-resize></div>
+                     </div>
+                 </div>
+             </tab>
+
+        </tabset>
+
+        <!--内容-->
+    </div>
+</div>
+
+
+
+
+

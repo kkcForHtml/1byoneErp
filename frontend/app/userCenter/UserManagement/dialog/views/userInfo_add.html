@@ -1,0 +1,179 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">新增</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" ng-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>保存
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <form role="form" name="myForm">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>用户编码</label>
+                        <input type="text" class="form-control input-sm" name="USER_INFO_CODE"
+                               ng-model="model.USER_INFO_CODE" required>
+                        <span style="color:red"
+                              ng-if="myForm.USER_INFO_CODE.$error.required && myForm.USER_INFO_CODE.$touched">
+                           用户编码为必填项！
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>登录账号</label>
+                        <input type="text" class="form-control input-sm" name="USERNAME" ng-model="model.USERNAME"
+                               required>
+                        <span style="color:red" ng-if="myForm.USERNAME.$error.required && myForm.USERNAME.$touched">
+                           登录账号为必填项！
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>行政组织</label>
+                        <select class="form-control input-sm" name="organizeCode" ng-model="model.ORGANISATION_CODE"
+                                ng-change="changeSelect(model.ORGANISATION_BUSINESS)"
+                                ng-options="value.ORGANISATION_CODE as value.ORGANISATION_NAME_CN for value in model.businessOrgList"
+                                required></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">所属分组</label>
+                        <select class="form-control input-sm" ng-model="model.GROUPING_ID"
+                                ng-options="value.GROUPING_ID as value.GROUPING_NAME_CN for value in model.o_grouping">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">密码</label>
+                        <input type="text" class="form-control input-sm" id="PASSWORD" ng-model="model.PASSWORD">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">用户实名</label>
+                        <input type="text" class="form-control input-sm" id="STAFF_CODE" ng-model="model.STAFF_CODE">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">用户类型</label>
+                        <select class="form-control input-sm" ng-model="model.USER_INFO_TYPE"
+                                ng-options="value.D_VALUE as value.D_NAME_CN for value in model.userType">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">移动电话</label>
+                        <input type="text" class="form-control input-sm" id="postcode"
+                               ng-model="model.USER_PHONE">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">是否启用</label>
+                        <select class="form-control input-sm no-margin no-padding" ng-model="model.STAFF_STATE" ng-disabled="true"
+                                ng-options="value.D_VALUE as value.D_NAME_CN for value in model.stateList"></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">创建人</label>
+                        <input type="text" class="form-control input-sm" id="CUSER_CODE" ng-model="model.CUSER_CODE"
+                               ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>备注</label>
+                        <input type="text" class="form-control input-sm" id="remarks" ng-model="model.USER_REMARKS">
+                    </div>
+                </div>
+            </div>
+        </form>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="page-header orange">
+                        <h4 ng-model="model.org">分配组织</h4>
+                    </div>
+                    <div>
+                        <button class="btn border-text-green btn-xs" ng-click="addGroup(model.org)"><i
+                                class="iconfont icon-jia1 "></i></button>
+                        <button class="btn border-text-orange btn-xs" ng-click="moveGroup(model.org)"><i
+                                class="iconfont icon-jian "></i></button>
+                    </div>
+                    <div>
+                        <div ui-grid="orgGridOption" style="height:20vh"  ui-grid-pagination ui-grid-selection ui-grid-exporter
+                             ui-grid-resize-columns ui-grid-auto-resize></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="page-header orange">
+                        <h4 ng-model="model.role">分配角色</h4>
+                    </div>
+                    <div>
+                        <button class="btn border-text-green btn-xs" ng-click="addGroup(model.role)"><i
+                                class="iconfont icon-jia1 "></i></button>
+                        <button class="btn border-text-orange btn-xs" ng-click="moveGroup(model.role)"><i
+                                class="iconfont icon-jian "></i></button>
+                        <button class="btn border-text-orange btn-xs" ng-click="setRole()">设置角色</button>
+                    </div>
+                    <div>
+                        <div ui-grid="roleGridOption" style="height:20vh" ui-grid-pagination ui-grid-selection ui-grid-exporter
+                             ui-grid-resize-columns ui-grid-auto-resize></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="page-header orange">
+                        <h4 ng-model="model.category">分配品类</h4>
+                    </div>
+                    <div>
+                        <button class="btn border-text-green btn-xs" ng-click="addGroup(model.category)"><i
+                                class="iconfont icon-jia1 "></i></button>
+                        <button class="btn border-text-orange btn-xs" ng-click="moveGroup(model.category)"><i
+                                class="iconfont icon-jian "></i></button>
+                    </div>
+                    <div>
+                        <div ui-grid="categoryGridOption" style="height:20vh"  ui-grid-pagination ui-grid-selection
+                             ui-grid-resize-columns ui-grid-auto-resize></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" ng-click="save()">保存</button>-->
+    <!--</div>-->
+</div>
+
+<style>
+
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>

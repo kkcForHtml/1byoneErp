@@ -1,0 +1,261 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'编辑'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" btn-per="{id:29,name:'组织架构-编辑'}" class="btn  btn-danger btn-xs" one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存'|translate}}
+                        </button>
+                        <button type="button" btn-per="{id:29,name:'组织架构-编辑'}" class="btn  btn-danger btn-xs" ng-disabled="model.isNotUsed==1" one-click="endInit()"><i
+                                class="iconfont icon-baocun-copy"  ></i>{{'结束初始化'|translate}}
+                        </button>
+                        <!--<button type="button" class="btn btn-danger btn-xs" ng-if="model.AUDIT_STATE!=1" ng-click="audit()"><i class="iconfont icon-shen"></i>审核</button>
+                        <button type="button" class="btn  btn-xs" ng-if="model.AUDIT_STATE==1" ng-click="antiAudit()"><i class="iconfont icon-fanshen"></i>反审核</button>
+                    -->
+                    </div>
+                </div>
+            </form>
+        </div>
+        <form role="form" name = "myForm"  novalidate>
+            <div class="row">
+               <div class="col-md-3">
+                    <div class="form-group">
+                        <label ><i class="text-danger">*</i>{{'编码'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name="code" id="organisation_code"
+                               ng-model="model.ORGANISATION_CODE" ng-disabled="true" ng-change="changeValue('ORGANISATION_CODE',model.ORGANISATION_CODE)">
+                        <!--<span style="color:red" ng-if="myForm.code.$error.required&&myForm.code.$touched">
+                            编码不能为空！
+                        </span>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label ><i class="text-danger">*</i>{{'名称'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name="nameCN" id="organisation_name_cn"
+                               ng-model="model.ORGANISATION_NAME_CN" ng-change="changeValue('ORGANISATION_NAME_CN',model.ORGANISATION_NAME_CN)" required >
+                        <!--<span style="color:red" ng-if="myForm.nameCN.$error.required&&myForm.nameCN.$touched">
+                            名称不能为空！
+                        </span>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label >{{'联系人'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="contact" ng-model="model.CONTACT" ng-change="changeValue('CONTACT',model.CONTACT)">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="phone">{{'联系电话'|translate}}</label>
+                        <span style="padding-bottom: 2px; padding-top: 1px; padding-left: 0; padding-right: 0">
+                            <input type="text" class="form-control input-sm" name ="phone" id="phone" ng-model="model.PHONE"
+                                   ng-change="changeValue('PHONE',model.PHONE)">
+                        </span>
+                       <!-- <span style="color:red" ng-if="myForm.phone.$error.maxlength && myForm.phone.$touched">
+                            请输入有效手机号!
+                        </span>-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'形态'|translate}}</label>
+                        <select class="form-control input-sm" id="organisation_from_id" name="form"
+                                ng-model="model.ORGANISATION_FORM_ID"
+                                ng-options="value.D_VALUE as value.D_NAME_CN for value in model.orgFormList"  ng-change="changeValue('ORGANISATION_FORM_ID',model.ORGANISATION_FORM_ID)">
+                        </select>
+                        <!--<span style="color:red" ng-if="myForm.form.$error.required&&myForm.form.$touched">
+                            形态不能为空！
+                        </span>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'传真'|translate}}</label>
+                        <input type="text" name ="FAX" class="form-control input-sm" ng-model="model.FAX" ng-change="changeValue('FAX',model.FAX)">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'报表用名'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name="reportName" ng-model="model.ORGANISATION_NAME_EN" ng-change="changeValue('ORGANISATION_NAME_EN',model.ORGANISATION_NAME_EN)" >
+                        <!--<span style="color:red" ng-if="myForm.reportName.$error.required && myForm.reportName.$touched">
+                            报表用名不能为空！
+                        </span>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="checkbox checkbox-info checkbox-inline" style = "margin-top:5%">
+                            <input type="checkbox" class="styled" ng-checked="check" ng-model="model.HEADER_STATE"  ng-click="changPdf($event)">
+                            <label >{{'报表用名是否显示于采购订单PDF页眉处'|translate}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label><i class="text-danger">*</i>{{'地区'|translate}}</label>
+                        <select class="form-control input-sm" id="AREA_ID" name="AREA_ID" ng-model="model.AREA_ID"
+                                ng-change="changeSelect('AREA_ID',model.AREA_ID)"
+                                ng-options="value.AREA_ID as value.AREA_NAME_CN for value in model.addressList"
+                                ></select>
+                        <!--<span style="color:red" ng-if="myForm.AREA_ID.$error.required && myForm.AREA_ID.$touched">
+                            地区不能为空！
+                        </span>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label><i class="text-danger">*</i>{{'国家'|translate}}</label>
+                        <select class="form-control input-sm" name="country" id="COUNTRY_ID" ng-model="model.COUNTRY_ID"
+                                ng-options="value.AREA_ID as value.AREA_NAME_CN for value in model.addressList2"
+                                ng-change="changeValue('COUNTRY_ID',model.COUNTRY_ID)">
+                        </select>
+                        <!--<span style="color:red" ng-if="myForm.country.$error.required && myForm.country.$touched">
+                            国家不能为空！
+                        </span>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label >{{'税率'|translate}}</label>
+                        <input type="text" class="form-control input-sm text-right" id="TARIFF" ng-model="model.TARIFF"
+                               ng-change="changeValue('TARIFF',model.TARIFF)">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label >{{'是否启用'|translate}}</label>
+                        <select class="form-control input-sm" name ="state" id="organisation_state"
+                                ng-model="model.ORGANISATION_STATE" ng-change="changeState('ORGANISATION_STATE',model.ORGANISATION_STATE)" ng-options="value.D_VALUE as value.D_NAME_CN for value in model.stateList">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label >{{'业务伙伴'|translate}}</label>
+                        <div class="input-group" style="width: 100%">
+                            <input type="text" class="form-control input-sm" style="width: 75%" ng-model="model.PARTNER_NAME">
+                            <span class="input-group-btn" style="display: inline-block;width: 25%">
+                                 <button style="height: 30px;width:100%;" type="button" class="btn btn-danger btn-xs" ng-click="searchPartner()"><i class="iconfont icon-sousuo_sousuo"></i>{{'选择'|translate}}</button>
+                              </span>
+                        </div>
+                       <!-- <button type="button" class="form-control input-sm" style="text-align: left" id="partnerCode"  ng-model="model.PARTNER_CODE" ng-click="searchPartner()">{{model.PARTNER_NAME_CN}}</button>
+                   --> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{'详细地址'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="address" ng-model="model.ADDRESS" ng-change="changeValue('ADDRESS',model.ADDRESS)">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{'初始化状态'|translate}}</label>
+                        <select class="form-control input-sm" name ="state"
+                                ng-model="model.INIT_STATE"  ng-options="value.D_VALUE as value.D_NAME_CN for value in model.initStateList"
+                        ng-disabled = 'true'>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{'组织启用年月'|translate}}</label>
+                        <input input-blur class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM'"
+                               ng-model="model.STARTUP_TIME"  depth="'year'" start="'year'"
+                               ng-disabled="model.INIT_STATE==1 || model.isNotUsed==1">
+                       <!-- <input class="form-control input-sm" input-blur kendo-date-time-picker  k-format="'yyyy-MM'"  ng-model='model.STARTUP_TIME'>-->
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label >{{'描述'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="remarks" ng-model="model.ORGANISATION_REMARKS" ng-change="changeValue('ORGANISATION_REMARKS',model.ORGANISATION_REMARKS)">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="page-header orange">
+                        <h4>{{'组织分类'|translate}}</h4>
+                    </div>
+                    <div>
+                        <label >{{'核算组织'|translate}}</label>
+                        <div class="row" style="margin-left: 25px">
+                            <div class="checkbox checkbox-info checkbox-inline" ng-repeat="item in model.accOrgList">
+                                <input type="checkbox" class="styled" ng-model = "item.isChecked" ng-click="accSelect(item.D_VALUE,$event)" ng-disabled="item.isDisable">
+                                <label >{{item.D_NAME_CN}}</label>
+                            </div>
+                        </div>
+                        <label >{{'业务组织'|translate}}</label>
+                        <div class="row" style="margin-left: 25px">
+                            <div class="checkbox checkbox-info checkbox-inline" ng-repeat ="item in model.busOrgList" >
+                                <input type="checkbox" class="styled" ng-model="item.isChecked" ng-click="businessSelect(item.D_VALUE,$event)" >
+                                <label >{{item.D_NAME_CN}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" ng-if="model.isShow">
+                    <div class="page-header orange">
+                        <h4>{{'所属核算组织'|translate}}</h4>
+                    </div>
+                    <div class="form-group">
+                        <label>{{'所属法人'|translate}}</label>
+                        <select class="form-control input-sm" ng-model="model.ORGANISATIONOT_ID"  
+                                ng-options="value.ORGANISATION_ID as value.ORGANISATION_NAME_CN for value in model.legalList"
+                                ng-change="changeValue('ORGANISATIONOT_ID',model.ORGANISATIONOT_ID)"></select>
+                    </div>
+                </div>
+                <div class="col-md-5" ng-if="model.ORGANISATION_FORM_ID ==1 || isAdd">
+                    <div class="page-header orange">
+                        <h4>{{'分组信息'|translate}}</h4>
+                    </div>
+                    <div>
+                        <button class="btn border-text-green btn-xs" ng-click="addGroup()"><i
+                                class="iconfont icon-jia1 "></i></button>
+                        <button class="btn border-text-orange btn-xs" ng-click="moveGroup()"><i
+                                class="iconfont icon-jian "></i></button>
+                    </div>
+                    <div class="box-body" auto-height="groupGridOption" style="margin-left: -10px">
+                        <div ui-grid="groupGridOption"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                             ui-grid-resize-columns ui-grid-auto-resize></div>
+                    </div>
+                    <!--<div>
+                        <div ui-grid="groupGridOption"  style="height:20vh" ui-grid-edit  ui-grid-selection ui-grid-exporter ui-grid-row-edit
+                             ui-grid-resize-columns ui-grid-auto-resize></div>
+                    </div>-->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>
+
+
+
+
+

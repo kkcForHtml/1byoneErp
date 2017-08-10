@@ -1,0 +1,26 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'业务区间'|translate}}</h4>
+    </div>
+    <div class="modal-body" auto-height="gridOptions">
+        <!--内容-->
+        <div ui-grid="gridOptions"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+             ui-grid-resize-columns ui-grid-auto-resize></div>
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" ng-click="save()">保存</button>-->
+    <!--</div>-->
+</div>
+
+<style>
+
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>

@@ -1,0 +1,124 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'编辑' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <img ng-if="isAuth" src="images/pass.png" style="position: absolute;top:55px;right:300px;z-index: 10">
+        <div class="body-header">
+            <form>
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" btn-per="{id:25,name:'调拨单-编辑'}" one-click="save()" ng-show="showSave">
+                            <i class="iconfont icon-baocun-copy"></i>{{'保存' | translate}}
+                        </button>
+                        <button type="button" class="btn  btn-danger btn-xs" btn-per="{id:25,name:'调拨单-审核'}" one-click="authSkfiallocation()" ng-show="showAuth">
+                            <i class="iconfont icon-shen"></i>{{'审核'|translate}}
+                        </button>
+                        <button type="button" class="btn btn-xs" btn-per="{id:25,name:'调拨单-反审核'}" one-click="resetAuthSkfiallocation()" ng-show="showResetAuth">
+                            <i class="iconfont icon-fanshen"></i>{{'反审核'|translate}}
+                        </button>
+                    </div>
+                    <div class="col-md-offset-2  col-md-5 text-right" ng-if="!links">
+                        <div class="btn-group" role="group" >
+                            <button type="button" class="btn btn-default btn-sm" ng-click="firstPage()" ng-disabled="index==0|| nextBtnDisabled">{{'首单'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="prePage()"   ng-disabled="index==0 || nextBtnDisabled">{{'上一单'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="nextPage()" ng-disabled="index==(count-1) || nextBtnDisabled">{{'下一单'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="lastPage()" ng-disabled="index==(count-1) || nextBtnDisabled">{{'尾单'|translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div kendo-tab-strip>
+            <ul>
+                <li class="k-state-active">{{'基本信息' | translate}}</li>
+            </ul>
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'调拨单号' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="FIALLOCATION_CD" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'单据状态' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="currentState" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'制单日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="CREATED_AT" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'制单人' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="CUSER_NAME" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'组织' | translate}}</label>
+                            <div organisations-dirt select-model="ORGANISATION_ID" options="orgoptions" ng-disabled="true"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'调出仓库' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="ETWAREHOUSE_ID" ng-disabled="isAuth"
+                                    ng-options="warehouse.WAREHOUSE_ID as warehouse.WAREHOUSE_NAME_CN for warehouse in warehouseList">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'调入仓库'|translate}}</label>
+                            <select class="form-control input-sm" ng-model="ATWAREHOUSE_ID" ng-disabled="isAuth"
+                                    ng-options="warehouse.WAREHOUSE_ID as warehouse.WAREHOUSE_NAME_CN for warehouse in warehouseList">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'调拨日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" input-blur kendo-date-time-picker
+                                   k-format="'yyyy-MM-dd'" ng-model="ALLOCATION_AT" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">{{'备注' | translate}}</label>
+                            <textarea class="form-control input-sm" ng-model="ALLOCATION_REMARKS" ng-disabled="isAuth"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-header orange">
+            <h4>
+                调拨明细
+            </h4>
+        </div>
+        <div class="row">
+            <div class="col-md-5  btn-mr-5">
+                <button type="button" class="btn btn-success btn-xs" ng-click="addDetail()" ng-disabled="isAuth"><i class="iconfont icon-jia1"></i></button>
+                <button type="button" class="btn btn-danger btn-xs" ng-click="delDetail()" ng-disabled="isAuth"><i class="iconfont icon-iconfontshanchu"></i></button>
+            </div>
+        </div>
+        <div class="box-body" auto-height="gridOptions" auto-flag="gridOptions" auto-hide="gridOptions">
+            <div ui-grid="gridOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+        <!--内容-->
+    </div>
+</div>

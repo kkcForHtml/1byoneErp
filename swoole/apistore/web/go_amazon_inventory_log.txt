@@ -1,0 +1,640 @@
+
+ ========================================= 
+
+2017-08-01 08:53:15  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTZH-xdq-01  ACCOUNT_ID:2
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:15  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTESP-jd-01  ACCOUNT_ID:3
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:15  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTESP-jd-02  ACCOUNT_ID:4
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:15  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTCN-jd-01  ACCOUNT_ID:5
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:19  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:20  亚马逊库存拉取接口
+异常错误:addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Exception: Access to FulfillmentInventory.ListInventorySupply is denied in F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php:467
+Stack trace:
+#0 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(436): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_reportAnyErrors('<?xml version="...', '401', Object(addons\tools\mws\FBAInventoryServiceMWS\Model\ResponseHeaderMetadata))
+#1 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(823): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_invoke(Array)
+#2 F:\phpStudy\WWW\swoole\addons\tools\modellogic\XAmazoninventorylogic.php(74): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->requestExe(Array)
+#3 [internal function]: addons\tools\modellogic\XAmazoninventorylogic::getinventory()
+#4 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\NavClient.php(15): call_user_func_array(Array, Array)
+#5 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\IRpcClient.php(21): yii\swoole\rpc\NavClient->recv()
+#6 F:\phpStudy\WWW\swoole\addons\tools\controllers\InventoryController.php(22): yii\swoole\rpc\IRpcClient->sendAndrecv(Array)
+#7 [internal function]: addons\tools\controllers\InventoryController->actionTestinven()
+#8 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\base\InlineAction.php(39): call_user_func_array(Array, Array)
+#9 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Controller.php(156): yii\swoole\base\InlineAction->runWithParams(Array)
+#10 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('testinven', Array)
+#11 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(707): yii\base\Module->runAction('tools/inventory...', Array)
+#12 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(664): yii\swoole\Application->handleRequest(Object(yii\web\Request))
+#13 F:\phpStudy\WWW\swoole\apistore\web\index.php(37): yii\swoole\Application->run()
+#14 {main}
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:23  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:25  亚马逊库存拉取接口
+异常错误:addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Exception: The AWS Access Key Id you provided does not exist in our records. in F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php:467
+Stack trace:
+#0 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(436): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_reportAnyErrors('<?xml version="...', '403', Object(addons\tools\mws\FBAInventoryServiceMWS\Model\ResponseHeaderMetadata))
+#1 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(823): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_invoke(Array)
+#2 F:\phpStudy\WWW\swoole\addons\tools\modellogic\XAmazoninventorylogic.php(74): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->requestExe(Array)
+#3 [internal function]: addons\tools\modellogic\XAmazoninventorylogic::getinventory()
+#4 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\NavClient.php(15): call_user_func_array(Array, Array)
+#5 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\IRpcClient.php(21): yii\swoole\rpc\NavClient->recv()
+#6 F:\phpStudy\WWW\swoole\addons\tools\controllers\InventoryController.php(22): yii\swoole\rpc\IRpcClient->sendAndrecv(Array)
+#7 [internal function]: addons\tools\controllers\InventoryController->actionTestinven()
+#8 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\base\InlineAction.php(39): call_user_func_array(Array, Array)
+#9 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Controller.php(156): yii\swoole\base\InlineAction->runWithParams(Array)
+#10 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('testinven', Array)
+#11 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(707): yii\base\Module->runAction('tools/inventory...', Array)
+#12 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(664): yii\swoole\Application->handleRequest(Object(yii\web\Request))
+#13 F:\phpStudy\WWW\swoole\apistore\web\index.php(37): yii\swoole\Application->run()
+#14 {main}
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:25  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAC-100-SG0169  ACCOUNT_ID:11
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:25  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTZH-xdq-02  ACCOUNT_ID:12
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:27  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:52  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTUAE-jd-01  ACCOUNT_ID:14
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:52  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAR-jd-01  ACCOUNT_ID:15
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:52  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTNL-jd-01  ACCOUNT_ID:16
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:52  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAcc-AE-0001  ACCOUNT_ID:17
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:53:52  亚马逊库存拉取接口
+抓取正常，进行解析数据...
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:54:54  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTZH-xdq-01  ACCOUNT_ID:2
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:54:54  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTESP-jd-01  ACCOUNT_ID:3
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:54:54  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTESP-jd-02  ACCOUNT_ID:4
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:54:54  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTCN-jd-01  ACCOUNT_ID:5
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:54:56  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:54:58  亚马逊库存拉取接口
+异常错误:addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Exception: Access to FulfillmentInventory.ListInventorySupply is denied in F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php:467
+Stack trace:
+#0 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(436): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_reportAnyErrors('<?xml version="...', '401', Object(addons\tools\mws\FBAInventoryServiceMWS\Model\ResponseHeaderMetadata))
+#1 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(823): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_invoke(Array)
+#2 F:\phpStudy\WWW\swoole\addons\tools\modellogic\XAmazoninventorylogic.php(74): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->requestExe(Array)
+#3 [internal function]: addons\tools\modellogic\XAmazoninventorylogic::getinventory()
+#4 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\NavClient.php(15): call_user_func_array(Array, Array)
+#5 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\IRpcClient.php(21): yii\swoole\rpc\NavClient->recv()
+#6 F:\phpStudy\WWW\swoole\addons\tools\controllers\InventoryController.php(22): yii\swoole\rpc\IRpcClient->sendAndrecv(Array)
+#7 [internal function]: addons\tools\controllers\InventoryController->actionTestinven()
+#8 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\base\InlineAction.php(39): call_user_func_array(Array, Array)
+#9 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Controller.php(156): yii\swoole\base\InlineAction->runWithParams(Array)
+#10 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('testinven', Array)
+#11 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(707): yii\base\Module->runAction('tools/inventory...', Array)
+#12 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(664): yii\swoole\Application->handleRequest(Object(yii\web\Request))
+#13 F:\phpStudy\WWW\swoole\apistore\web\index.php(37): yii\swoole\Application->run()
+#14 {main}
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:55:01  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:55:10  亚马逊库存拉取接口
+异常错误:addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Exception: The AWS Access Key Id you provided does not exist in our records. in F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php:467
+Stack trace:
+#0 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(436): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_reportAnyErrors('<?xml version="...', '403', Object(addons\tools\mws\FBAInventoryServiceMWS\Model\ResponseHeaderMetadata))
+#1 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(823): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_invoke(Array)
+#2 F:\phpStudy\WWW\swoole\addons\tools\modellogic\XAmazoninventorylogic.php(74): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->requestExe(Array)
+#3 [internal function]: addons\tools\modellogic\XAmazoninventorylogic::getinventory()
+#4 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\NavClient.php(15): call_user_func_array(Array, Array)
+#5 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\IRpcClient.php(21): yii\swoole\rpc\NavClient->recv()
+#6 F:\phpStudy\WWW\swoole\addons\tools\controllers\InventoryController.php(22): yii\swoole\rpc\IRpcClient->sendAndrecv(Array)
+#7 [internal function]: addons\tools\controllers\InventoryController->actionTestinven()
+#8 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\base\InlineAction.php(39): call_user_func_array(Array, Array)
+#9 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Controller.php(156): yii\swoole\base\InlineAction->runWithParams(Array)
+#10 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('testinven', Array)
+#11 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(707): yii\base\Module->runAction('tools/inventory...', Array)
+#12 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(664): yii\swoole\Application->handleRequest(Object(yii\web\Request))
+#13 F:\phpStudy\WWW\swoole\apistore\web\index.php(37): yii\swoole\Application->run()
+#14 {main}
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:55:10  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAC-100-SG0169  ACCOUNT_ID:11
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:55:10  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTZH-xdq-02  ACCOUNT_ID:12
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:55:11  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:55:56  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTUAE-jd-01  ACCOUNT_ID:14
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:55:56  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAR-jd-01  ACCOUNT_ID:15
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:55:56  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTNL-jd-01  ACCOUNT_ID:16
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:55:56  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAcc-AE-0001  ACCOUNT_ID:17
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:55:56  亚马逊库存拉取接口
+抓取正常，进行解析数据...
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:17  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTZH-xdq-01  ACCOUNT_ID:2
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:19  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTESP-jd-01  ACCOUNT_ID:3
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:29  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTESP-jd-02  ACCOUNT_ID:4
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:29  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTCN-jd-01  ACCOUNT_ID:5
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:41  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:42  亚马逊库存拉取接口
+异常错误:addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Exception: Access to FulfillmentInventory.ListInventorySupply is denied in F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php:467
+Stack trace:
+#0 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(436): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_reportAnyErrors('<?xml version="...', '401', Object(addons\tools\mws\FBAInventoryServiceMWS\Model\ResponseHeaderMetadata))
+#1 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(823): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_invoke(Array)
+#2 F:\phpStudy\WWW\swoole\addons\tools\modellogic\XAmazoninventorylogic.php(74): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->requestExe(Array)
+#3 [internal function]: addons\tools\modellogic\XAmazoninventorylogic::getinventory()
+#4 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\NavClient.php(15): call_user_func_array(Array, Array)
+#5 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\IRpcClient.php(21): yii\swoole\rpc\NavClient->recv()
+#6 F:\phpStudy\WWW\swoole\addons\tools\controllers\InventoryController.php(22): yii\swoole\rpc\IRpcClient->sendAndrecv(Array)
+#7 [internal function]: addons\tools\controllers\InventoryController->actionTestinven()
+#8 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\base\InlineAction.php(39): call_user_func_array(Array, Array)
+#9 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Controller.php(156): yii\swoole\base\InlineAction->runWithParams(Array)
+#10 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('testinven', Array)
+#11 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(707): yii\base\Module->runAction('tools/inventory...', Array)
+#12 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(664): yii\swoole\Application->handleRequest(Object(yii\web\Request))
+#13 F:\phpStudy\WWW\swoole\apistore\web\index.php(37): yii\swoole\Application->run()
+#14 {main}
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:44  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:47  亚马逊库存拉取接口
+异常错误:addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Exception: The AWS Access Key Id you provided does not exist in our records. in F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php:467
+Stack trace:
+#0 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(436): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_reportAnyErrors('<?xml version="...', '403', Object(addons\tools\mws\FBAInventoryServiceMWS\Model\ResponseHeaderMetadata))
+#1 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(823): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_invoke(Array)
+#2 F:\phpStudy\WWW\swoole\addons\tools\modellogic\XAmazoninventorylogic.php(74): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->requestExe(Array)
+#3 [internal function]: addons\tools\modellogic\XAmazoninventorylogic::getinventory()
+#4 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\NavClient.php(15): call_user_func_array(Array, Array)
+#5 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\IRpcClient.php(21): yii\swoole\rpc\NavClient->recv()
+#6 F:\phpStudy\WWW\swoole\addons\tools\controllers\InventoryController.php(22): yii\swoole\rpc\IRpcClient->sendAndrecv(Array)
+#7 [internal function]: addons\tools\controllers\InventoryController->actionTestinven()
+#8 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\base\InlineAction.php(39): call_user_func_array(Array, Array)
+#9 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Controller.php(156): yii\swoole\base\InlineAction->runWithParams(Array)
+#10 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('testinven', Array)
+#11 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(707): yii\base\Module->runAction('tools/inventory...', Array)
+#12 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(664): yii\swoole\Application->handleRequest(Object(yii\web\Request))
+#13 F:\phpStudy\WWW\swoole\apistore\web\index.php(37): yii\swoole\Application->run()
+#14 {main}
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:47  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAC-100-SG0169  ACCOUNT_ID:11
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:47  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTZH-xdq-02  ACCOUNT_ID:12
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:56:48  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:58:26  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTUAE-jd-01  ACCOUNT_ID:14
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:58:26  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAR-jd-01  ACCOUNT_ID:15
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:58:26  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTNL-jd-01  ACCOUNT_ID:16
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:58:26  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAcc-AE-0001  ACCOUNT_ID:17
+========================================== 
+
+ ========================================= 
+
+2017-08-01 08:58:26  亚马逊库存拉取接口
+抓取正常，进行解析数据...
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:10  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTZH-xdq-01  ACCOUNT_ID:2
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:10  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTESP-jd-01  ACCOUNT_ID:3
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:10  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTESP-jd-02  ACCOUNT_ID:4
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:10  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTCN-jd-01  ACCOUNT_ID:5
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:12  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:17  亚马逊库存拉取接口
+异常错误:addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Exception: Access to FulfillmentInventory.ListInventorySupply is denied in F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php:467
+Stack trace:
+#0 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(436): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_reportAnyErrors('<?xml version="...', '401', Object(addons\tools\mws\FBAInventoryServiceMWS\Model\ResponseHeaderMetadata))
+#1 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(823): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_invoke(Array)
+#2 F:\phpStudy\WWW\swoole\addons\tools\modellogic\XAmazoninventorylogic.php(74): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->requestExe(Array)
+#3 [internal function]: addons\tools\modellogic\XAmazoninventorylogic::getinventory()
+#4 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\NavClient.php(15): call_user_func_array(Array, Array)
+#5 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\IRpcClient.php(21): yii\swoole\rpc\NavClient->recv()
+#6 F:\phpStudy\WWW\swoole\addons\tools\controllers\InventoryController.php(22): yii\swoole\rpc\IRpcClient->sendAndrecv(Array)
+#7 [internal function]: addons\tools\controllers\InventoryController->actionTestinven()
+#8 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\base\InlineAction.php(39): call_user_func_array(Array, Array)
+#9 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Controller.php(156): yii\swoole\base\InlineAction->runWithParams(Array)
+#10 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('testinven', Array)
+#11 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(707): yii\base\Module->runAction('tools/inventory...', Array)
+#12 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(664): yii\swoole\Application->handleRequest(Object(yii\web\Request))
+#13 F:\phpStudy\WWW\swoole\apistore\web\index.php(37): yii\swoole\Application->run()
+#14 {main}
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:23  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:25  亚马逊库存拉取接口
+异常错误:addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Exception: The AWS Access Key Id you provided does not exist in our records. in F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php:467
+Stack trace:
+#0 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(436): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_reportAnyErrors('<?xml version="...', '403', Object(addons\tools\mws\FBAInventoryServiceMWS\Model\ResponseHeaderMetadata))
+#1 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(823): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_invoke(Array)
+#2 F:\phpStudy\WWW\swoole\addons\tools\modellogic\XAmazoninventorylogic.php(74): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->requestExe(Array)
+#3 [internal function]: addons\tools\modellogic\XAmazoninventorylogic::getinventory()
+#4 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\NavClient.php(15): call_user_func_array(Array, Array)
+#5 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\IRpcClient.php(21): yii\swoole\rpc\NavClient->recv()
+#6 F:\phpStudy\WWW\swoole\addons\tools\controllers\InventoryController.php(22): yii\swoole\rpc\IRpcClient->sendAndrecv(Array)
+#7 [internal function]: addons\tools\controllers\InventoryController->actionTestinven()
+#8 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\base\InlineAction.php(39): call_user_func_array(Array, Array)
+#9 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Controller.php(156): yii\swoole\base\InlineAction->runWithParams(Array)
+#10 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('testinven', Array)
+#11 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(707): yii\base\Module->runAction('tools/inventory...', Array)
+#12 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(664): yii\swoole\Application->handleRequest(Object(yii\web\Request))
+#13 F:\phpStudy\WWW\swoole\apistore\web\index.php(37): yii\swoole\Application->run()
+#14 {main}
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:25  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAC-100-SG0169  ACCOUNT_ID:11
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:25  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTZH-xdq-02  ACCOUNT_ID:12
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:03:26  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:04:54  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTUAE-jd-01  ACCOUNT_ID:14
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:04:54  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAR-jd-01  ACCOUNT_ID:15
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:04:54  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTNL-jd-01  ACCOUNT_ID:16
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:04:54  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAcc-AE-0001  ACCOUNT_ID:17
+========================================== 
+
+ ========================================= 
+
+2017-08-01 09:04:54  亚马逊库存拉取接口
+抓取正常，进行解析数据...
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:47  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTZH-xdq-01  ACCOUNT_ID:2
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:47  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTESP-jd-01  ACCOUNT_ID:3
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:47  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTESP-jd-02  ACCOUNT_ID:4
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:47  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTCN-jd-01  ACCOUNT_ID:5
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:49  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:51  亚马逊库存拉取接口
+异常错误:addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Exception: Access to FulfillmentInventory.ListInventorySupply is denied in F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php:467
+Stack trace:
+#0 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(436): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_reportAnyErrors('<?xml version="...', '401', Object(addons\tools\mws\FBAInventoryServiceMWS\Model\ResponseHeaderMetadata))
+#1 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(823): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_invoke(Array)
+#2 F:\phpStudy\WWW\swoole\addons\tools\modellogic\XAmazoninventorylogic.php(74): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->requestExe(Array)
+#3 [internal function]: addons\tools\modellogic\XAmazoninventorylogic::getinventory()
+#4 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\NavClient.php(15): call_user_func_array(Array, Array)
+#5 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\IRpcClient.php(21): yii\swoole\rpc\NavClient->recv()
+#6 F:\phpStudy\WWW\swoole\addons\tools\controllers\InventoryController.php(22): yii\swoole\rpc\IRpcClient->sendAndrecv(Array)
+#7 [internal function]: addons\tools\controllers\InventoryController->actionTestinven()
+#8 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\base\InlineAction.php(39): call_user_func_array(Array, Array)
+#9 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Controller.php(156): yii\swoole\base\InlineAction->runWithParams(Array)
+#10 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('testinven', Array)
+#11 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(707): yii\base\Module->runAction('tools/inventory...', Array)
+#12 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(664): yii\swoole\Application->handleRequest(Object(yii\web\Request))
+#13 F:\phpStudy\WWW\swoole\apistore\web\index.php(37): yii\swoole\Application->run()
+#14 {main}
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:53  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:54  亚马逊库存拉取接口
+异常错误:addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Exception: The AWS Access Key Id you provided does not exist in our records. in F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php:467
+Stack trace:
+#0 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(436): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_reportAnyErrors('<?xml version="...', '403', Object(addons\tools\mws\FBAInventoryServiceMWS\Model\ResponseHeaderMetadata))
+#1 F:\phpStudy\WWW\swoole\addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client.php(823): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->_invoke(Array)
+#2 F:\phpStudy\WWW\swoole\addons\tools\modellogic\XAmazoninventorylogic.php(74): addons\tools\mws\FBAInventoryServiceMWS\FBAInventoryServiceMWS_Client->requestExe(Array)
+#3 [internal function]: addons\tools\modellogic\XAmazoninventorylogic::getinventory()
+#4 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\NavClient.php(15): call_user_func_array(Array, Array)
+#5 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\rpc\IRpcClient.php(21): yii\swoole\rpc\NavClient->recv()
+#6 F:\phpStudy\WWW\swoole\addons\tools\controllers\InventoryController.php(22): yii\swoole\rpc\IRpcClient->sendAndrecv(Array)
+#7 [internal function]: addons\tools\controllers\InventoryController->actionTestinven()
+#8 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\base\InlineAction.php(39): call_user_func_array(Array, Array)
+#9 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Controller.php(156): yii\swoole\base\InlineAction->runWithParams(Array)
+#10 F:\phpStudy\WWW\swoole\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('testinven', Array)
+#11 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(707): yii\base\Module->runAction('tools/inventory...', Array)
+#12 F:\phpStudy\WWW\swoole\vendor\albert\yii2-swoole\Application.php(664): yii\swoole\Application->handleRequest(Object(yii\web\Request))
+#13 F:\phpStudy\WWW\swoole\apistore\web\index.php(37): yii\swoole\Application->run()
+#14 {main}
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:54  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAC-100-SG0169  ACCOUNT_ID:11
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:54  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTZH-xdq-02  ACCOUNT_ID:12
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:44:55  亚马逊库存拉取接口
+网络状态:GREEN。可进行拉取
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:45:08  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTUAE-jd-01  ACCOUNT_ID:14
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:45:08  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAR-jd-01  ACCOUNT_ID:15
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:45:08  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTNL-jd-01  ACCOUNT_ID:16
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:45:08  亚马逊库存拉取接口
+异常错误:账号key错误，跳过进行下一个,异常账号: ACCOUNTAcc-AE-0001  ACCOUNT_ID:17
+========================================== 
+
+ ========================================= 
+
+2017-08-01 10:45:08  亚马逊库存拉取接口
+抓取正常，进行解析数据...
+========================================== 

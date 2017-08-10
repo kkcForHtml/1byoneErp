@@ -1,0 +1,43 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">选择供应商</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-12  btn-mr-5">
+                        <div class="form-group">
+                            <label for="">分类</label>
+                            <select class="form-control input-sm"  ng-model="conditions.supplierType" ng-options="item.CLASSIFY_CODE as item.CLASSIFY_NAME_CN for item in supplierTypes">
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" input-clear style="width: 200px" placeholder="供应商名称" ng-model="conditions.supplierName">
+                            <span class="input-group-btn">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs" ng-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}</button>
+                              </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row" auto-height="gridOptions_supplier" >
+            <div ui-grid="gridOptions_supplier"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
+    <button type="button" class="btn btn-danger" ng-click="save()">保存</button>
+    </div>
+
+</div>

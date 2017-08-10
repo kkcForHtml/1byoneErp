@@ -1,0 +1,590 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'新增'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存'|translate}}
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <form role="form">
+            <div class="page-header orange">
+                <h4>{{'SKU信息'|translate}}</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>SKU</label>
+                        <input type="text" class="form-control input-sm" id="PSKU_CODE" ng-model="model.PSKU_CODE">
+                    </div>
+                </div>
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label for=""><i class="text-danger">*</i>{{'需求组织'|translate}}</label>
+                      <div select-organisation options="options_xuqiu" select-model="'ORGAN_ID_DEMAND'" model="model"></div>
+                      <!--<select class="form-control input-sm" id="ORGAN_CODE_DEMAND" ng-model="model.ORGAN_CODE_DEMAND" ng-options="item.ORGANISATION_CODE as item.ORGANISATION_NAME_CN for item in organizations_xuqiu" ng-change="organizations_xuqiuBlur(model.ORGAN_CODE_DEMAND)">-->
+                      <!--</select>-->
+
+                  </div>
+              </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'中文名称'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="PSKU_NAME_CN" ng-model="model.PSKU_NAME_CN">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'通用SKU'|translate}}</label><br>
+                        <!--<input type="text" class="form-control input-sm" id="CSKU_CODE" ng-model="model.CSKU_CODE">-->
+                        <div single-select options="dicOptions" select-model="model.CSKU_ID" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'默认采购组织'|translate}}</label>
+                        <div select-organisation  select-model="'ORGAN_ID_PURCHASE'" types="[2]" model="model"></div>
+                        <!--<select class="form-control input-sm" id="ORGAN_CODE_PURCHASE" ng-model="model.ORGAN_CODE_PURCHASE" ng-options="item.ORGANISATION_CODE as item.ORGANISATION_NAME_CN for item in organizations_caigou">-->
+                        <!--</select>-->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">{{'英文名称'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="PSKU_NAME_EN" ng-model="model.PSKU_NAME_EN">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'分类'|translate}}</label>
+                        <select class="form-control input-sm" id="type1" ng-model="model.bigTypeId" ng-change="bigTypeChange()" ng-options="item.PRODUCT_TYPE_ID as item.SYSTEM_NAME_CN for item in types">
+                            <!--<option ng-repeat="type in types" value="{{type.PRODUCT_TYPE_ID}}">{{type.SYSTEM_NAME_CN}}</option>-->
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""></label>
+                        <select class="form-control input-sm" id="type2" ng-model="model.smallTypeId" style="margin-top: 5px" ng-options="item.PRODUCT_TYPE_ID as item.SYSTEM_NAME_CN for item in currentBigType.g_product_types">
+                            <!--<option ng-repeat="type in currentBigType.g_product_types" value="{{type.PRODUCT_TYPE_ID}}">{{type.SYSTEM_NAME_CN}}</option>-->
+                            <!---->
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'单位'|translate}}</label>
+                        <select class="form-control input-sm" id="UNIT_CODE" ng-model="model.UNIT_ID" ng-options="item.UNIT_ID as item.UNIT_NAME_CN for item in units">
+                            <!--<option ng-repeat="u in units" value="{{u.UNIT_CODE}}">{{u.UNIT_NAME_CN}}</option>-->
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'亚马逊尺寸'|translate}}</label>
+                        <select class="form-control input-sm" id="AMAZON_SIZE_ID" ng-model="model.AMAZON_SIZE_ID" ng-options="item.D_VALUE as item.D_NAME_CN for item in amazonSizes">
+                            <!--<option ng-repeat="u in units" value="{{u.UNIT_CODE}}">{{u.UNIT_NAME_CN}}</option>-->
+                        </select>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'最小起订量'|translate}}</label>
+                        <input type="text" formatting="false"   numeric decimals="0"  min="0" max="9999999999" class="form-control" id="PSKU_MOQ" ng-model="model.PSKU_MOQ">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'是否全球通用'|translate}}</label>
+                        <select class="form-control input-sm" id="aaa" ng-model="model.UNIVERSAL_STATE" ng-options="item.D_VALUE as item.D_NAME_CN for item in states">
+                            <!--<option value="1">Y</option>-->
+                            <!--<option value="0">N</option>-->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'默认运输方式'|translate}}</label>
+                        <select class="form-control input-sm" id="TRANSPORT" ng-model="model.TRANSPORT" ng-options="item.D_VALUE as item.D_NAME_CN for item in transports">
+                            <!--<option value="1">Y</option>-->
+                            <!--<option value="0">N</option>-->
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'是否启用'|translate}}</label>
+                        <select class="form-control input-sm" id="PSKU_STATE" ng-model="model.PSKU_STATE" ng-options="item.D_VALUE as item.D_NAME_CN for item in states">
+                            <!--<option value="1">Y</option>-->
+                            <!--<option value="0">N</option>-->
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+           <div class="row">
+               <div class="col-md-12">
+                   <div class="form-group">
+                       <label for="">{{'备注'|translate}}</label>
+                       <input type="text" class="form-control" id="PSKU_REMARKS" ng-model="model.PSKU_REMARKS">
+                   </div>
+               </div>
+           </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header orange">
+                        <h4>
+                            {{'其他信息'|translate}}
+                        </h4>
+                    </div>
+
+                    <div class="box-body">
+                        <tabset class="tab-container" style="margin-top:10px;">
+                            <tab btn-per="{id:11,name:'图片信息'}">
+                                <tab-heading>
+                                    <span>{{'图片信息'|translate}}</span>
+                                </tab-heading>
+                                    <div class="row">
+                                        <div class="col-md-12" style="margin-top: 10px;">
+                                            <input type="file" name="FileModel[file]" id="photofiles" class="file-loading" multiple  />
+                                        </div>
+                                    </div>
+                            </tab>
+                            <tab btn-per="{id:11,name:'包材信息'}">
+                                <tab-heading>
+                                    <span>{{'包材信息'|translate}}</span>
+                                </tab-heading>
+                                <div class="row ">
+                                    <div class="col-md-12" style="margin-top: 10px;">
+                                       <input type="file" name="FileModel[file]" id="wrapperfiles_add" class="file-loading" multiple  />
+                                    </div>
+                                </div>
+                            </tab>
+
+                            <tab btn-per="{id:11,name:'品检信息'}">
+                                <tab-heading>
+                                    <span>{{'品检标准'|translate}}</span>
+                                </tab-heading>
+                                <div class="row">
+                                    <div class="col-md-12" style="margin-top: 10px;">
+                                        <input type="file" name="FileModel[file]" id="checkedfiles_add" class="file-loading" multiple  />
+                                    </div>
+                                </div>
+                            </tab >
+                            <tab btn-per="{id:11,name:'装箱信息'}">
+                                <tab-heading>
+                                    <span>{{'装箱资料'|translate}}</span>
+                                </tab-heading>
+                                <div class="row tabPadding" >
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'产品长度(CM)'|translate}}</label>
+                                                <input  class="form-control" id="PRODUCT_LONG" formatting="false" numeric decimals="2" min="0" max="9999999999"  ng-model="model.g_product_sku_packing.PRODUCT_LONG">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'产品宽度(CM)'|translate}}</label>
+                                                <input  class="form-control" id="PRODUCT_WIDE" formatting="false" numeric decimals="2" min="0" max="9999999999" ng-model="model.g_product_sku_packing.PRODUCT_WIDE">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'产品高度(CM)'|translate}}</label>
+                                                <input  class="form-control" id="PRODUCT_HIGH" formatting="false" numeric decimals="2" min="0" max="9999999999" ng-model="model.g_product_sku_packing.PRODUCT_HIGH">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'产品重量(KG)'|translate}}</label>
+                                                <input  class="form-control" id="PRODUCT_WEIGHT" formatting="false" numeric decimals="4" min="0" max="99999999" ng-model="model.g_product_sku_packing.PRODUCT_WEIGHT">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'彩盒长度(CM)'|translate}}</label>
+                                                <input  class="form-control" id="GIFT_BOX_LONG" formatting="false" numeric decimals="2" min="0" max="9999999999" ng-model="model.g_product_sku_packing.GIFT_BOX_LONG">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'彩盒宽度(CM)'|translate}}</label>
+                                                <input  class="form-control" id="GIFT_BOX_WIDE" formatting="false" numeric decimals="2" min="0" max="9999999999" ng-model="model.g_product_sku_packing.GIFT_BOX_WIDE">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'彩盒高度(CM)'|translate}}</label>
+                                                <input  class="form-control" id="GIFT_BOX_HIGH" formatting="false" numeric decimals="2" min="0" max="9999999999" ng-model="model.g_product_sku_packing.GIFT_BOX_HIGH">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'产品+彩盒重量(KG)'|translate}}</label>
+                                                <input  class="form-control" id="PRODUCT_GIFT_WEIGHT" formatting="false" numeric decimals="4" min="0" max="99999999" ng-model="model.g_product_sku_packing.PRODUCT_GIFT_WEIGHT">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'装箱长度(CM)'|translate}}</label>
+                                                <input  class="form-control" id="PACKING_LONG" formatting="false" numeric decimals="2" min="0" max="9999999999" ng-model="model.g_product_sku_packing.PACKING_LONG">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'装箱宽度(CM)'|translate}}</label>
+                                                <input  class="form-control" id="PACKING_WIDE" formatting="false" numeric decimals="2" min="0" max="9999999999" ng-model="model.g_product_sku_packing.PACKING_WIDE">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'装箱高度(CM)'|translate}}</label>
+                                                <input  class="form-control" id="PACKING_HIGH" formatting="false" numeric decimals="2" min="0" max="9999999999" ng-model="model.g_product_sku_packing.PACKING_HIGH">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'装箱数量'|translate}}</label>
+                                                <input  class="form-control" id="PACKING_NUMBER" formatting="false" numeric decimals="0" min="0" max="9999999999" ng-model="model.g_product_sku_packing.PACKING_NUMBER">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'整箱体积(M³)'|translate}}</label>
+                                                <input  class="form-control" id="zxtiji" value="{{getZxtiji()}}" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'整箱体积重(KG)'|translate}}</label>
+                                                <input  class="form-control" id="zxtijiz" value="{{getZxtijiz()}}" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'单品体积(M³)'|translate}}</label>
+                                                <input  class="form-control" id="getDptiji" value="{{getDptiji()}}"readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'单品计费重量(KG)'|translate}}</label>
+                                                <input  class="form-control" id="getDpjfzl" value="{{getDpjfzl()}}"readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'整箱净重(KG)'|translate}}</label>
+                                                <input type="text" class="form-control" id="NET_WEIGHT" formatting="false" numeric decimals="4" min="0" max="99999999"  ng-model="model.g_product_sku_packing.NET_WEIGHT">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'整箱毛重(KG)'|translate}}</label>
+                                                <input type="text" class="form-control" id="GROSS_WEIGHT" formatting="false" numeric decimals="4" min="0" max="99999999" ng-model="model.g_product_sku_packing.GROSS_WEIGHT">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'产品+彩盒体积重(KG)'|translate}}</label>
+                                                <input type="text" class="form-control" id="getCpchttjz" value="{{getCpchttjz()}}"readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'整柜数量'|translate}}(PCS)</label>
+                                                <input type="text" class="form-control" id="CABINET_NUMBER" formatting="false" numeric decimals="0" min="0" max="9999999999" ng-model="model.g_product_sku_packing.CABINET_NUMBER">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tab>
+                            <tab btn-per="{id:11,name:'报关资料'}">
+                                <tab-heading>
+                                    <span>{{'报关资料'|translate}}</span>
+                                </tab-heading>
+                                <div class="row tabPadding">
+                                    <div class="row ">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'海关编码'|translate}}</label>
+                                                <input type="text" class="form-control" id="CUSTOMS_CODE" ng-model="model.g_product_sku_declare.CUSTOMS_CODE">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'申报单位'|translate}}</label>
+                                                <select class="form-control input-sm" id="UNIT_CODE1" ng-model="model.g_product_sku_declare.UNIT_ID" ng-options="item.UNIT_ID as item.UNIT_NAME_CN for item in units">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'报关品名'|translate}}</label>
+                                                <input type="text" class="form-control" id="CUSTOMS_NAME" ng-model="model.g_product_sku_declare.CUSTOMS_NAME">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'材质'|translate}}</label>
+                                                <input type="text" class="form-control" id="MATERIAL" ng-model="model.g_product_sku_declare.MATERIAL">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'申报要素'|translate}}</label>
+                                                <input type="text" class="form-control" id="REPORTING_ELEMENTS" ng-model="model.g_product_sku_declare.REPORTING_ELEMENTS">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'电压'|translate}}</label>
+                                                <input type="text" class="form-control" id="VOLTAGE" ng-model="model.g_product_sku_declare.VOLTAGE">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'用途'|translate}}</label>
+                                                <input type="text" class="form-control" id="PURPOSE" ng-model="model.g_product_sku_declare.PURPOSE">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'功率'|translate}}</label>
+                                                <input type="text" class="form-control" id="POWER" ng-model="model.g_product_sku_declare.POWER">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'电池容量'|translate}}</label>
+                                                <input type="text" class="form-control" id="BATTERY_CAPACITY" ng-model="model.g_product_sku_declare.BATTERY_CAPACITY">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <label for="">{{'备注'|translate}}</label>
+                                                <input type="text" class="form-control" id="DECLARE_REMARKS" ng-model="model.g_product_sku_declare.DECLARE_REMARKS">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </tab>
+                           <tab btn-per="{id:11,name:'标签信息'}">
+                               <tab-heading>
+                                   <span>{{'标签资料'|translate}}</span>
+                               </tab-heading>
+                               <div class="row tabPadding">
+                                   <div class="col-md-8">
+                                       <div class="page-header orange">
+                                           <h4>
+                                               {{'平台条码'|translate}}
+                                           </h4>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-3  " style=" padding: 0 15px">
+
+                                               <button type="button" class="btn btn-success btn-xs" ng-click="addFNSKU()"><i
+                                                       class="iconfont icon-jia1"></i>
+                                               </button>
+                                               <button type="button" class="btn btn-danger btn-xs" ng-click="delFNSKU()"><i class="iconfont icon-iconfontshanchu"></i></button>
+                                           </div>
+                                       </div>
+
+                                       <div class="box-body" auto-height="gridOptions_FNSKU" auto-flag="gridOptions_FNSKU" style=" padding-left: 0px; padding-top: 5px;">
+                                           <div ui-grid="gridOptions_FNSKU"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                                                ui-grid-resize-columns ui-grid-auto-resize></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-md-4">
+                                       <div class="page-header orange">
+                                           <h4>
+                                               UPC/EAN
+                                           </h4>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-12  btn-mr-5 ">
+
+                                               <button type="button" class="btn btn-success btn-xs" ng-click="addUPC()"><i
+                                                       class="iconfont icon-jia1"></i>
+                                               </button>
+                                               <button type="button" class="btn btn-danger btn-xs" ng-click="delUPC()"><i class="iconfont icon-iconfontshanchu"></i></button>
+                                           </div>
+                                       </div>
+                                       <div class="box-body" auto-height="gridOptions_UPC" style=" padding-left: 0px; padding-top: 5px;">
+                                           <div ui-grid="gridOptions_UPC"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                                                ui-grid-resize-columns ui-grid-auto-resize></div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </tab>
+                            <!--<tab>-->
+                                <!--<tab-heading>-->
+                                    <!--<span>采购记录</span>-->
+                                <!--</tab-heading>-->
+                                <!--<div class="row tabPadding">-->
+                                    <!--<div ui-grid="gridOptions_Order"   ui-grid-edit ui-grid-pagination ui-grid-selection ui-grid-exporter ui-grid-row-edit ui-grid-resize-columns ui-grid-auto-resize></div>-->
+                                    <!--&lt;!&ndash;<div grid-table grid-options="gridOptions_caigou"></div>&ndash;&gt;-->
+
+                                <!--</div>-->
+                            <!--</tab>-->
+                            <tab btn-per="{id:11,name:'供应商'}">
+                            <tab-heading>
+                                <span>{{'供应商'|translate}}</span>
+                            </tab-heading>
+                            <div class="row tabPadding">
+                                <div class="col-md-12">
+
+                                    <div class="row">
+                                        <div class="col-md-3  btn-mr-5 ">
+
+                                            <button type="button" class="btn btn-success btn-xs" ng-click="addSupplier()"><i
+                                                    class="iconfont icon-jia1"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs" ng-click="delSupplier()"><i class="iconfont icon-iconfontshanchu"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="box-body" auto-height="gridOptions_supplier" auto-flag="gridOptions_supplier" style=" padding-left: 0px;">
+                                        <div ui-grid="gridOptions_supplier"     ui-grid-edit ui-grid-pagination ui-grid-row-edit   ui-grid-selection
+                                             ui-grid-resize-columns ui-grid-auto-resize></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </tab>
+                            <tab btn-per="{id:11,name:'采购价格'}">
+                                <tab-heading>
+                                    <span>{{'采购价格'|translate}}</span>
+                                </tab-heading>
+                                <div class="row tabPadding">
+                                    <div class="col-md-12">
+
+                                        <div class="row">
+                                            <div class="col-md-3  btn-mr-5 ">
+
+                                                <button type="button" class="btn btn-success btn-xs" ng-click="addPrice()"><i
+                                                        class="iconfont icon-jia1"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-xs" ng-click="delPrice()"><i class="iconfont icon-iconfontshanchu"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="box-body" auto-height="gridOptions_price" auto-flag="gridOptions_price" style=" padding-left: 0px;">
+                                            <div ui-grid="gridOptions_price"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                                                 ui-grid-resize-columns ui-grid-auto-resize></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </tab>
+                            <tab btn-per="{id:11,name:'下单周期'}">
+                                <tab-heading>
+                                    <span>{{'下单周期'|translate}}</span>
+                                </tab-heading>
+                                <div class="row tabPadding">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'下单周期(天)'|translate}}</label>
+                                                <input type="text" class="form-control" id="xiadanzq" value="{{xiadanzq()}}" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'交期(天)'|translate}}</label>
+                                                <input formatting="false"  numeric decimals="0" min="0" max="9999999999" class="form-control" id="DELIVERY" ng-model="model.g_next_cycle.DELIVERY">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'备货(天)'|translate}}</label>
+                                                <input formatting="false"  numeric decimals="0" min="0" max="9999999999" class="form-control" id="STOCKING" ng-model="model.g_next_cycle.STOCKING">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'上架时间(天)'|translate}}</label>
+                                                <input formatting="false"  numeric decimals="0" min="0" max="9999999999" class="form-control" id="SHELF_TIME" ng-model="model.g_next_cycle.SHELF_TIME">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'运输(天)'|translate}}</label>
+                                                <input formatting="false"  numeric decimals="0" min="0" max="9999999999" class="form-control" id="g_next_cycle.TRANSPORT" ng-model="model.g_next_cycle.TRANSPORT">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">{{'计划时间(天)'|translate}}</label>
+                                                <input formatting="false"  numeric decimals="0" min="0" max="9999999999" class="form-control" id="PLAN_TIME" ng-model="model.g_next_cycle.PLAN_TIME">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </tab>
+                        </tabset>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </form>
+
+
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" ng-click="save()">保存</button>-->
+    <!--</div>-->
+
+</div>
+
+<style>
+    .tabPadding{
+        margin-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+</style>

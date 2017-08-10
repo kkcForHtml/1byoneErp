@@ -1,0 +1,55 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'采购订单跟踪'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row" style="margin-left:15px ">
+            <div class="col-md-5 no-margin no-padding">
+                <label >{{model.PSKU_CODE}}&nbsp;&nbsp;&nbsp;&nbsp;{{model.PSKU_NAME_CN}}</label>
+
+                <!--<lable>{{model.sku}}</lable><lable style="margin-left: 10px">{{model.PSKU_NAME_CN}}</lable>-->
+            </div>
+        </div>
+        <div class="row" style="margin-left:15px ">
+            <div class="col-md-3 no-margin no-padding">
+                <lable>{{'订单数量合计'|translate}}:&nbsp;&nbsp;</lable><lable>{{totalPurchase}}</lable>
+            </div>
+            <div class="col-md-3 no-margin no-padding">
+                <lable>{{'在产数量合计'|translate}}:&nbsp;&nbsp;</lable><lable>{{totalProNumber}}</lable>
+            </div>
+            <div class="col-md-3 no-margin no-padding">
+                <lable>{{'厂家好货数量合计'|translate}}:&nbsp;&nbsp;</lable><lable >{{totalGProNumber}}</lable>
+            </div>
+            <div class="col-md-3 no-margin no-padding">
+                <lable>{{'国内仓(已收货)合计'|translate}}:&nbsp;&nbsp;</lable><lable >{{totalRGoodNumber}}</lable>
+            </div>
+        </div>
+        <div class="row" style="margin-left:15px ">
+            <div class="col-md-3 no-margin no-padding">
+                <lable>{{'订单金额合计'|translate}}:&nbsp;&nbsp;</lable><lable >{{sumTaxAmount}}</lable>
+            </div>
+            <div class="col-md-3 no-margin no-padding">
+                <lable>{{'已申付金额合计'|translate}}:&nbsp;&nbsp;</lable><lable >{{sumThisApAmount}}</lable>
+            </div>
+            <div class="col-md-3 no-margin no-padding">
+                <lable>{{'未申付金额合计'|translate}}:&nbsp;&nbsp;</lable><lable >{{sumUnThisApAmount}}</lable>
+            </div>
+        </div>
+        <div class="box-body"  auto-flag="gridOptions" auto-hide="gridOptions" auto-height="gridOptions">
+            <div ui-grid="gridOptions"     ui-grid-edit ui-grid-pagination  ui-grid-cellNav
+                 ui-grid-resize-columns ui-grid-auto-resize ></div>
+        </div>
+
+        <!--<div class="box-body">
+            <div ui-grid="gridOptions"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+
+        </div>-->
+    </div>
+</div>
+
+<!-- /.content -->

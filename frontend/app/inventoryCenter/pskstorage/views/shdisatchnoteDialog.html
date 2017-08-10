@@ -1,0 +1,504 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'发运单信息' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <img ng-if="isAuth" src="images/pass.png" style="position: absolute;top:5px;right:300px;z-index: 10">
+        <div class="body-header">
+            <form>
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <!--<button type="button" class="btn  btn-danger btn-xs" one-click="save()" ng-show="showSave">-->
+                            <!--<i class="iconfont icon-baocun-copy"></i>{{'保存' | translate}}-->
+                        <!--</button>-->
+                        <!--<button type="button" class="btn  btn-danger btn-xs" one-click="authSkallocation()" ng-show="showAuth">-->
+                            <!--<i class="iconfont icon-shen"></i>{{'审核'|translate}}-->
+                        <!--</button>-->
+                        <!--<button type="button" class="btn btn-xs" one-click="resetAuthSkallocation()" ng-show="showResetAuth">-->
+                            <!--<i class="iconfont icon-fanshen"></i>{{'反审核'|translate}}-->
+                        <!--</button>-->
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div kendo-tab-strip>
+            <ul>
+                <li class="k-state-active">{{'基本信息' | translate}}</li>
+                <li>{{'采购信息' | translate}}</li>
+                <li>{{'货柜信息' | translate}}</li>
+                <li>{{'报关信息' | translate}}</li>
+                <li>{{'单据信息' | translate}}</li>
+            </ul>
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'需求组织' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="OrganizationName" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'平台' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="CHANNEL_NAME_CN" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'目的仓' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="WAREHOUSE_NAME_CN" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'运输方式' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="D_NAME_CN" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'需求国SKU' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="DEMANDSKU_CODE" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'供应商' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PARTNER_NAME_CN" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'计划发运日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PlAN_SHIPMENT_AT" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'空海次数' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="KUKAI_NUMBER" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'产品中文名称' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PSKU_NAME_CN" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'产品英文名称' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PSKU_NAME_EN" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'预计送达日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="EXPECTED_SERVICE_AT" ng-disabled="true">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'计划发运数量' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PLA_QUANTITY" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'实际发运数量' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="ACTUAL_SHIPM_NUM" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'实际发运日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="ACTUAL_SHIPM_AT" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'发货仓库' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="DELIVER_WARCODE" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'最新验货状态' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="INSPECTION_STATE" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'好货日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="DELIVERY_AT" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'Payment term' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PAYMENT_TERM" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'FBA ID' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="FBA_ID" ng-disabled="true">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'状态' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PLAN_STATE" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'PO号' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PO_NUMBER" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'备注' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="DISPATCH_REMARKS" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 采购信息 -->
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'采购订单' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="ORDER_CD" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'采购单SKU' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PSKU_CODE" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'采购单价' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PRICE" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'采购币种' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="SO_MONEY_CODE" ng-disabled="true">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'总金额' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="AMOUNT" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--货柜信息-->
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'亚马逊尺寸' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="AMAZON_SIZE_ID" ng-disabled="true">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'长(CM)' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="FCL_LONG" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'宽(CM)' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="FCL_WIDE" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'高(CM)' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="FCL_HIGH" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'长(in)' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="FCL_LONG_IN" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'宽(in)' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="FCL_WIDE_IN" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'高(in)' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="FCL_HIGH_IN" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'毛重(KG)' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="GROSS_WEIGHT" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'净重(KG)' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="FCL_NET_WEIGHT" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'尾箱数量' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="LAST_NUM" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'每箱数量' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PACKING_NUMBER" ng-disabled="true">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'总体积(CBM)' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="NET_WEIGHT" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'整箱数量' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="ZXS" ng-disabled="true">
+                        </div>
+                     </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for=""><i class="text-danger">*</i>{{'体积重' | translate}}</label>
+                                <input type="text" class="form-control input-sm" ng-model="NET_WEIGHT_CBM" ng-disabled="true">
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for=""><i class="text-danger">*</i>{{'计费重' | translate}}</label>
+                                <input type="text" class="form-control input-sm" ng-model="JFZ" ng-disabled="true">
+
+                            </div>
+                        </div>
+                </div>
+
+            </div>
+
+            <!--报关信息-->
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'报关品名' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="CUSTOMS_NAME" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'报关单位' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="UNIT_NAME" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'申报要素' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="REPORTING_ELEMENTS" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'海关编码' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="CUSTOMS_CODE" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'报关币种' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="MONEY_CODE" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'加价比例' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="MARKUP_RATIO " ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'报关价格' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="CUSTOMS_PRICE" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'报关金额' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="baoguanjine" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'关税' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="TARIFF" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'增值税' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="VALUE_ADDED_TAX" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--单据信息-->
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'采购入库单' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="PURCHASING_WAREHOUSING_CD" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'内部销售订单' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="INTERNAL_SALES_CD" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'内部采购订单' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="INTERNAL_PURCHASING_CD" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'内部销售出库单' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="INTERNAL_SALESTH_CD" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'内部采购入库单' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="INTERNAL_PURCHASINGST_CD" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'调拨单(在途)号' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="ALLOCATION_ONTHEWAY_CD" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'调拨单(目的)号' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="ALLOCATION_GOAL_CD" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'原采购产品条码' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="SO_FNSKU" ng-disabled="true">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'产品条码' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="FNSKU" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'新增'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" one-click="save()"><i class="iconfont icon-baocun-copy" ></i>{{'保存'|translate}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <form role="form" name = "myForm">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'员工编号'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name="STAFF_CODE" ng-model="model.STAFF_CODE" >
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'员工姓名'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name="STAFF_NAME_CN" ng-model="model.STAFF_NAME_CN" >
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'所属组织'|translate}}</label>
+                        <select class="form-control input-sm" name = "organizeCode"  ng-model="model.ORGANISATION_ID"
+                                ng-options = "value.ORGANISATION_ID as value.ORGANISATION_NAME_CN for value in model.businessOrgList" ></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'移动电话'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name="STAFF_PHONE" ng-model="model.STAFF_PHONE" >
+                        <!--<span style="color:red" ng-if="myForm.warehouseName.$error.required && myForm.warehouseName.$touched">
+                           移动电话为必填项！
+                        </span>-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="tel">{{'固定电话'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="tel" name="STAFF_TEL" ng-model="model.STAFF_TEL" >
+                        <!--<span style="color:red" ng-if="myForm.warehouseName.$error.required && myForm.warehouseName.$touched">
+                           固定电话为必填项！
+                        </span>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="email">{{'E-mail'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name="email" id="email"  ng-model="model.STAFF_EMAIL">
+                        <!--<span style="color:red" ng-if=" myForm.email.$error.pattern">
+                            请填写正确的E-mail地址！
+                        </span>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="address">{{'联系地址'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="address" ng-model="model.STAFF_ADDRESS">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="state">{{'是否启用'|translate}}</label>
+                        <select class="form-control input-sm" id="state" ng-model="model.STAFF_STATE" ng-disabled="true"
+                                ng-options = "value.value as value.name for value in model.isusedList">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="CUSER_CODE">{{'创建人'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="CUSER_CODE" ng-model="model.CUSER_CODE_NAME" readonly>
+                        <!--<input type="text" class="input-sm no-padding"  ng-model="model.CUSER_CODE">-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="STAFF_REMARKS">{{'备注'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="STAFF_REMARKS" ng-model="model.STAFF_REMARKS">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" ng-click="save()">保存</button>-->
+    <!--</div>-->
+</div>
+
+<style>
+
+    .checkbox-header-bold label{
+        font-weight: bold;
+    }
+
+</style>

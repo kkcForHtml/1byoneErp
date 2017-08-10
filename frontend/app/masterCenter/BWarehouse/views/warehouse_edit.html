@@ -1,0 +1,118 @@
+
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'编辑'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" btn-per="{id:6,name:'仓库-编辑'}" class="btn  btn-danger btn-xs" one-click="save()"><i class="iconfont icon-baocun-copy" ></i>{{'保存'|translate}}</button>
+                        <!--<button type="button" class="btn  btn-xs" ng-click="exit()"><i class="iconfont icon-chexiao"></i>退出</button>-->
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <form role="form">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'仓库编码'|translate}}</label>
+                        <input type="text" class="form-control input-sm"  ng-model="model.WAREHOUSE_CODE" ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'仓库名称'|translate}}</label>
+                        <input type="text" class="form-control input-sm" ng-model="model.WAREHOUSE_NAME_CN">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'所属组织'|translate}}</label>
+                        <select class="form-control input-sm"  ng-model="model.ORGANISATION_ID"  ng-change="changeSelect(model.ORGANISATION_ID)"
+                                ng-options = "value.ORGANISATION_ID as value.ORGANISATION_NAME_CN for value in model.orgList"></select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'平台'|translate}}</label>
+                        <select class="form-control input-sm" ng-model="model.CHANNEL_ID"
+                                ng-options = "value.CHANNEL_ID as value.CHANNEL_NAME_CN for value in model.b_channel">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'仓库分类'|translate}}</label>
+                        <select class="form-control input-sm"  ng-model="model.WAREHOUSE_TYPE_ID" ng-options = "value.D_VALUE as value.D_NAME_CN for value in model.warehouseList">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'是否启用'|translate}}</label>
+                        <select class="form-control input-sm" ng-model="model.WAREHOUSE_STATE" ng-options = "value.D_VALUE as value.D_NAME_CN for value in model.stateList">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="space">{{'空间库容'|translate}}</label>
+                        <input type="text" class="form-control input-sm text-right" id="space" formatting="false"
+                               ng-change = "changeSpace()"
+                               ng-model="model.SPACE_INVENTORY" numeric decimals="2" min="0" max="9999999999">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'货物理论库容'|translate}}</label>
+                        <input type="text" class="form-control input-sm text-right" id="postcode" ng-model="model.THEORY_INVENTORY"  decimals="2" min="0" max="9999999999" ng-disabled = "true">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">{{'仓库地址'|translate}}</label>
+                        <select class="form-control input-sm no-margin no-padding" ng-model="model.WAREHOUSE_AREA_ID" placeholder="地区/国家" style="width: 100px;display: inline" ng-options="value.AREA_ID as value.ADDRESS_NAME for value in model.addressList"></select>
+                        <input type="text" class="input-sm no-padding" style="width: 350px;border: 1px solid #ccc;border-radius: 0;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s"  placeholder="详细街道地址" ng-model="model.WAREHOUSE_ADDRESS">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="" ng-model="model.INVENTORY_PROP">{{'货物库容占比'|translate}}:</label><span>&nbsp;&nbsp;{{model.INVENTORY_PROP}}%</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" ng-click="save()">保存</button>-->
+    <!--</div>-->
+</div>
+
+<style>
+
+    .checkbox-header-bold label{
+        font-weight: bold;
+    }
+
+</style>
+
+
+
+
+

@@ -1,0 +1,625 @@
+
+/*@font-face {font-family: "iconfont";*/
+    /*src: url('//at.alicdn.com/t/font_dyithrohqlnv1jor.eot?t=1495286796293'); !* IE9*!*/
+    /*src: url('//at.alicdn.com/t/font_dyithrohqlnv1jor.eot?t=1495286796293#iefix') format('embedded-opentype'), !* IE6-IE8 *!*/
+    /*url('//at.alicdn.com/t/font_dyithrohqlnv1jor.woff?t=1495286796293') format('woff'), !* chrome, firefox *!*/
+    /*url('//at.alicdn.com/t/font_dyithrohqlnv1jor.ttf?t=1495286796293') format('truetype'), !* chrome, firefox, opera, Safari, Android, iOS 4.2+*!*/
+    /*url('//at.alicdn.com/t/font_dyithrohqlnv1jor.svg?t=1495286796293#iconfont') format('svg'); !* iOS 4.1- *!*/
+/*}*/
+
+/*.iconfont {*/
+    /*font-family:"iconfont" !important;*/
+    /*font-size:16px;*/
+    /*font-style:normal;*/
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
+/*}*/
+
+/*.icon-jia:before { content: "\e601"; }*/
+
+/*.icon-yonghu:before { content: "\e600"; }*/
+
+/*.icon-jia1:before { content: "\e619"; }*/
+
+/*.icon-gouwuche:before { content: "\e655"; }*/
+
+/*.icon-dingdan:before { content: "\e783"; }*/
+
+/*.icon-iconfontshanchu:before { content: "\e614"; }*/
+
+/*.icon-iconfontcolor19:before { content: "\e680"; }*/
+
+/*.icon-jian:before { content: "\e663"; }*/
+
+/*.icon-tijiao:before { content: "\e6a2"; }*/
+
+/*.icon-baocun-copy:before { content: "\e62f"; }*/
+
+/*.icon-chanpinguanli:before { content: "\e636"; }*/
+
+/*.icon-youjiantou:before { content: "\e6e4"; }*/
+
+/*.icon-youjiantou2:before { content: "\e6a1"; }*/
+
+/*.icon-icon:before { content: "\e64a"; }*/
+
+/*.icon-weibiaoti39:before { content: "\e638"; }*/
+
+/*.icon-diannao:before { content: "\e6a3"; }*/
+
+/*.icon-jiantouzuo:before { content: "\e640"; }*/
+
+/*.icon-fuzhi:before { content: "\e616"; }*/
+
+/*.icon-hezuohuoban:before { content: "\e6b7"; }*/
+
+/*.icon-zuojiantou:before { content: "\e67c"; }*/
+
+/*.icon-user-group:before { content: "\e646"; }*/
+
+/*.icon-shen:before { content: "\e6ac"; }*/
+
+/*.icon-shen1:before { content: "\e929"; }*/
+
+/*.icon-chexiao:before { content: "\e650"; }*/
+
+/*.icon-yuanquan1:before { content: "\e622"; }*/
+
+/*.icon-iconfontjiantou-copy:before { content: "\e78e"; }*/
+
+/*.icon-xiaogongju:before { content: "\e608"; }*/
+
+/*.icon-jinyong:before { content: "\e649"; }*/
+
+/*.icon-sousuo_sousuo:before { content: "\e602"; }*/
+
+/*.icon-baobiao:before { content: "\e615"; }*/
+
+/*.icon-shen2:before { content: "\e603"; }*/
+
+/*.icon-fanshen:before { content: "\e6ce"; }*/
+
+/*.icon--:before { content: "\e605"; }*/
+
+/*.icon-jichuziliao:before { content: "\e631"; }*/
+/*滚动条*/
+::-webkit-scrollbar{ background:#f8f8f8;width:10px;height: 8px; border-radius:20px;}
+::-webkit-scrollbar-button{ background:none;display:none; }
+::-webkit-scrollbar-thumb {background:#ddd;border-radius:20px;}
+
+
+
+
+
+
+
+
+
+
+.btn-mr-5 button{
+    margin-right: 7px;
+}
+.modal-ssm>.modal-content{
+    width:500px !important;
+}
+
+.modal-llg{
+    width:1100px !important;
+}
+
+.body-header{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.k-tabstrip-wrapper{
+	margin-top: 15px;
+}
+.page-header {
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+    border-bottom-color: #F5D62F; }
+.page-header h4 {
+    font-size: 14px;
+    margin: 0;
+    display: inline;
+    padding: 6px 10px;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #F5D62F; }
+.page-header.orange {
+    border-bottom-color: #e55942; }
+.page-header.orange h4 {
+    background-color: #e55942; }
+.page-header.green {
+    border-bottom-color: #309597; }
+.page-header.green h4 {
+    background-color: #309597; }
+.page-header.cyan {
+    border-bottom-color: #61b449; }
+.page-header.cyan h4 {
+    background-color: #61b449; }
+.page-header.yellow {
+    border-bottom-color: #F5D62F; }
+.page-header.yellow h4 {
+    background-color: #F5D62F; }
+.page-header.purple {
+    border-bottom-color: #7f5d9d; }
+.page-header.purple h4 {
+    background-color: #7f5d9d; }
+.modal-header-color{
+    background-color: #e55942;
+}
+.modal-header-color h4{
+    color: white;
+}
+
+.border-text-orange, .border-text-orange:hover {
+    border: 1px solid #e55942;
+    color: #e55942;
+    background-color: #fff; }
+.border-text-green, .border-text-green:hover {
+    border: 1px solid #309597;
+    color: #309597;
+    background-color: #fff; }
+.bg-color-orange{
+    background-color: rgba(243, 156, 18, 0.12);
+}
+
+/*.ui-grid-header-cell-row{*/
+    /*height: 50px !important;*/
+/*}*/
+.ui-grid-header-cell{
+    background-color: #faf4f4;
+}
+.ui-grid-header-cell-row .ui-grid-cell-contents{
+    /*white-space: normal !important;*/
+}
+
+/*kendo tab样式覆盖*/
+.k-tabstrip>.k-content{
+	border-width: 1px 0 0 0;
+}
+.k-tabstrip-items .k-loading{
+	border-top:0;
+}
+.k-tabstrip-items .k-state-default .k-link, .k-panelbar>li.k-state-default>.k-link{
+	color:#e55942;
+}
+.k-tabstrip-items .k-state-active .k-link{
+	color:#333;
+}
+
+.loading_div {
+    float: right;
+    width: 32px;
+    margin: 5px 5px 5px 5px;
+    background-color: white;
+    position: fixed;
+    bottom: 30px;
+    position: fixed;
+    right: 15px;
+    z-index: 10000;
+    overflow: visible;
+}
+
+.bg-gred{
+    background-color: #a0a0a0;
+}
+
+.grid-table-height{
+    height: 70vh;
+}
+.ui-grid-row:last-child .ui-grid-cell{
+    border-bottom-width: 1px !important;
+}
+
+.ui-grid-row-dirty .ui-grid-cell{
+	color: #f00 !important;
+}
+
+.loading_img {
+    width: 32px;
+    height: 32px;
+}
+
+.main-footer{
+    position: relative;
+    bottom: 0;
+	/*width: 100%;*/
+}
+
+body{
+    background-color: #ecf0f5;
+}
+
+.mr5{
+    margin-right: 5px;
+}
+
+.file-preview-frame .file-preview-other-frame{
+    height: auto !important;
+}
+
+.file-preview-frame img{
+    height: 120px !important;
+}
+
+/*tab 页样式*/
+.nav-tabs>li>a{
+    color: #e55942 !important;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    color: #555 !important;
+}
+
+/*菜单控制样式*/
+.menu-active{
+    color: red !important;
+    /*background-color: rgba(193, 193, 193, 0.23);*/
+}
+
+.popover{
+    max-width: 1000px !important;
+}
+div.ui-grid-cell input,div.ui-grid-cell select{
+    height: 28px;
+}
+
+.mrb-5{
+    margin-bottom: 5px;
+}
+.k-datetimepicker input{
+    height: 26px !important;
+}
+span.k-datetimepicker{
+	width: 100%;
+}
+
+ span.k-i-clock{
+	display: none;
+}
+
+button i{
+	margin-right: 4px;
+}
+
+.carett {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    transform: rotate(0);
+    transition: all .3s;
+}
+.carett.cur{
+	transform: rotate(180deg);
+}
+#more{
+	height: 0px;
+	overflow: hidden;
+	position: absolute;
+	z-index: 999;
+	margin: auto;
+	left: 0;
+	right: 0;
+}
+.more-wrap{
+	width: 100%;
+	background: #fff;
+	background: rgba(255,255,255,.9);
+	margin: 10px auto;
+}
+.more-wrap .row{
+	margin: 0;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);	
+	
+}
+.more-wrap .row .input-group{
+	padding: 16px;
+	padding-bottom: 8px;
+	line-height: 32px;
+	float: left;
+}
+.more-wrap .input-group select.form-control{
+	display: inline-block;
+	width: 76%;
+	float:  right;
+}
+.more-wrap .input-group label{
+	margin-right: 5px;
+}
+.more-wrap .input-group .k-datetimepicker{
+	display: inline-block;
+	float: right;
+	width: 35%;
+}
+.search_box .k-datetimepicker{
+	width: 32%;
+}
+.more-wrap .input-group .k-datetimepicker .k-picker-wrap .k-i-clock{
+	display: none;
+}
+.search_box  .k-datetimepicker .k-picker-wrap .k-i-clock{
+	display: none;
+}
+.form-group .k-datetimepicker .k-picker-wrap .k-i-clock{
+	display: none;
+}
+.more-wrap .k-datetimepicker .k-select,.search_box .k-datetimepicker .k-select{
+	width: 30px;
+}
+.more-wrap .row .input-group-small{
+	float: left;
+	padding: 16px;
+	padding-bottom: 8px;
+	line-height: 32px;
+}
+.more-wrap .input-group-small .form-control{
+	display: inline-block;
+	width: 72%;
+	float:  right;
+}
+.more-wrap .input-group-small select.form-control{
+	display: inline-block;
+	width: 76%;
+	float:  right;
+}
+.more-wrap .input-group-small label{
+	margin-right: 5px;
+}
+.more-wrap .input-group-small .k-datetimepicker{
+	display: inline-block;
+	float: right;
+	width: 33%;
+}
+.more-wrap .input-group .k-datetimepicker .k-picker-wrap .k-i-clock{
+	display: none;
+}
+.more-wrap .k-datetimepicker .k-select{
+		width: 30px;
+	}
+.more-wrap .k-datetimepicker .k-picker-wrap,.search_box .k-datetimepicker .k-picker-wrap{
+	padding-right: 30px;
+	height: 32px;
+}	
+/*可伸缩table*/
+	.h-grid .table{
+		background: #fff;
+		width: 5100px;
+		margin-bottom: 12px;
+	}
+	.h-grid .table tr th{
+	}
+	.h-grid .table tr.active{
+		background: #f5f5f5;
+	}
+	.h-grid .table tr td.dis{
+		background: rgb(238,238,238) !important;
+		padding: 6px;
+		
+	}
+	.h-grid .table tr td.dis .span{
+		padding: 0;
+		width: 100px;
+	}
+	.h-grid .table tr td{
+		padding: 0;
+	}
+	.h-grid .table tr.edit{
+		color: red !important;
+	}
+	.h-grid .table tr td .span{
+		display: block;
+		width: 130px;
+		padding: 7px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		margin: auto;
+	}
+	.h-grid .table .tb-box tr td .span,.h-grid .table .tb-box tr td input[type=text]{
+		width: 100%;
+	}	
+	.h-grid .table tr td input[type=text],.h-grid .table tr td input[type=number]{
+		display: none;
+		border: 0;
+		width: 128px;
+		height: 100%;
+		padding: 8px;
+	}
+	.h-grid .table tr td input{
+		color: #333;
+	}
+	.h-grid .table tr td input.form-control{
+		display: inline-block;
+	}
+	.h-grid .table tr td .k-datetimepicker{
+		display: none;
+	}
+	.h-grid .table.table-bordered tr td,.h-grid .table.table-bordered tr th{
+		text-align: center;
+		border-bottom-color: rgb(212,212,212);
+		border-left-color: rgb(212,212,212);
+		border-right-color: rgb(212,212,212);
+		border-left-width: 1px;
+		border-right-width: 1px;
+		border-bottom-width: 1px;
+		border-top-color: rgb(212,212,212);
+		border-top-width: 1px;
+		
+	}
+	.h-grid .k-datetimepicker input,.more-wrap .k-datetimepicker input,.search_box .k-datetimepicker input{
+		height: 100% !important;
+	}
+	.table tr td i{
+		cursor: pointer;
+		color: #ec6b56;
+	}
+	.h-grid{
+		width: 100%;
+		overflow-y: auto;
+		max-height: 720px;
+	}
+	.h-grid .tb-box{
+		padding: 0;
+	}
+	
+	.tb-box table{
+		width: 60%;
+	}
+	.tb-box table th,.tb-box table td{
+		padding: 8px;
+	}
+	.grid-box{
+		padding: 0;
+	}
+	.h-grid .grid-box:hover{
+		background: #fff;
+	}
+	.table thead{
+		background:#f5b5ab;
+	}
+	/*.table .grid-box thead{
+		background: #faf4f4;
+	}*/
+	.h-grid .table tbody{
+		border-top: none;
+	}
+	.h-grid .k-datetimepicker .k-picker-wrap .k-i-clock{
+		display: none;
+	}
+	.h-grid .k-datetimepicker .k-select{
+		width: 30px;
+	}
+	.h-grid .k-datetimepicker .k-picker-wrap{
+		padding-right: 30px;
+	}	
+
+.ui-grid-focuser:focus{
+    box-shadow: none;
+}
+
+.noEdit-color{
+	background-color: #eee;
+	height: 30px;
+}
+.input-group .form-control.select2-container{
+	display: inline-block;
+	width: 86%;
+	float: right;
+}
+.row .col-md-5,.row .col-md-4,.row .col-md-6,.row .col-md-7,.row .col-md-8,.row .col-md-10,.row .col-md-2,.row .col-md-3,.row .col-md-9{
+	padding-top: 6px;
+	padding-bottom: 8px;
+}
+.ui-grid-cell>span{
+	display: block;
+    padding: 5px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 100%;		
+}
+.col-md-6 .box{
+	margin: 4px;
+}
+.k-tabstrip-wrapper .k-tabstrip>.k-content{
+	padding-left:0px ;
+	padding-right: 0px;
+}
+.waitth .box-body .col-md-6{
+	padding-right: 23px;
+	padding-left: 15px;
+}
+.color-red{
+	color: #ff0000;
+}
+.ctrlGrid .ui-grid-render-container{
+	display: none;
+}
+.ctrlGrid .ui-grid{
+	border: 0;
+}
+.kd .k-dropdown, .kd .k-dropdown-wrap{
+	border-radius: 0;
+}
+.kd.form-control.k-widget{
+	height: 30px;
+}
+.k-dropdown-wrap .k-input{
+	line-height: 1.7em;
+}
+.k-dropdown-wrap .k-select{
+	line-height: 1.94em;
+}
+.pt-base-information{
+	padding: 10px;
+}
+.pt-base-information strong{
+	margin-right: 3px;
+}
+.pt-base-information p{
+	margin-bottom: 4px;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.pt-border{
+	border-bottom: 1px solid #ccc;
+}
+.pt-price{
+	box-sizing:border-box;
+	height:50%;
+	line-height: 54px;
+	padding: 0 12px; 
+}
+div.ui-grid-cell div.pt-price input{
+	outline: none;
+	border:0;
+	width: 90px;
+	height: 24px;
+	border-bottom: 1px solid #999;
+}
+div.page-header{
+	height: 30px;
+}
+.pack-information .col-md-2 span{
+	position: absolute;
+	display: block;
+	font-size: 20px;
+	top:30px;
+	right: -6px;
+}
+.pack-information .col-md-2 label{
+	font-weight: normal;
+}
+.ap .ke-container{
+	margin:0 auto;
+}
+ .pt-grid .ui-grid-cell-focus input{
+	background: #b3c4c7;
+} 
+.pt-grid .ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell input{
+	background: #c9dde1;
+}
+.pt-grid .ui-grid-row:nth-child(even) .ui-grid-cell input{
+	background-color: #f3f3f3;
+}
+
+

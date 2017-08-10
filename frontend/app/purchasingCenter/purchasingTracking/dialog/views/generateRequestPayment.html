@@ -1,0 +1,91 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'申请付款单'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <form role="form" name = "myForm"  novalidate>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="orgCode">{{'付款组织'|translate}}</label>
+                        <input type="text" class="form-control input-sm" name="code" id="orgCode"
+                               ng-model="model.PORGANISATION_NAME_CN"  ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">付款金额</label>
+                        <input type="text" class="form-control" name="nameCN" id="pasum"
+                               ng-model="model.PAYMENT_NUMBER" ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="pDate">{{'付款日期'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="pDate" name="paDate" am-date ng-model="model.PAYMENT_AT" >
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="pMoney">{{'付款币种'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="pMoney" name="pDate"  ng-model="model.PMONEY_NAME_CN" ng-disabled="true">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="partnerCode">{{'供应商'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="partnerCode" name="partnerCode"  ng-model="model.PARTNER_NAME_CN" ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="applicantCode">{{'申请人'|translate}}</label>
+                        <input type="text" id="applicantCode" name ="applicantCode" class="form-control input-sm" ng-model="model.APPLICANT_NAME_CN" ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="remarks">{{'描述'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="remarks" ng-model="model.PAYMENT_REMARKS" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" >
+                    <div class="page-header orange">
+                        <h4>{{'付款明细'|translate}}</h4>
+                    </div>
+                    <div class="box-body" auto-height="gridOptions">
+                        <div ui-grid="gridOptions"     ui-grid-edit ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                             ui-grid-resize-columns ui-grid-auto-resize></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-10 col-md-2  btn-mr-2">
+                    <button type="button" class="btn  btn-danger btn-xs" ng-click="generatePaymentRequest()"><i
+                            class="iconfont icon-baocun-copy"></i>{{'申请付款'|translate}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>
+
+
+
+
+

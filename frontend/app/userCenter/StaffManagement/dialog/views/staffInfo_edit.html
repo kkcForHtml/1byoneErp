@@ -1,0 +1,129 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">编辑</h4>
+    </div>
+    <div class="modal-body" style="height:45vh">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" ng-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>保存
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <form role="form" name="myForm">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>员工编号</label>
+                        <input type="text" class="form-control input-sm" name="STAFF_CODE" ng-model="model.STAFF_CODE"
+                               ng-readonly="model.AUDIT_STATE==1" required>
+                        <span style="color:red" ng-if="myForm.STAFF_CODE.$error.required && myForm.STAFF_CODE.$touched">
+                           员工编号为必填项！
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>员工姓名</label>
+                        <input type="text" class="form-control input-sm" name="STAFF_NAME_CN" ng-readonly="model.AUDIT_STATE==1"
+                               ng-model="model.STAFF_NAME_CN" required>
+                        <span style="color:red"
+                              ng-if="myForm.STAFF_NAME_CN.$error.required && myForm.STAFF_NAME_CN.$touched">
+                           员工姓名为必填项！
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>所属组织</label>
+                        <select class="form-control input-sm" name="organizeCode" ng-model="model.ORGANISATION_CODE" ng-disabled="model.AUDIT_STATE==1"
+                                ng-options="value.ORGANISATION_CODE as value.ORGANISATION_NAME_CN for value in model.businessOrgList"
+                                required></select>
+                        <span style="color:red"
+                              ng-if="myForm.organizeCode.$error.required && myForm.organizeCode.$touched">
+                           所属组织为必填项！
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">移动电话</label>
+                        <input type="text" class="form-control input-sm" name="STAFF_PHONE" ng-readonly="model.AUDIT_STATE==1"
+                               ng-model="model.STAFF_PHONE">
+                        <!--<span style="color:red" ng-if="myForm.warehouseName.$error.required && myForm.warehouseName.$touched">
+                           移动电话为必填项！
+                        </span>-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">固定电话</label>
+                        <input type="text" class="form-control input-sm" name="STAFF_TEL" ng-model="model.STAFF_TEL" ng-readonly="model.AUDIT_STATE==1">
+                        <!--<span style="color:red" ng-if="myForm.warehouseName.$error.required && myForm.warehouseName.$touched">
+                           固定电话为必填项！
+                        </span>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">E-mail</label>
+                        <input type="email" class="form-control input-sm" id="STAFF_EMAIL" ng-model="model.STAFF_EMAIL" ng-readonly="model.AUDIT_STATE==1">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">联系地址</label>
+                        <input type="text" class="form-control input-sm" id="postcode" ng-model="model.STAFF_ADDRESS" ng-readonly="model.AUDIT_STATE==1">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">是否启用</label>
+                        <select class="form-control input-sm" ng-model="model.STAFF_STATE" ng-disabled="model.AUDIT_STATE==1"
+                                ng-options="value.value as value.name for value in model.isusedList">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">创建人</label>
+                        <input type="text" class="form-control input-sm" ng-model="model.CUSER_CODE" readonly>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="" ">备注</label>
+                        <input type="text" class="form-control input-sm"  ng-model="model.STAFF_REMARKS" ng-readonly="model.AUDIT_STATE==1">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" ng-click="save()">保存</button>-->
+    <!--</div>-->
+</div>
+
+<style>
+
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>

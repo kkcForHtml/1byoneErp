@@ -1,0 +1,97 @@
+From d39097b59e750297bea6d836e2fbb14dc8d364e0 Mon Sep 17 00:00:00 2001
+From: fable <278380854@qq.com>
+Date: Mon, 26 Jun 2017 17:22:59 +0800
+Subject: [PATCH] =?UTF-8?q?=E4=BB=A3=E7=A0=81=E6=8F=90=E4=BA=A4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ addons/inventory/modellogic/AdjustmentLogic.php       | 12 +++++++++---
+ addons/inventory/modellogic/PendstorageLogic.php      |  2 ++
+ addons/inventory/modellogic/instantInventoryLogic.php |  1 -
+ addons/shipment/modellogic/dispatchLogic.php          | 15 +++++++++++++++
+ 4 files changed, 26 insertions(+), 4 deletions(-)
+
+diff --git a/addons/inventory/modellogic/AdjustmentLogic.php b/addons/inventory/modellogic/AdjustmentLogic.php
+index 1c2cef0..56f0e1d 100644
+--- a/addons/inventory/modellogic/AdjustmentLogic.php
++++ b/addons/inventory/modellogic/AdjustmentLogic.php
+@@ -142,14 +142,20 @@ class AdjustmentLogic
+      */
+     public static function checkAboutPendst($post){
+ 
+-        $pendStorage = SkPendingStorage::findOne($post['PENDING_STORAGE_ID']);
++        $condition['PENDING_STORAGE_ID'] = $post['PENDING_STORAGE_ID'];
++        $pendStorage = Yii::$app->rpc->create('inventory')->sendAndrecv([['\addons\inventory\modellogic\Pendstorage', 'getPendstorage'], [$condition]]);
+ 
+         if($pendStorage['IMPORT_STATE'] == 1){
+             //TODO 调用发运单明细修改接口 修改【已收货数量】
+-
++            $where = array('DISPATCH_NOTE_ID' => $pendStorage['NOTE_ID']);
++            $set = array('ACTUAL_SHIPM_NUM' => +$pendStorage['NOTE_ID']);
++            Yii::$app->rpc->create('shipment')->sendAndrecv([['\addons\shipment\modellogic\dispatchLogic', 'addDispatchNote'], [$set, $where]]);
+         }elseif($pendStorage['IMPORT_STATE'] == 2){
+             //TODO 调用调拨计划明细  修改【实际入库数量】
+-
++            $condition['ALLOCATION_ID'] = $pendStorage['NOTE_ID'];
++            $update_data['ETSKU_CODE'] = $pendStorage['PSKU_CODE'];
++            $update_data['ALLOCATIONS_STATE'] = 2;
++            Yii::$app->rpc->create('inventory')->sendAndrecv([['\addons\inventory\modellogic\PenddeliveryLogic', 'checkSkuInventory'], [$update_data, $condition]]);
+         }
+     }
+ }
+\ No newline at end of file
+diff --git a/addons/inventory/modellogic/PendstorageLogic.php b/addons/inventory/modellogic/PendstorageLogic.php
+index 37f3510..b99c625 100644
+--- a/addons/inventory/modellogic/PendstorageLogic.php
++++ b/addons/inventory/modellogic/PendstorageLogic.php
+@@ -63,6 +63,8 @@ class PendstorageLogic
+ 
+                     if ($skuPendStr) {
+                         $skuPendStr['RECEIVE_NUMBER'] += $value['THE_RECEIVE_NUMBERT'];
++                        if(isset($value['ACTUAL_AT']))
++                            $skuPendStr['ACTUAL_AT'] = $value['ACTUAL_AT'];
+                         $res = self::updatePendstorage($skuPendStr);
+                     }
+ 
+diff --git a/addons/inventory/modellogic/instantInventoryLogic.php b/addons/inventory/modellogic/instantInventoryLogic.php
+index 9cde749..b2efd52 100644
+--- a/addons/inventory/modellogic/instantInventoryLogic.php
++++ b/addons/inventory/modellogic/instantInventoryLogic.php
+@@ -49,7 +49,6 @@ public  static function updateSkuInventory($paramArray){
+                $skuInventory->INSTANT_NUMBER += $param['INSTANT_NUMBER'];
+                $skuInventory->save();
+             }
+-
+     }
+ 
+     }
+diff --git a/addons/shipment/modellogic/dispatchLogic.php b/addons/shipment/modellogic/dispatchLogic.php
+index 53bbb06..263935f 100644
+--- a/addons/shipment/modellogic/dispatchLogic.php
++++ b/addons/shipment/modellogic/dispatchLogic.php
+@@ -1949,4 +1949,19 @@ class dispatchLogic extends BaseLogic
+     }
+ 
+ 
++    /**更新即时库存
++     * @param $param
++     * @return array
++     */
++    public  static function updateDispatShipnum($paramArray){
++        foreach($paramArray as $param){
++            $skuInventory = ShDispatchNote::find()->where(['WAREHOUSE_CODE'=>$param['WAREHOUSE_CODE'],'PSKU_CODE'=>$param['PSKU_CODE']])->one();
++            if($skuInventory){
++                $skuInventory->INSTANT_NUMBER += $param['INSTANT_NUMBER'];
++                $skuInventory->save();
++            }
++        }
++
++    }
++
+ }
+\ No newline at end of file
+-- 
+2.12.2.windows.1
+

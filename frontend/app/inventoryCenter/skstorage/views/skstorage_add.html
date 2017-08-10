@@ -1,0 +1,173 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'新增' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="body-header">
+            <form>
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" btn-per="{id:24,name:'编辑'}"
+                                one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存' | translate}}
+                        </button>
+                        <button type="button" class="btn  btn-danger btn-xs" btn-per="{id:24,name:'审核'}"
+                                one-click="authSkstorage()"
+                                ng-show="showAuth">
+                            <i class="iconfont icon-shen"></i>{{'审核'|translate}}
+                        </button>
+                        <button type="button" class="btn btn-xs" btn-per="{id:24,name:'反审核'}"
+                                one-click="resetAuthSkstorage()"
+                                ng-show="showResetAuth">
+                            <i class="iconfont icon-fanshen"></i>{{'反审核'|translate}}
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div kendo-tab-strip>
+            <ul>
+                <li class="k-state-active">{{'基本信息' | translate}}</li>
+                <li>{{'金额信息' | translate}}</li>
+            </ul>
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'入库单号' | translate}}</label>
+                            <input type="text" class="form-control input-sm"
+                                   ng-model="model.STORAGE_CD" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'单据状态' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="model.currentState"
+                                   ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'制单日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="model.CREATED_ATTEMP"
+                                   ng-readonly="true">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">{{'制单人' | translate}}</label>
+                            <input type="text" class="form-control input-sm" ng-model="model.CUSER_NAME" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'组织' | translate}}</label>
+                            <div select-organisation select-model="'ORGANISATION_ID'" options="orgoptions"
+                                 model="model"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'入库仓库' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.WAREHOUSE_ID"
+                                    ng-options="warehouse.WAREHOUSE_ID as warehouse.WAREHOUSE_NAME_CN for warehouse in model.warehouseList">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'入库日期' | translate}}</label>
+                            <input type="text" class="form-control input-sm" kendo-date-time-picker
+                                   k-format="'yyyy-MM-dd'" ng-model="model.STORAGE_AT">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'供应商名称'|translate}}</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control input-sm" style="width: 189.5px"
+                                       ng-model="model.customerName" ng-readonly="true">
+                            <span class="input-group-btn" style="display: inline;">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs"
+                                         ng-click="searchPartner()"><i class="iconfont icon-sousuo_sousuo"></i>{{'选择'|translate}}
+                                 </button>
+                              </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>{{'单据类型' | translate}}</label>
+                            <select class="form-control input-sm" ng-model="model.ORDER_TYPE"
+                                    ng-options="type.value as type.name for type in model.typeList"
+                                    ng-change="changeType()" disabled="disabled">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">{{'备注' | translate}}</label>
+                            <textarea class="form-control input-sm" ng-model="model.STORAGE_REMARKS"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""><i class="text-danger">*</i>币种</label>
+                            <select class="form-control input-sm" ng-model="model.MONEY_ID"
+                                    ng-options="money.MONEY_ID as money.MONEY_NAME_CN for money in model.moneyList"
+                                    ng-change="changePmoneyID(model.MONEY_ID)">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for=""></i>金额</label>
+                            <input type="text" class="form-control input-sm text-right" ng-model="model.STORAGE_MONEY"
+                                   ng-readonly="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-header orange">
+            <h4>
+                入库明细
+            </h4>
+        </div>
+        <div class="row">
+            <div class="col-md-5  btn-mr-5">
+                <button type="button" class="btn btn-success btn-xs" one-click="addDetail(0)"><i
+                        class="iconfont icon-jia1"></i></button>
+                <button type="button" class="btn btn-danger btn-xs" one-click="delDetail(0)"><i
+                        class="iconfont icon-iconfontshanchu"></i></button>
+            </div>
+        </div>
+
+        <div class="box-body" auto-height="gridOptions" auto-flag="gridOptions" auto-hide="gridOptions"
+             style="padding:0px">
+            <div ui-grid="gridOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav
+                 ui-grid-selection
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

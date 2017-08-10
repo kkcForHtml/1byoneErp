@@ -1,0 +1,121 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        {{'发运单'|translate}}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{'首页'|translate}} </a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{'产品管理'|translate}} </a></li>
+        <li class="active"> {{'映射列表'|translate}}</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-danger">
+        <div class="box-header with-border" >
+            <form class="form-inline">
+                  <div class="row">
+                      <div class="col-md-5  btn-mr-5">
+                          <button type="button" class="btn  btn-danger btn-xs" btn-per="{id:19,name:'编辑'}" ng-click="save()"><i class="iconfont icon-baocun-copy"></i>{{'保存'|translate}} </button>
+                          <button type="button" class="btn btn-success btn-xs" btn-per="{id:19,name:'发运通知'}" ng-click="printNote()" ><i class="iconfont icon-jia1"></i>{{'发运通知'|translate}}</button>
+                          <button type="button" class="btn btn-danger btn-xs" btn-per="{id:19,name:'审核'}" ng-click="audit()" ><i class="iconfont icon-shen"></i>{{'审核'|translate}}</button>
+                          <button type="button" class="btn  btn-xs" btn-per="{id:19,name:'反审核'}" ng-click="notAudit()" ><i class="iconfont icon-fanshen"></i>{{'反审核'|translate}}</button>
+                          <button type="button" class="btn btn-danger btn-xs" btn-per="{id:19,name:'删除'}" ng-click="del()"><i class="iconfont icon-iconfontshanchu"></i>{{'删除'|translate}}</button>
+                      </div>
+                      <div class="col-md-7 text-right">
+                          <div class="form-group ">
+                              <label for="">{{'单据状态'|translate}}</label>
+                              <select class="form-control input-sm" id="PLAN_STATE" ng-model="searchConditions.PLAN_STATE" ng-options="item.D_VALUE as item.D_NAME_CN  for item in dispatchStates">
+                              </select>
+                          </div>
+                          <div class="input-group">
+                              <input type="text" class="form-control input-sm" input-clear style="width: 400px" placeholder="{{'采购订单号/供应商/需求国SKU/PO号/产品条码/空运次数/目的仓'|translate}}" ng-model="searchConditions.search">
+                              <span class="input-group-btn">
+                                 <button style="height: 30px" type="button" class="btn btn-danger btn-xs" ng-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}</button>
+                              </span>
+                          </div>
+                          <div style="display: inline-block"  ng-click="carett=!carett">
+                              <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">{{'更多条件'|translate}}<span class="carett" ng-class="{'cur':carett}"></span></button>
+
+                          </div>
+
+                      </div>
+                      <div class="col-md-12 text-right collapse" id="collapseExample" >
+                          <div class="shadow">
+
+
+                              <div class="form-group " style="margin-bottom: 5px">
+                                  <label for="">{{'运输方式'|translate}}</label>
+                                  <select class="form-control input-sm" id="TRANSPORT_MODE" ng-model="searchConditions.TRANSPORT_MODE" ng-options="item.D_VALUE as item.D_NAME_CN  for item in transports_search">
+                                  </select>
+                              </div>
+                              <div class="form-group " style="margin-bottom: 5px">
+                                  <label for="">{{'需求组织'|translate}}</label>
+                                  <select class="form-control input-sm" id="ORGANISATION_CODE" ng-model="searchConditions.ORGANISATION_ID" ng-options="item.ORGANISATION_ID as item.ORGANISATION_NAME_CN for item in organizations_search">
+                                  </select>
+                              </div>
+
+                              <div class="form-group" style="margin-bottom: 5px">
+                                  <label for="">{{'计划发运日期'|translate}}</label>
+                                  <input input-clear input-blur class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='searchConditions.p_shipm_time_start'>~
+                                  <input input-clear input-blur class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='searchConditions.p_shipm_time_end'>
+                              </div>
+                              <div class="form-group" style="margin-bottom: 5px">
+                                  <label for="">{{'实际发运日期'|translate}}</label>
+                                  <input input-clear input-blur class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='searchConditions.a_shipm_time_start'>~
+                                  <input input-clear input-blur class="form-control input-sm" kendo-date-time-picker  k-format="'yyyy-MM-dd'"  ng-model='searchConditions.a_shipm_time_end'>
+                              </div>
+                          </div>
+
+
+                      </div>
+                  </div>
+            </form>
+
+        </div>
+
+        <div class="row" >
+            <div class="col-md-8" style="margin-left: 10px">
+                <input class="form-control input-sm" style="background-color: rgba(0, 0, 0, 0.04);" readonly value="{{'总箱数'|translate}}: {{toji()}}，{{'总体积'|translate}}(m³): {{zongtiji}}， {{'总毛重'|translate}}(KG): {{zongmaozhong}}，{{'总净重'|translate}}(KG): {{zongjingzhong}}，{{'总体积'|translate}}(cu in): {{zongtiji_cuin}}，{{'总毛重'|translate}}(lb): {{zongmaozhong_lb}}，{{'总净重'|translate}}(lb): {{zongjingzhong_lb}}">
+            </div>
+        </div>
+        <div class="box-body" id="autoHeight" auto-height="gridOptions" auto-flag="gridOptions"  auto-hide="gridOptions" style="padding-top: 0">
+            <div ui-grid="gridOptions"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav ui-grid-pinning  ui-grid-selection
+                 ui-grid-resize-columns ui-grid-auto-resize></div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+</section>
+<!-- /.content -->
+<style>
+    span.k-i-clock{
+        display: none;
+    }
+    span.k-datetimepicker{
+        width: 100%;
+    }
+    .ui-grid-row:nth-child(even) .ui-grid-cell{
+        background-color: white;
+    }
+    .ui-grid-cell-contents{
+        border-bottom: 1px solid #ddd;
+    }
+    .ui-grid-cell-contents .btn-link{
+        padding:0;
+    }
+    .ui-grid-row .ui-grid-cell.ui-grid-row-header-cell{
+        background-color: #f8f8f8;
+    }
+    .shadow{
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(221, 221, 221, 0.53);
+        border-radius: 2px;
+        padding: 10px;
+    }
+    .color-red{
+        color: #ff0000;
+    }
+</style>

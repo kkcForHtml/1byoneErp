@@ -1,0 +1,268 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Page Header
+        <small>Optional description</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li><button class="btn btn-sm btn-primary" ng-click="test()">test</button>
+    </ol>
+
+
+    <select tiny-select  style="width: 340px;" options="tinyOptions" select-model="selectModel">
+        <option value="1">abc</option>
+    </select>
+
+    <!--<input single-select options="dicOptions" select-model="selectModel" style="width: 100%;">-->
+    <input class="form-control input-sm" numeric decimals="3" min="0" max="40" ng-model="num">
+    <select class="form-control"
+            kendo-drop-down-list
+            ng-model='selectM'
+            k-options="accountModel"
+
+    ></select>
+</section>
+<!--<button uib-popover-template="dynamicPopover.templateUrl" popover-title="{{dynamicPopover.title}}" type="button" class="btn btn-default">Popover With Template</button>-->
+<!--<button uib-popover="dynamicPopover.templateUrl" popover-title="longlong" type="button" class="btn btn-default">Popover With Template</button>-->
+<!--<button popover-placement="{{placement.selected}}" uib-popover="On the {{placement.selected}}" type="button" class="btn btn-default">Popover {{placement.selected}}</button>-->
+<!--<p>-->
+    <!--<button uib-popover-template="dynamicPopover.templateUrl" popover-title="{{dynamicPopover.title}}" popover-trigger="'mouseenter'" type="button" class="btn btn-default">Mouseenter</button>-->
+<!--</p>-->
+
+
+<!--<input type="text" value="Click me!" uib-popover="I appeared on focus! Click away and I'll vanish..."  popover-trigger="'focus'" class="form-control">-->
+<!-- Main content -->
+<section class="content">
+    <div ui-grid="gridOptions" ng-if="gridOptions.data" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav ui-grid-grouping ui-grid-selection ui-grid-exporter
+        ui-grid-resize-columns ui-grid-auto-resize></div>
+    <div>
+        <!--<div class="container">-->
+            <!--<div class="col-xs-7">-->
+                <!--<panel>-->
+                    <!--<tree-dnd tree-data="tree_table" tree-control="my_tree" tree-class="table" enable-drag="true" enable-drop="true" column-defs="col_defs_table"-->
+                        <!--expand-on="expanding_property"></tree-dnd>-->
+                <!--</panel>-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <div style="padding: 10px;">
+
+            <div
+                    data-angular-treeview="true"
+                    data-tree-id="options"
+                    data-tree-model="treeModel"
+                    data-node-id="id"
+                    data-node-label="name"
+                    data-node-children="children" >
+            </div>
+        </div>
+        <button class="btn btn-sm btn-primary" ng-click="error()">{{"错误" | translate}}</button>
+        <button class="btn btn-sm btn-primary" ng-click="success()">{{"成功" | translate}}</button>
+        <button class="btn btn-sm btn-primary" ng-click="confirm()">{{"确认" | translate}}</button>
+        <button class="btn btn-sm btn-primary" ng-click="save()">{{"保存" | translate}}</button>
+        
+    </div>
+
+</section>
+<p>
+    <button uib-popover-template="dynamicPopover.templateUrl"  type="button" popover-trigger="'mouseenter'"  class="btn btn-default">Mouseenter</button>
+    <button uib-popover-template="dynamicPopover.templateUrl"  type="button" popover-trigger="'mouseenter'"  class="btn btn-default">Mouseenter</button>
+    <button uib-popover-template="dynamicPopover.templateUrl"  type="button" popover-trigger="'mouseenter'"  class="btn btn-default">Mouseenter</button>
+    <button uib-popover-template="dynamicPopover.templateUrl"  type="button" popover-trigger="'mouseenter'"  class="btn btn-default">Mouseenter</button>
+</p>
+
+<form class="form-inline">
+    <div class="row">
+
+            <div class="input-group" >
+                <input type="text" class="form-control input-sm "  input-clear style="width: 200px" placeholder="SKU/名称/分类" ng-model="name">
+                <span class="input-group-btn">
+                    <button style="height: 30px;" type="button" class="btn btn-danger btn-xs" ng-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>{{'搜索'|translate}}</button>
+                 </span>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!--<button id="dialog7-btn" ng-click="dialog7={open: true}">dialog:可吸附</button>-->
+<div class="h-grid">
+<table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th><input type="checkbox" name="" id="" value="" select-all /></th>
+          <th></th>
+          <th>计划日期</th>
+          <th>国家</th>
+          <th>平台</th>
+          <th>运输方式</th>
+          <th>次数</th>
+          <th>装柜日期</th>
+        </tr>
+      </thead>
+  		<tbody ng-repeat="obj in data_test" ng-init="$outIndex = $index">
+	        <tr>
+	          <th scope="row" width="40"><input type="checkbox" name="" id="" value="" select-self /></th>
+	          <th width="40" data-tg = "#test{{$index}}" click-shrink><i class="fa fa-fw fa-plus" data-toggle="collapse" data-target="#test{{$index}}" aria-expanded="true" aria-controls="test{{index}}"></i></th>
+	          <td>2015-9-2</td>
+	          <td>美国</td>
+	          <td>美国亚马逊</td>
+	          <td>空运</td>
+	          <td>2</td>
+	          <td>2015-9-2</td>
+	        </tr>
+	        <tr class="grid-box">
+	        	<td style="visibility: hidden; padding: 0;"></td>
+	        	<td colspan="7" class="tb-box">
+	        		<div id="test{{$index}}" class="collapse">
+	        		<table class="able table-bordered table-hover">
+	        			<thead>
+	        				<th width="60">序号</th>
+	        				<th>采购订单</th>
+	        				<th>SKU</th>
+	        				<th>货描</th>
+	        				<th>外层索引</th>
+	        			</thead>
+	        			<tbody>
+	        				<tr ng-repeat="val in obj.arr">
+	        					<th>{{$index+1}}</th>
+	        					<td>SMOE23265WENK</td>
+	        					<td>FED3-10456</td>
+	        					<td>游戏键盘 KEY-618 北美</td>
+	        					<td>{{$outIndex}}</td>
+	        				</tr>
+	        			</tbody>
+	        		</table>
+	        		</div>
+	        	</td>
+	        </tr>	        
+    	</tbody>
+    </table>	
+</div>
+  <div>
+      <js-xls onread="read" onerror="error"></js-xls>
+  </div>
+
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div class="page-header">
+                    <h1 class="text-center">select2 directive</h1>
+                </div>
+                <h4>1. 支持动态ng-model</h4>
+                <span class="text-muted">ng-model:</span> {{ a }}
+                <br/>
+                <span class="text-muted">select2-model:</span> {{ aS2 | json }}
+                <input select2 ng-model="a" select2-model="aS2" config="config1" class="form-control" type="text" ng-change="tt()"/>
+                <br/>
+                <button ng-click="aS2 = {id:4,text:'wontfix'}" class="btn btn-success btn-sm pull-right">设置数据</button>
+                <span class="clearfix"></span>
+                <hr/>
+
+                <h4>2. 支持select标签</h4>
+                <span class="text-muted">ng-model:</span> {{ b }}
+                <br/>
+                <select select2 ng-model="b" class="form-control" placeholder="我也有placeholder">
+                    <option value="1">数据1</option>
+                    <option value="2">数据2</option>
+                    <option value="3">数据3</option>
+                    <option value="4">数据4</option>
+                    <option value="{{ item.id }}" ng-repeat="item in config2">{{ item.text }}</option>
+                </select>
+                <br/>
+                <button ng-click="b = 3" class="btn btn-success btn-sm pull-right">设置数据</button>
+                <span class="clearfix"></span>
+                <hr/>
+
+                <h4>3. 支持自定义配置及多选（与select2原生的配置方式一致）</h4>
+                <span class="text-muted">ng-model:</span> {{ c }}
+                <br/>
+                <span class="text-muted">select2-model:</span> {{ cS2 | json }}
+                <input select2 ng-model="c" select2-model="cS2" config="config3" multiple placeholder="支持多选哦" class="form-control" type="text"/>
+                <br/>
+                <button ng-click="cS2 = [{id:3,text:'invalid'},{id:4,text:'wontfix'}]" class="btn btn-success btn-sm pull-right">设置数据</button>
+                <span class="clearfix"></span>
+                <hr/>
+
+                <h4>4. 支持ajax（这也是一个自定义内置配置的例子）</h4>
+                <span class="text-muted">ng-model:</span> {{ d }}
+                <br/>
+                <span class="text-muted">select2-model:</span> {{ dS2 | json }}
+                <input select2 ng-model="d" select2-model="dS2" config="default" query="testAJAX" placeholder="ajax数据得在服务器环境下查看" class="form-control" type="text"/>
+                <br/>
+                <button ng-click="dS2 = {id: '462983441', title: 'Ocean Thirteen'}" class="btn btn-success btn-sm pull-right">设置数据</button>
+                <span class="clearfix"></span>
+            </div>
+        </div>
+    </div>
+
+	<select name="" ng-change="tt()" ng-model="ts">
+		<option value="1">1</option>
+		<option value="2">32</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		
+	</select>
+	<button ng-click="t()">11111</button>
+	<a id="a" >test</a>
+	<ul uib-pagination 
+		boundary-links="true" 
+		total-items="flip.totalItems" 
+		ng-model="flip.currentPage" 
+		class="pagination-md" 
+		previous-text="&lsaquo;" 
+		next-text="&rsaquo;" 
+		first-text="&laquo;"
+		max-size="flip.maxSize"
+		rotate="false"
+		last-text="&raquo;">
+		
+	</ul>
+	<input type="number" name="" id="" value="" ng-model="flip.currentPage" ng-change="flip.pageChanged()"/>
+<style>
+    .icon-file-alt{
+        margin-left: 20px;
+    }
+    /*.ui-grid-viewport{*/
+        /*overflow: inherit !important;*/
+    /*}*/
+
+	/*伸缩表格控件*/
+	
+
+	.table{
+		background: #fff;
+	}
+	tr th:first-child,tr th:nth-of-type(2){
+		text-align: center;
+	}
+	tr th i{
+		cursor: pointer;
+	}
+	
+	.h-grid .tb-box{
+		padding: 0;
+	}
+	.tb-box table{
+		width: 100%;
+	}
+	.tb-box table th,.tb-box table td{
+		padding: 8px;
+	}
+	.grid-box{
+		padding: 0;
+	}
+	.h-grid .grid-box:hover{
+		background: #fff;
+	}
+	thead{
+		background: rgb(102,153,204);
+	}
+	.h-grid .table tbody{
+		border-top: none;
+	}	
+
+
+</style>
+<!-- /.content -->

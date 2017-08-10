@@ -1,0 +1,126 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" one-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'新增' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="body-header">
+
+            <form>
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i> {{'保存' | translate}}
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <form role="form">
+            <div class="page-header orange">
+                <h4>{{'基本信息' | translate}}</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'国家' | translate}}</label>
+                        <select class="form-control input-sm" ng-model="model.AREA_CODE"
+                                ng-options="barea.value as barea.name for barea in bareaList">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'长度单位' | translate}}</label>
+                        <select class="form-control input-sm" ng-model="model.LENGTHUNIT"
+                                ng-options="unitlength.value as unitlength.name for unitlength in unitLengthList">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'重量单位' | translate}}</label>
+                        <select class="form-control input-sm" ng-model="model.WEIGHTUNIT"
+                                ng-options="unitwight.value as unitwight.name for unitwight in unitWightList">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'体积重比例' | translate}}</label>
+                        <input formatting="false"  numeric decimals="0" min="0" max="9999999999" class="form-control input-sm" id="VOLWEIGHTPROP" ng-model="model.VOLWEIGHTPROP">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div kendo-tab-strip>
+            <ul>
+                <li class="k-state-active">{{'FBA费' | translate}}</li>
+                <li>{{'MCF费' | translate}}</li>
+                <li>{{'月存储和LongTime费表' | translate}}</li>
+            </ul>
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="btn btn-success btn-xs" one-click="fbaFeeDetailAdd()"><i
+                            class="iconfont icon-jia1"></i>{{'新增' | translate}}
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" one-click="fbaFeeDetailDel()"><i
+                            class="iconfont icon-iconfontshanchu"></i>{{'删除' | translate}}
+                    </button>
+                </div>
+                <div class="box-body" auto-height="fbaFeeDetailOptions" auto-flag="fbaFeeDetailOptions"
+                     auto-hide="fbaFeeDetailOptions">
+                    <div ui-grid="fbaFeeDetailOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav
+                         ui-grid-pinning
+                         ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+            </div>
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="btn btn-success btn-xs" one-click="mcfFeeDetailAdd()"><i
+                            class="iconfont icon-jia1"></i>{{'新增' | translate}}
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" one-click="mcfFeeDetailDel()"><i
+                            class="iconfont icon-iconfontshanchu"></i>{{'删除' | translate}}
+                    </button>
+                </div>
+                <div class="box-body" auto-height="mcfFeeDetailOptions" auto-flag="mcfFeeDetailOptions"
+                     auto-hide="mcfFeeDetailOptions">
+                    <div ui-grid="mcfFeeDetailOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav
+                         ui-grid-pinning
+                         ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+            </div>
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="btn btn-success btn-xs" one-click="mStorageFeeDetailAdd()"><i
+                            class="iconfont icon-jia1"></i>{{'新增' | translate}}
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" one-click="mStorageFeeDetailDel()"><i
+                            class="iconfont icon-iconfontshanchu"></i>{{'删除' | translate}}
+                    </button>
+                </div>
+                <div class="box-body" auto-height="mStorageFeeDetailOptions" auto-flag="mStorageFeeDetailOptions"
+                     auto-hide="mStorageFeeDetailOptions">
+                    <div ui-grid="mStorageFeeDetailOptions" ui-grid-edit ui-grid-pagination ui-grid-row-edit
+                         ui-grid-cellNav
+                         ui-grid-pinning
+                         ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+

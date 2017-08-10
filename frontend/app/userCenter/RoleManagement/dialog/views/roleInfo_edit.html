@@ -1,0 +1,110 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'编辑'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" ng-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存'|translate}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <form role="form" name="myForm">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>角色编码</label>
+                        <input type="text" class="form-control input-sm" name="ROLE_INFO_CODE"
+                               ng-model="model.ROLE_INFO_CODE" required>
+                        <span style="color:red"
+                              ng-if="myForm.ROLE_INFO_CODE.$error.required && myForm.ROLE_INFO_CODE.$touched">
+                           角色编码为必填项！
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>角色名称</label>
+                        <input type="text" class="form-control input-sm" name="USERNAME" ng-model="model.ROLE_INFO_NAME_CN"
+                               required>
+                        <span style="color:red" ng-if="myForm.ROLE_INFO_NAME_CN.$error.required && myForm.ROLE_INFO_NAME_CN.$touched">
+                           角色名称为必填项！
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="roleType"><i class="text-danger">*</i>类型</label>
+                        <select class="form-control input-sm" id="roleType" name="roleType" ng-model="model.ROLE_TYPE_ID"
+                                ng-options="value.value as value.name for value in model.roleTypeList"
+                                required></select>
+                        <span style="color:red" ng-if="myForm.ROLE_INFO_NAME_CN.$error.required && myForm.ROLE_INFO_NAME_CN.$touched">
+                           类型为必填项！
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">创建人</label>
+                        <input type="text" class="form-control input-sm" id="CUSER_CODE" ng-model="model.CUSER_CODE"
+                               ng-disabled="true">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>描述</label>
+                        <input type="text" class="form-control input-sm" id="remarks" ng-model="model.USER_REMARKS">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header orange">
+                    <h4 ng-model="model.category">分配用户</h4>
+                </div>
+                <div class = "row">
+                    <div class="col-md-8">
+                        <button class="btn border-text-green btn-xs" ng-click="addGroup()"><i
+                                class="iconfont icon-jia1 "></i></button>
+                        <button class="btn border-text-orange btn-xs" ng-click="moveGroup()"><i
+                                class="iconfont icon-jian "></i></button>
+                    </div>
+                    <div class = col-md-4>
+                        <input type="text" class="input-sm no-margin no-padding" style="width: 200px" placeholder="用户名称/编码" ng-model="searchCondition">
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="search()"><i class="iconfont icon-sousuo_sousuo"></i>搜索</button>
+                    </div>
+                </div>
+                <div class="box-body" auto-height="userGridOption">
+                    <div ui-grid="userGridOption"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                         ui-grid-resize-columns ui-grid-auto-resize></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" ng-click="save()">保存</button>-->
+    <!--</div>-->
+</div>
+
+<style>
+
+    .checkbox-header-bold label {
+        font-weight: bold;
+    }
+
+</style>

@@ -1,0 +1,20 @@
+<table class="ctltable" style="width:100%">
+    <tbody>
+
+    <tr class="center">
+        <td class="col-sm-3" style="text-align: center">验货日期</td>
+        <td class="col-sm-3" style="text-align: center">此次排程数量</td>
+        <td class="col-sm-2" style="text-align: center">验货状态</td>
+        <td class="col-sm-2" style="text-align: center">验货员</td>
+        <td class="col-sm-2" style="text-align: center">单据状态</td>
+    </tr>
+    <tr class="center" ng-repeat="item in model">
+        <td class="col-sm-3" style="text-align: center">{{item.timeF}}</td>
+        <td class="col-sm-3" style="text-align: center">{{item.TCHEDULING_NUMBER}}</td>
+        <td class="col-sm-2" style="text-align: center">{{item.INSPECTION_STATENAME}}</td>
+        <td class="col-sm-2" style="text-align: center">{{item.userName}}</td>
+        <td class="col-sm-2" style="text-align: center">{{item.AUDIT_STATENAME}}</td>
+    </tr>
+
+    </tbody>
+</table>

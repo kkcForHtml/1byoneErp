@@ -1,0 +1,149 @@
+<div class="modal-content">
+    <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">{{'编辑'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <!--内容-->
+        <div class="body-header">
+
+            <form class="form-inline">
+                <div class="row">
+                    <div class="col-md-5  btn-mr-5">
+                        <button type="button" class="btn  btn-danger btn-xs" btn-per="{id:44,name:'编辑'}" one-click="save()"><i
+                                class="iconfont icon-baocun-copy"></i>{{'保存'|translate}}
+                        </button>
+                        <button type="button" class="btn  btn-danger btn-xs" btn-per="{id:44,name:'新增'}" ng-click="copy()" ng-disabled="copyDisabled()"><i
+                                class="iconfont icon-fuzhi"></i>{{'复制'|translate}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <form role="form">
+            <div class="page-header orange">
+                <h4>{{'通用SKU信息'|translate}}</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'通用SKU'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="CSKU_CODE" ng-model="model.CSKU_CODE" maxlength="20">
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'中文名称'|translate}}</label>
+                        <input type="text" class="form-control input-sm" id="CSKU_NAME_CN" ng-model="model.CSKU_NAME_CN" maxlength="128">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'单位'|translate}}</label>
+                        <select class="form-control input-sm" id="money_state" ng-model="model.UNIT_ID" ng-options="item.UNIT_ID as item.UNIT_NAME_CN for item in units">
+                            <!--<option ng-repeat="u in units" value="{{u.UNIT_CODE}}">{{u.UNIT_NAME_CN}}</option>-->
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for="">{{'英文名称'|translate}}</label>
+                        <input type="text" class="form-control" id="CSKU_NAME_EN" ng-model="model.CSKU_NAME_EN" maxlength="100">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""><i class="text-danger">*</i>{{'分类'|translate}}</label>
+                        <select class="form-control input-sm" id="type1" ng-model="model.bigTypeId" ng-change="bigTypeChange()" ng-options="item.PRODUCT_TYPE_ID as item.SYSTEM_NAME_CN for item in types">
+                            <!--<option ng-repeat="type in types" value="{{type.PRODUCT_TYPE_ID}}">{{type.SYSTEM_NAME_CN}}</option>-->
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for=""></label>
+                        <select class="form-control input-sm" id="type2" ng-model="model.smallTypeId" style="margin-top: 5px" ng-options="item.PRODUCT_TYPE_ID as item.SYSTEM_NAME_CN for item in currentBigType.g_product_types">
+                            <!--<option ng-repeat="type in currentBigType.g_product_types" value="{{type.PRODUCT_TYPE_ID}}">{{type.SYSTEM_NAME_CN}}</option>-->
+<!---->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">{{'是否启用'|translate}}</label>
+                        <select class="form-control input-sm" id="CSKU_STATE" ng-model="model.CSKU_STATE" ng-options="item.id as item.name for item in [{name:'Y',id:'1'},{name:'N',id:'0'}]" ng-change="stateChange()">
+                            <!--<option value="1">Y</option>-->
+                            <!--<option value="0">N</option>-->
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header orange">
+                        <h4>
+                            {{'培训资料'|translate}}
+                        </h4>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12" style="margin-top: 10px;">
+                                <input type="file" name="FileModel[file]" id="imagefiles" class="file-loading" multiple  />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header orange">
+                        <h4>
+                            {{'产品SKU信息'|translate}}
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3  btn-mr-5 " style="padding-left: 25px">
+
+                            <button type="button" class="btn btn-success btn-xs" ng-click="subAdd()"><i
+                                    class="iconfont icon-jia1"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs" one-click="subDel()"><i class="iconfont icon-iconfontshanchu"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="box-body" auto-height="gridOptions_edit" auto-flag style="padding-top: 5px;">
+                        <div ui-grid="gridOptions_edit"     ui-grid-edit ui-grid-pagination ui-grid-row-edit ui-grid-cellNav  ui-grid-selection
+                             ui-grid-resize-columns ui-grid-auto-resize></div>
+
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </form>
+
+
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button type="button" class="btn btn-success btn-color-green" ng-click="save()">保存</button>-->
+    <!--</div>-->
+
+</div>
