@@ -1,0 +1,16 @@
+[Unit]
+Description=Swoole Cppool Server
+After=network.target
+After=syslog.target
+
+[Service]
+Type=forking
+LimitNOFILE=40960
+LimitNPROC=40960
+ExecStart=/usr/local/php/bin/php /data/wwwroot/default/swoole/cppool start 1
+ExecStop=/usr/local/php/bin/php /data/wwwroot/default/swoole/cppool stop
+ExecReload=/usr/local/php/bin/php /data/wwwroot/default/swoole/cppool reload
+ExecRestart=/usr/local/php/bin/php /data/wwwroot/default/swoole/cppool restart
+
+[Install]
+WantedBy=multi-user.target graphical.target

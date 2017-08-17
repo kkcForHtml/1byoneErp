@@ -1,0 +1,32 @@
+{
+  "name": "albert/yii2-swoole",
+  "version": "dev-master",
+  "version_normalized": "9999999-dev",
+  "require": {
+    "yiisoft/yii2": "*",
+    "yiisoft/yii2-redis": "*",
+    "yiisoft/httpclient": "*"
+  },
+  "time": "2017-01-18T03:47:18+00:00",
+  "type": "yii2-extension",
+  "installation-source": "dist",
+  "autoload": {
+    "psr-4": {
+      "yii\\swoole\\": ""
+    }
+  },
+  "license": [
+    "Apache-2.0"
+  ],
+  "authors": [
+    {
+      "name": "albert",
+      "email": "63851587@qq.com"
+    }
+  ],
+  "description": "yii2 swoole",
+  "keywords": [
+    "km",
+    "yii2"
+  ]
+}

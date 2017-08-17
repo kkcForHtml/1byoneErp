@@ -1,0 +1,31 @@
+{
+    "name": "Albert/yii2-queue",
+    "version": "dev-master",
+    "version_normalized": "9999999-dev",
+    "require": {
+        "yiisoft/yii2": "*",
+        "yiisoft/yii2-redis": "*"
+    },
+    "time": "2017-01-18T03:47:18+00:00",
+    "type": "yii2-extension",
+    "installation-source": "dist",
+    "autoload": {
+        "psr-4": {
+            "yii\\queue\\": ""
+        }
+    },
+    "license": [
+        "Apache-2.0"
+    ],
+    "authors": [
+        {
+            "name": "Albert",
+            "email": "63851587@qq.com"
+        }
+    ],
+    "description": "yii2 queue",
+    "keywords": [
+        "queue",
+        "yii2"
+    ]
+}

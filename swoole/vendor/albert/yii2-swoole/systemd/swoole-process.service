@@ -1,0 +1,14 @@
+[Unit]
+Description=Swoole Process Server
+After=network.target
+After=syslog.target
+
+[Service]
+Type=forking
+LimitNOFILE=40960
+LimitNPROC=40960
+ExecStart=/usr/local/php/bin/php /data/wwwroot/default/swoole/yiisw swoole/process start
+ExecStop=/usr/local/php/bin/php /data/wwwroot/default/swoole/yiisw swoole/process stop
+
+[Install]
+WantedBy=multi-user.target graphical.target

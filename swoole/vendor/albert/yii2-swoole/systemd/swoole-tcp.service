@@ -1,0 +1,17 @@
+[Unit]
+Description=Swoole Tcp Server
+After=network.target
+After=syslog.target
+
+[Service]
+Type=forking
+LimitNOFILE=40960
+LimitNPROC=40960
+PIDFile=/tmp/swooletcp.pid
+ExecStart=/usr/local/php/bin/php /data/wwwroot/default/swoole/yiisw swoole/tcp start 1
+ExecStop=/bin/kill $MAINPID
+ExecReload=/bin/kill -USR1 $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target graphical.target
